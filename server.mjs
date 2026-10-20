@@ -84,7 +84,10 @@ function candidateToCatalogItem(candidate) {
     sourceUrl: candidate.sourceUrl,
     repositoryUrl: candidate.repositoryUrl,
     stats: candidate.stats,
-    installCommand: install.command || '当前没有已核实的 Codex 安装命令，请查看来源说明。',
+    installCommand: install.command || null,
+    installNote: install.command
+      ? '安装命令来自已核对的来源页面，执行前仍需检查仓库内容。'
+      : install.notes || '当前没有已核实的 Codex 安装命令，请查看来源说明。',
     reviewStatus: 'pending',
     demoStatus: 'illustrative',
     safetyNote: (candidate.securityRisks || []).join(''),

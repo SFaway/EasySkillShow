@@ -1,12 +1,49 @@
 import assert from 'node:assert/strict';
 import {spawn} from 'node:child_process';
 import {setTimeout as wait} from 'node:timers/promises';
+import {readFile} from 'node:fs/promises';
 import {toggleCategory,subcategoryView} from '../public/navigation-logic.mjs';
+import {escapeHtml,safeHttpUrl} from '../public/safety-helpers.mjs';
+import {applyTaxonomy} from './promote-student-candidates.mjs';
+import {prepareExistingUpdate} from './import-skill.mjs';
+import {validate} from './validate-data.mjs';
 const PORT=Number(process.env.TEST_PORT||44173);
 const BASE=`http://127.0.0.1:${PORT}`;
 const child=spawn(process.execPath,['server.mjs'],{env:{...process.env,PORT:String(PORT)},stdio:'pipe'});
+let childOutput='';
+child.stdout.on('data',chunk=>{childOutput+=chunk});
+child.stderr.on('data',chunk=>{childOutput+=chunk});
 async function get(route){const r=await fetch(BASE+route);return {status:r.status,data:await r.json()}}
 try{
+ assert.equal(escapeHtml('<img src=x onerror="boom">'),'&lt;img src=x onerror=&quot;boom&quot;&gt;');
+ assert.equal(safeHttpUrl('javascript:alert(1)'),'#');
+ assert.match(safeHttpUrl('https://example.com/a?x=1'),/^https:\/\/example\.com/);
+ const unmapped={id:'example/repo/kept',category:'编程开发',categoryId:'programming',subcategoryId:'testing',tags:[],audiences:[],platforms:[],collections:[]};
+ const kept=applyTaxonomy(unmapped);
+ assert.equal(kept.categoryId,'programming','Unmapped records must retain their category');
+ assert.equal(kept.subcategoryId,'testing','Unmapped records must retain their subcategory');
+ const reviewed={id:'example/repo/skill',summaryZh:'旧简介',category:'编程开发',categoryId:'programming',subcategoryId:'testing',collections:['coding-starter'],sourceUrl:'https://example.com/old',repositoryUrl:'https://github.com/example/repo',reviewStatus:'source-checked',demoStatus:'verified',sourceCheckedOn:'2026-10-18',licenseStatus:'confirmed-repository',featured:true,screenshots:['verified.png'],platforms:['Codex'],installCommand:'npx skills add https://github.com/example/repo --skill skill'};
+ const contentOnly=prepareExistingUpdate(reviewed,{id:reviewed.id,summaryZh:'新简介',category:'错误分类',collections:[],sourceUrl:'https://example.com/new',reviewStatus:'pending',featured:false,platforms:[]});
+ assert.equal(contentOnly.row.summaryZh,'新简介');
+ assert.equal(contentOnly.row.sourceUrl,reviewed.sourceUrl);
+ assert.equal(contentOnly.row.reviewStatus,'source-checked');
+ assert.equal(contentOnly.row.featured,true);
+ assert.deepEqual(contentOnly.row.platforms,['Codex']);
+ assert.equal(contentOnly.row.category,'编程开发');
+ assert.deepEqual(contentOnly.row.collections,['coding-starter']);
+ assert.ok(contentOnly.ignoredFields.includes('sourceUrl'));
+ const metadataUpdate=prepareExistingUpdate(reviewed,{sourceUrl:'https://example.com/new',platforms:['Other']},{updateMetadata:true});
+ assert.equal(metadataUpdate.row.sourceUrl,'https://example.com/new');
+ assert.equal(metadataUpdate.row.reviewStatus,'pending');
+ assert.equal(metadataUpdate.row.licenseStatus,'unchecked');
+ assert.equal(metadataUpdate.row.featured,false);
+ const catalog=JSON.parse(await readFile(new URL('../data/skills.json',import.meta.url),'utf8'));
+ const invalidCategory=structuredClone(catalog[0]);invalidCategory.categoryId='missing-category';
+ assert.ok(validate([invalidCategory]).some(error=>error.includes('unknown categoryId')));
+ const invalidSubcategory=structuredClone(catalog[0]);invalidSubcategory.subcategoryId='missing-subcategory';
+ assert.ok(validate([invalidSubcategory]).some(error=>error.includes('does not belong')));
+ const invalidCollection=structuredClone(catalog[0]);invalidCollection.collections=['missing-collection'];
+ assert.ok(validate([invalidCollection]).some(error=>error.includes('unknown collection')));
  const opened=toggleCategory({category:'全部分类',expandedCategory:'',subcategory:''},'设计与内容');
  assert.equal(opened.expandedCategory,'设计与内容');
  const closed=toggleCategory(opened,'设计与内容');
@@ -17,13 +54,15 @@ try{
  const expanded=subcategoryView(many,'sub-8',true,5);
  assert.equal(expanded.items.length,8);assert.equal(expanded.hiddenCount,0);
  let ok=false;
- for(let i=0;i<30;i++){
+ for(let i=0;i<150;i++){
   try{let r=await get('/api/v1/health');if(r.status===200){ok=true;break}}catch{}
   await wait(100);
  }
- assert.ok(ok,'Server startup timed out');
+ assert.ok(ok,'Server startup timed out: '+childOutput.trim());
  const navigationAsset=await fetch(BASE+'/navigation-logic.mjs');
  assert.equal(navigationAsset.status,200);assert.match(navigationAsset.headers.get('content-type')||'',/text\/javascript/);
+ const safetyAsset=await fetch(BASE+'/safety-helpers.mjs');
+ assert.equal(safetyAsset.status,200);assert.match(safetyAsset.headers.get('content-type')||'',/text\/javascript/);
  const categories=await get('/api/v1/categories');
  assert.equal(categories.status,200);
  assert.ok(categories.data.data.some(x=>x.name==='文档办公'));
@@ -58,6 +97,8 @@ try{
  assert.ok(candidateCategories.data.data.some(x=>x.name==='课程学习'));
  const candidateDetail=await get('/api/v1/skills/'+encodeURIComponent('microsoft/cat-agent-skills/study-flashcards')+'?mode=student-candidates');
  assert.equal(candidateDetail.data.data.name,'study-flashcards');
+ assert.equal(candidateDetail.data.data.installCommand,null);
+ assert.match(candidateDetail.data.data.installNote,/安装命令|来源/);
  assert.equal(candidateDetail.data.data.candidateReview.compatibility.codex,'unverified');
- console.log('PASS: health, formal catalog, staging candidate preview, search, detail, 404, read-only policy');
+ console.log('PASS: data safety, import preservation, taxonomy validation, health, catalog, candidate preview, search, detail, 404, read-only policy');
 }catch(error){console.error(error);process.exitCode=1}finally{child.kill('SIGTERM')}

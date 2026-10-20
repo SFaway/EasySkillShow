@@ -1,6 +1,6 @@
 # EasySkillShow MVP · PCL 风格 Skill 发现平台
 
-> v0.2 双层介绍体验版｜2026-10-18｜以「帮助普通中文用户理解 Skill」为首要目标。
+> v0.2 双层介绍体验版｜2026-10-20｜以「帮助普通中文用户理解 Skill」为首要目标。
 
 ## 用 Windows 11 + VS Code 启动
 
@@ -25,13 +25,13 @@ npm start
 - 为 Codex 预留 `detailZh` 与 `exampleDetails` 字段，未补充的内容明确提示“待完善”，不伪造结果。
 - `import:skill` 新增可选 `--update-existing`，安全导入已有条目的修订稿，先预览、写入前自动备份。
 - 实际可请求的本地只读 API（仅用于当前开发服务，不接入外部 API）；同一个数据源未来可供 Codex 访问。
-- 17 条真实来源的精选记录；中文讲解是依据原始资料整理的摘要，**不是使用效果实测**。
+- 65 条正式目录记录；另有 8 条 staging 深度审核稿，它们对应正式目录中的同一批 Skill，**不重复计入总数**。中文讲解是依据原始资料整理的摘要，不等于使用效果实测。
 - 固定 7 个一级分类，并按内容数量展开二级任务；标签与“大学生常用”等精选集合不会挤占左侧分类。
 - 数据结构校验和 Codex 产出 JSON 的安全导入脚本（不会执行 Skill 自身的代码）。
 
 ## 尚未实现，不要误认为完成
 
-- 不是 skills.sh 的全量索引；只搜索当前收录的本地 17 条记录。
+- 不是 skills.sh 的全量索引；只搜索当前正式收录的本地 65 条记录。
 - 没有集成 skills.sh 远程 API 或 OAuth/OIDC。
 - 没有自动运行 Skill、自动下载或一键安装。
 - 没有自动翻译、批量导入 GitHub、真实图片/GIF 自动生成。
@@ -46,11 +46,13 @@ EasySkillShow_MVP/
 │  ├─ index.html
 │  ├─ app.js
 │  └─ styles.css
-├─ data/skills.json             # 当前本地 Skill 目录
+├─ data/skills.json             # 65 条正式 Skill 目录
+├─ data/taxonomy.json           # 7 个一级分类、二级分类和专题集合
 ├─ server.mjs                  # 无第三方依赖的 Node API + 静态服务
 ├─ scripts/
 │  ├─ validate-data.mjs       # 校验 Skill 数据
-│  └─ import-skill.mjs        # Codex 数据导入（需显式 --write）
+│  ├─ import-skill.mjs        # Codex 数据导入（需显式 --write）
+│  └─ promote-student-candidates.mjs # 候选整理与专题集合维护
 ├─ staging/                      # Codex 输出文件示例
 ├─ docs/
 │  ├─ PRD.md                   # MVP 产品约束与验收
@@ -68,12 +70,14 @@ npm run import:skill -- staging/codex-output.example.json
 # 默认只预检查，不写入数据。
 # 确认无误才用以下命令导入：
 npm run import:skill -- staging/your-real-skill.json --write
-# 如要更新现有 Skill（如 pptx），必须显式加上 --update-existing：
+# 如要更新现有 Skill 的中文介绍，必须显式加上 --update-existing：
 npm run import:skill -- staging/pptx-rewrite.template.json --update-existing  # 先预检
 # 人工确认后再加 --write
+# 默认保留已有分类、专题集合、来源、许可证、平台、精选和审核信息。
+# 确实要改这些元数据时再加 --update-metadata；该记录会重置为待审核。
 ```
 
-导入的 Skill 一律标记 `pending`，禁止把模型生成的介绍冒充功能实测。管理员人工核对原项目后再将条目标记为 `source-checked`。
+新增 Skill 一律标记 `pending`。更新已有条目的普通中文介绍时，默认保留分类、专题集合及已经审核的元数据；只有显式使用 `--update-metadata` 才替换这些受保护字段，并自动重置审核状态。禁止把模型生成的介绍冒充功能实测。
 
 ## 后续版本
 
@@ -87,12 +91,12 @@ npm run import:skill -- staging/pptx-rewrite.template.json --update-existing  # 
 
 ## 初版验证记录
 
-已通过 JavaScript 语法检查、数据校验以及接口冒烟测试（分类、中文搜索、详情、404、只读策略）。当前环境无法正常启动可截图的浏览器，因此**页面的完整视觉与点击测试待在 Windows 的 Chrome / Edge 中完成**；详见 `docs/CODEX_HANDOFF.md`。
+已通过 JavaScript 语法检查、分类关联校验、导入策略回归测试以及接口冒烟测试（分类、中文搜索、详情、候选预览、404、只读策略）。浏览器验收范围与结果见 `docs/CODEX_HANDOFF.md`。
 
 ## v0.2 内容升级说明
 
 - **简明版**使用 `summaryZh`、`scenarios`、`audience` 和原有 `inputExample` / `outputExample`，适合新手。
 - **详细版**使用已有 `explanationZh`、`boundaries` 等信息，并在 Codex 输出新增 `detailZh` 和 `exampleDetails` 后自动补充细节。
-- 当前 17 条记录中，新增批次仍标记为待审核，所有演示性输入输出都不等于功能实测。
+- 当前 65 条正式记录中，待审核条目仍明确标记为待审核；8 条 staging 审核稿是已有条目的候选预览版本，所有演示性输入输出都不等于功能实测。
 - 这版仍保持 `npm start` 启动的本地服务方式，**没有加入 skills.sh API、AI API，也没有改成直接双击 index.html 使用**。
 - 给 Codex 的具体任务见 `docs/CODEX_CONTENT_TASK.md`，请先做一条 A/B 对照，确认质量后再批量处理。

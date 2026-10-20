@@ -55,6 +55,7 @@
       "name": "数据分析",
       "icon": "chart",
       "subcategories": [
+        { "id": "data-management", "name": "数据管理" },
         { "id": "data-cleaning", "name": "数据清洗" },
         { "id": "statistics", "name": "统计分析" },
         { "id": "data-visualization", "name": "数据可视化" }

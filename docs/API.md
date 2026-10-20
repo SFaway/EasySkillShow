@@ -7,7 +7,7 @@
 ## 已实现的只读 API
 
 ### `GET /api/v1/health`
-返回 `{ "ok": true, "version": "0.1.0", "dataMode": "local-curated" }`。
+返回 `{ "ok": true, "version": "0.2.0", "dataMode": "local-curated" }`。
 
 ### `GET /api/v1/categories`
 返回“全部分类”与固定 7 个一级分类；每个一级分类包含当前数量和二级任务计数。
@@ -75,6 +75,7 @@ fetch('/api/v1/skills/' + encodeURIComponent('anthropics/skills/pptx'))
 | `boundaries` | string[] | 做不到什么、依赖和风险 |
 | `sourceUrl`, `repositoryUrl` | string | 真实可追溯来源 |
 | `installCommand` | string / null | 已核实命令只展示、复制，不执行；未核实时为 `null` |
+| `installNote` | string（可选） | 没有已核实命令时的解释文字，不得作为命令展示或复制 |
 | `reviewStatus` | `pending` / `source-checked` | 未审核 / 来源已核实 |
 | `demoStatus` | `none` / `illustrative` / `verified` | 是否有示例/实测演示 |
 | `screenshots` | string[] | 经过授权的实测图片，当前均为空 |
@@ -123,4 +124,4 @@ fetch('/api/v1/skills/' + encodeURIComponent('anthropics/skills/pptx'))
 }
 ```
 
-不填详细层时，界面仍展示既有 `summaryZh` / `explanationZh` / `inputExample` / `outputExample`；不把待完善的材料冒充实测。更新已存在的条目请用 `--update-existing` 干运行检查，再经人工审批写入。
+不填详细层时，界面仍展示既有 `summaryZh` / `explanationZh` / `inputExample` / `outputExample`；不把待完善的材料冒充实测。更新已存在条目的中文介绍请用 `--update-existing` 干运行检查，分类、专题集合、来源、许可证、平台、精选状态和审核信息默认保留。只有确需修改这些受保护元数据时才加 `--update-metadata`，并自动回到待审核状态。

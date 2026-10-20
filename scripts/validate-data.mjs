@@ -2,10 +2,29 @@ import {readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 const ROOT=resolve(fileURLToPath(new URL('..',import.meta.url)));
+const TAXONOMY_PATH=resolve(ROOT,'data/taxonomy.json');
+const DEFAULT_TAXONOMY=JSON.parse(await readFile(TAXONOMY_PATH,'utf8'));
 export const REQUIRED=['id','name','nameZh','category','summaryZh','explanationZh','audience','inputExample','outputExample','sourceUrl','repositoryUrl'];
-export function validate(items){
+export function validate(items,taxonomy=DEFAULT_TAXONOMY){
  const errors=[], ids=new Set();
  if(!Array.isArray(items))return ['Catalog is not an array'];
+ const categories=Array.isArray(taxonomy?.categories)?taxonomy.categories:[];
+ const collections=Array.isArray(taxonomy?.collections)?taxonomy.collections:[];
+ const categoryMap=new Map();
+ const collectionIds=new Set();
+ for(const [i,category] of categories.entries()){
+  if(!category?.id||categoryMap.has(category.id))errors.push(`[taxonomy.categories.${i}] missing/duplicate category id`);
+  else categoryMap.set(category.id,category);
+  const subcategoryIds=new Set();
+  for(const [j,subcategory] of (category?.subcategories||[]).entries()){
+   if(!subcategory?.id||subcategoryIds.has(subcategory.id))errors.push(`[taxonomy.categories.${i}.subcategories.${j}] missing/duplicate subcategory id`);
+   else subcategoryIds.add(subcategory.id);
+  }
+ }
+ for(const [i,collection] of collections.entries()){
+  if(!collection?.id||collectionIds.has(collection.id))errors.push(`[taxonomy.collections.${i}] missing/duplicate collection id`);
+  else collectionIds.add(collection.id);
+ }
  for(const [i,item] of items.entries()){
   if(!item||typeof item!=='object'){errors.push(`[${i}] Not an object`);continue;}
   for(const key of REQUIRED)if(typeof item[key]!=='string'||!item[key].trim())errors.push(`[${i}] missing/invalid ${key}`);
@@ -20,6 +39,13 @@ export function validate(items){
   }
   if(typeof item.categoryId!=='string'||!item.categoryId.trim())errors.push(`[${i}] missing/invalid categoryId`);
   if(typeof item.subcategoryId!=='string'||!item.subcategoryId.trim())errors.push(`[${i}] missing/invalid subcategoryId`);
+  const category=categoryMap.get(item.categoryId);
+  if(item.categoryId&&!category)errors.push(`[${i}] unknown categoryId ${item.categoryId}`);
+  if(category){
+   if(item.category!==category.name)errors.push(`[${i}] category name ${item.category} does not match ${category.name}`);
+   if(item.subcategoryId&&!category.subcategories.some(subcategory=>subcategory.id===item.subcategoryId))errors.push(`[${i}] subcategoryId ${item.subcategoryId} does not belong to ${item.categoryId}`);
+  }
+  for(const collectionId of (Array.isArray(item.collections)?item.collections:[]))if(!collectionIds.has(collectionId))errors.push(`[${i}] unknown collection ${collectionId}`);
   if(item.detailZh!==undefined){
     const d=item.detailZh;
     if(!d||typeof d!=='object'||Array.isArray(d))errors.push(`[${i}] detailZh must be an object`);
@@ -52,6 +78,7 @@ export function validate(items){
   if(!['illustrative','verified','none'].includes(item.demoStatus))errors.push(`[${i}] invalid demoStatus`);
   if(!(item.installCommand===null||typeof item.installCommand==='string'))errors.push(`[${i}] installCommand must be string or null`);
   if(typeof item.installCommand==='string'&&!item.installCommand.startsWith('npx skills add '))errors.push(`[${i}] unsupported install command; check manually`);
+  if(item.installNote!==undefined&&typeof item.installNote!=='string')errors.push(`[${i}] installNote must be string when provided`);
  }
  return errors;
 }

@@ -4,6 +4,8 @@
 
 把 **真实的 `SKILL.md`** 整理成面向普通中文用户的 **简明版 + 详细版**，重点降低理解门槛。不要求自动制作图片；只有可追溯的真实截图才作为真实演示。
 
+当前正式目录共有 65 条记录。`staging/student-skill-candidates.json` 中的 8 条是其中 8 条正式记录的深度审核稿，不是额外的 8 条。处理批次时应按稳定 `id` 去重。
+
 ## 先做一条，再做批量
 
 请先选 `anthropics/skills/pptx` （或用户指定的现有条目），阅读 `README.md`、`data/skills.json`、`docs/API.md` 与原仓库的 `SKILL.md`，以及原仓库中适合解释使用方式的说明。可优先利用本地已安装且可信的内容梳理类 Skill（如用户所提到的 `skill-documentarian`），但**先报告工具是否已安装、是否能读取原文、哪些工作真正由它完成**。未知第三方仓库不要擅自安装运行，不要将工具输出当作事实。
@@ -45,7 +47,7 @@
 2. 记录“原始描述 vs Skill 辅助优化后描述”的差别，至少列出 3 点：可读性、准确性、理解成本。
 3. 执行 `npm run check:data`。
 4. 执行 `npm run import:skill -- staging/xxx-rewrite.json --update-existing` **干运行**。这不会写入目录。
-5. 向用户展示改动和原文依据；**用户确认后**才执行 `npm run import:skill -- staging/xxx-rewrite.json --update-existing --write`。
+5. 向用户展示改动和原文依据；**用户确认后**才执行 `npm run import:skill -- staging/xxx-rewrite.json --update-existing --write`。普通文案更新会保留审核元数据；确需修改来源、许可证、平台或安装信息时，显式加 `--update-metadata`，记录会自动回到待审核状态。
 6. 重新执行 `npm test`，用浏览器检查二级页简明/详细切换和文字排版。
 
 ## 验收条件

@@ -7,7 +7,7 @@ import { validate } from './validate-data.mjs';
 const ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const TARGET = resolve(ROOT, 'data/skills.json');
 const SOURCE = resolve(ROOT, 'staging/student-skill-candidates.json');
-const isWrite = process.argv.includes('--write');
+const isMain = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 
 const assignments = {
   'vercel-labs/skills/find-skills': ['ai-tools', 'skill-discovery'],
@@ -47,10 +47,10 @@ const collectionMembers = {
     'bytedance/deer-flow/academic-paper-review', 'anthropics/skills/doc-coauthoring',
     'obra/superpowers/systematic-debugging', 'bytedance/deer-flow/systematic-literature-review'
   ],
-  'exam-review': ['microsoft/cat-agent-skills/study-flashcards', 'anthropics/skills/pdf', 'anthropics/skills/pptx', 'gg-skills/explain/explain'],
+  'exam-review': ['microsoft/cat-agent-skills/study-flashcards', 'anthropics/skills/pdf', 'anthropics/skills/pptx', 'gg-skills/explain/explain', 'mattpocock/skills/teach'],
   'papers-reports': ['bytedance/deer-flow/academic-paper-review', 'bytedance/deer-flow/systematic-literature-review', 'anthropics/skills/pdf', 'anthropics/skills/docx', 'anthropics/skills/doc-coauthoring'],
   'internship-career': ['trainwithshubham/skills/resume-review', 'anthropics/skills/docx', 'anthropics/skills/pptx'],
-  'coding-starter': ['obra/superpowers/systematic-debugging', 'anthropics/skills/frontend-design', 'vercel-labs/agent-skills/web-design-guidelines', 'vercel-labs/skills/find-skills']
+  'coding-starter': ['obra/superpowers/systematic-debugging', 'juliusbrussee/caveman/caveman-commit', 'gg-skills/explain/explain', 'mattpocock/skills/tdd', 'vercel-labs/skills/find-skills']
 };
 
 const audienceLabels = {
@@ -67,21 +67,30 @@ function collectionsFor(id) {
   return Object.entries(collectionMembers).filter(([, ids]) => ids.includes(id)).map(([key]) => key);
 }
 
-function applyTaxonomy(record) {
-  const [categoryId, subcategoryId] = assignments[record.id] || ['ai-tools', 'agent-tools'];
+export function applyTaxonomy(record) {
+  const assignment = assignments[record.id];
+  if (!assignment) {
+    return {
+      ...record,
+      platforms: Array.isArray(record.platforms) ? record.platforms : [],
+      collections: collectionsFor(record.id)
+    };
+  }
+  const [categoryId, subcategoryId] = assignment || [record.categoryId, record.subcategoryId];
+  const categoryName = categoryNames[categoryId] || record.category;
   return {
     ...record,
-    category: categoryNames[categoryId],
+    category: categoryName,
     categoryId,
     subcategoryId,
-    tags: [...new Set([...(record.tags || []), categoryNames[categoryId]])],
+    tags: [...new Set([...(record.tags || []), categoryName].filter(Boolean))],
     audiences: [...new Set([...(record.audiences || []), ...(audienceLabels[categoryId] || [])])],
     platforms: Array.isArray(record.platforms) ? record.platforms : [],
     collections: collectionsFor(record.id)
   };
 }
 
-function candidateToRecord(candidate) {
+export function candidateToRecord(candidate) {
   const detail = candidate.detailZh || {};
   const install = candidate.install || {};
   const compatibility = candidate.compatibility || {};
@@ -131,29 +140,41 @@ function candidateToRecord(candidate) {
   });
 }
 
-const current = JSON.parse(await readFile(TARGET, 'utf8'));
-const staged = JSON.parse(await readFile(SOURCE, 'utf8')).candidates;
-const candidateMap = new Map(staged.map(candidate => [candidate.id, candidateToRecord(candidate)]));
-const next = current.map(old => candidateMap.has(old.id)
-  ? { ...old, ...candidateMap.get(old.id) }
-  : applyTaxonomy(old));
-const existing = new Set(next.map(item => item.id));
-for (const candidate of staged) if (!existing.has(candidate.id)) next.push(candidateMap.get(candidate.id));
-
-const errors = validate(next);
-if (errors.length) {
-  console.error('Validation failed:\n' + errors.join('\n'));
-  process.exit(1);
+export function promoteCatalog(current, staged) {
+  const candidateMap = new Map(staged.map(candidate => [candidate.id, candidateToRecord(candidate)]));
+  const preservedTaxonomyIds = [];
+  const next = current.map(old => {
+    if (!assignments[old.id]) preservedTaxonomyIds.push(old.id);
+    return candidateMap.has(old.id)
+      ? { ...old, ...candidateMap.get(old.id) }
+      : applyTaxonomy(old);
+  });
+  const existing = new Set(next.map(item => item.id));
+  for (const candidate of staged) if (!existing.has(candidate.id)) next.push(candidateMap.get(candidate.id));
+  return { next, existing, preservedTaxonomyIds };
 }
 
-console.log(`Prepared ${next.length} records: ${next.length - current.length} new, ${staged.filter(item => existing.has(item.id)).length} updated, fixed 7-category taxonomy applied.`);
-if (!isWrite) {
-  console.log('Dry-run only. Add --write to save.');
-  process.exit(0);
-}
+if (isMain) {
+  const isWrite = process.argv.includes('--write');
+  const current = JSON.parse(await readFile(TARGET, 'utf8'));
+  const staged = JSON.parse(await readFile(SOURCE, 'utf8')).candidates;
+  const { next, existing, preservedTaxonomyIds } = promoteCatalog(current, staged);
+  const errors = validate(next);
+  if (errors.length) {
+    console.error('Validation failed:\n' + errors.join('\n'));
+    process.exit(1);
+  }
 
-await mkdir(resolve(ROOT, 'data/backups'), { recursive: true });
-const backup = resolve(ROOT, 'data/backups/skills-' + new Date().toISOString().replace(/[:.]/g, '-') + '.json');
-await copyFile(TARGET, backup);
-await writeFile(TARGET, JSON.stringify(next, null, 2) + '\n', 'utf8');
-console.log(`Saved formal catalog. Backup: ${basename(backup)}`);
+  console.log(`Prepared ${next.length} records: ${next.length - current.length} new, ${staged.filter(item => existing.has(item.id)).length} updated.`);
+  console.log(`Preserved existing taxonomy for ${preservedTaxonomyIds.length} records without an explicit assignment; no fallback category was applied.`);
+  if (!isWrite) {
+    console.log('Dry-run only. Add --write to save.');
+    process.exit(0);
+  }
+
+  await mkdir(resolve(ROOT, 'data/backups'), { recursive: true });
+  const backup = resolve(ROOT, 'data/backups/skills-' + new Date().toISOString().replace(/[:.]/g, '-') + '.json');
+  await copyFile(TARGET, backup);
+  await writeFile(TARGET, JSON.stringify(next, null, 2) + '\n', 'utf8');
+  console.log(`Saved formal catalog. Backup: ${basename(backup)}`);
+}

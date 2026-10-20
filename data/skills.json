@@ -432,9 +432,7 @@
       "创作者",
       "开发者"
     ],
-    "collections": [
-      "coding-starter"
-    ]
+    "collections": []
   },
   {
     "id": "vercel-labs/agent-skills/web-design-guidelines",
@@ -504,9 +502,7 @@
       "创作者",
       "开发者"
     ],
-    "collections": [
-      "coding-starter"
-    ]
+    "collections": []
   },
   {
     "id": "coreyhaines31/marketingskills/ad-creative",
@@ -721,7 +717,8 @@
       "学习者"
     ],
     "collections": [
-      "exam-review"
+      "exam-review",
+      "coding-starter"
     ]
   },
   {
@@ -1998,9 +1995,7 @@
       "设计师",
       "开发者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "分为逻辑原型和 UI 原型",
@@ -2120,9 +2115,7 @@
       "测试人员",
       "办公用户"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "使用页面快照和元素编号操作",
@@ -2234,9 +2227,7 @@
       "产品经理",
       "开发者"
     ],
-    "collections": [
-      "student-essential"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "grill-me 只调用 grilling",
@@ -2346,9 +2337,7 @@
       "产品经理",
       "开发者"
     ],
-    "collections": [
-      "student-essential"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "按有依赖关系的决策树分轮提问",
@@ -2464,7 +2453,6 @@
       "编程学习者"
     ],
     "collections": [
-      "student-essential",
       "exam-review"
     ],
     "reviewEvidence": {
@@ -2578,9 +2566,7 @@
       "编程学习者",
       "开发者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "比较固定基准点到 HEAD 的 diff",
@@ -2693,9 +2679,7 @@
       "前端学习者",
       "前端开发者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "包含 70 条规则和 8 个类别",
@@ -2808,9 +2792,7 @@
       "团队成员",
       "办公用户"
     ],
-    "collections": [
-      "student-essential"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "支持飞书 Docx 与 Wiki 的读取、创建和编辑",
@@ -2922,9 +2904,7 @@
       "团队成员",
       "开发者"
     ],
-    "collections": [
-      "student-essential"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "处理飞书云盘中的原生 Markdown 文件",
@@ -3037,9 +3017,7 @@
       "编程学习者",
       "开发者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "面向已经确定的工作，一次处理一个任务",
@@ -3153,10 +3131,7 @@
       "产品经理",
       "开发者"
     ],
-    "collections": [
-      "student-essential",
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "在问题跟踪器中建立总地图与子任务",
@@ -3270,10 +3245,7 @@
       "设计师",
       "前端开发者"
     ],
-    "collections": [
-      "student-essential",
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "覆盖网页和原生 iOS 的设计、改进与审查",
@@ -3387,10 +3359,7 @@
       "内容创作者",
       "React 开发者"
     ],
-    "collections": [
-      "student-essential",
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "用 React 和 Remotion 创建或编辑视频",
@@ -3506,9 +3475,7 @@
       "项目维护者",
       "开发者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "生成逐阶段交互式 Bash 向导",
@@ -3626,9 +3593,7 @@
       "开发者",
       "运维人员"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "按症状、资源健康、日志、指标和近期变更进行系统诊断",
@@ -3746,9 +3711,7 @@
       "AI 应用开发者",
       "后端开发者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "提供 Python 与 Go 的 ADK API 和代码模式",
@@ -3863,9 +3826,7 @@
       "团队成员",
       "数据管理者"
     ],
-    "collections": [
-      "student-essential"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "支持 Base、表、字段、记录、视图、表单、仪表盘、工作流和高级权限",
@@ -3978,10 +3939,7 @@
       "产品经理",
       "项目成员"
     ],
-    "collections": [
-      "student-essential",
-      "internship-career"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "先确认接收者及其掌握的信息",
@@ -4098,9 +4056,7 @@
       "前端开发者",
       "团队维护者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "根据锁文件识别 npm、pnpm、Yarn 或 Bun",
@@ -4217,9 +4173,7 @@
       "团队成员",
       "办公用户"
     ],
-    "collections": [
-      "student-essential"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "支持日程查看、搜索、创建、更新、删除和 RSVP",
@@ -4333,10 +4287,7 @@
       "内容创作者",
       "项目成员"
     ],
-    "collections": [
-      "student-essential",
-      "papers-reports"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "通过追问产生异质写作片段",
@@ -4452,10 +4403,7 @@
       "研究者",
       "内容创作者"
     ],
-    "collections": [
-      "student-essential",
-      "papers-reports"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "完整读取原始素材并保持只读",
@@ -4571,11 +4519,7 @@
       "内容创作者",
       "技术写作者"
     ],
-    "collections": [
-      "student-essential",
-      "papers-reports",
-      "internship-career"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "先确认读者已掌握的概念",
@@ -4691,10 +4635,7 @@
       "项目成员",
       "办公用户"
     ],
-    "collections": [
-      "student-essential",
-      "internship-career"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "默认过去 7 天",
@@ -4810,10 +4751,7 @@
       "实习生",
       "办公用户"
     ],
-    "collections": [
-      "student-essential",
-      "internship-career"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "组合 calendar +agenda 与 task +get-my-tasks",
@@ -4930,9 +4868,7 @@
       "后端开发者",
       "数据库维护者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "由 Supabase 维护且适用于任何 Postgres",
@@ -5049,9 +4985,7 @@
       "开发者",
       "团队维护者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "适用于 Skill、AGENTS.md、CLAUDE.md 和通过指针读取的文档",
@@ -5169,10 +5103,7 @@
       "运营人员",
       "开发者"
     ],
-    "collections": [
-      "student-essential",
-      "internship-career"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "使用多轮 grilling 访谈且每题附推荐答案",
@@ -5286,9 +5217,7 @@
       "实习生",
       "办公用户"
     ],
-    "collections": [
-      "internship-career"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "只查询自己的飞书考勤打卡记录",
@@ -5408,9 +5337,7 @@
       "办公用户",
       "团队负责人"
     ],
-    "collections": [
-      "internship-career"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "审批默认以 --as user 执行",
@@ -5531,9 +5458,7 @@
       "前端开发者",
       "创作者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "采用暖色单色、编辑式字体层级、扁平 Bento 网格和低饱和点缀",
@@ -5659,10 +5584,7 @@
       "产品经理",
       "办公用户"
     ],
-    "collections": [
-      "student-essential",
-      "internship-career"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "支持创建、读取、逐页增删、块级替换、整页更新、截图、媒体和历史版本",
@@ -5789,9 +5711,7 @@
       "开发者",
       "团队维护者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "支持创建和改进既有 Skill",
@@ -6028,9 +5948,7 @@
       "React 开发者",
       "组件库维护者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "规则分为组件架构、状态管理、实现模式和 React 19 API 四类",
@@ -6156,11 +6074,7 @@
       "创作者",
       "开发者"
     ],
-    "collections": [
-      "student-essential",
-      "coding-starter",
-      "internship-career"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "信息充分的快速任务可直接执行",
@@ -6284,9 +6198,7 @@
       "后端开发者",
       "全栈开发者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "官方参考覆盖 Client 构造、模型查询、查询形状、过滤、关系、事务和原始 SQL",
@@ -6408,9 +6320,7 @@
       "后端开发者",
       "全栈开发者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "官方参考针对 Prisma ORM 7，并覆盖 init、generate、dev、db、migrate、studio、mcp、validate、format 和 debug",
@@ -6535,9 +6445,7 @@
       "运维人员",
       "成本管理人员"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "官方 Skill 分为费用查询、成本预测和成本优化三条流程",
@@ -6662,9 +6570,7 @@
       "全栈开发者",
       "项目维护者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "官方指南面向 Prisma ORM 6 到 7 的迁移",
@@ -6789,9 +6695,7 @@
       "后端开发者",
       "项目维护者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "Prisma 7 从未提供 MongoDB 连接器",
@@ -6921,9 +6825,7 @@
       "后端开发者",
       "全栈开发者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "实施前要求检查 Supabase changelog 和当前文档",
@@ -7048,9 +6950,7 @@
       "前端开发者",
       "设计工程师"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "组件通过 CLI 作为源代码加入用户项目",
@@ -7175,9 +7075,7 @@
       "React Native 开发者",
       "Expo 开发者"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "面向 React Native 与 Expo",
@@ -7300,10 +7198,7 @@
       "开发者",
       "项目维护者"
     ],
-    "collections": [
-      "coding-starter",
-      "student-essential"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "任何完成或正确性声明前都要求新鲜验证证据",
@@ -7428,9 +7323,7 @@
       "前端开发者",
       "交互设计师"
     ],
-    "collections": [
-      "coding-starter"
-    ],
+    "collections": [],
     "reviewEvidence": {
       "sourceFacts": [
         "只评审动画与 motion 代码，不处理无关功能和通用代码",
