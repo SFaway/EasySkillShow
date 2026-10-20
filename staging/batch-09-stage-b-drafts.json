@@ -1,0 +1,96 @@
+[
+  {
+    "id": "prisma/skills/prisma-client-api",
+    "name": "prisma-client-api",
+    "nameZh": "Prisma Client 查询与事务参考",
+    "category": "编程开发",
+    "summaryZh": "帮助你编写和审查 Prisma Client 的增删改查、关联查询、事务与原始 SQL，并在操作真实数据前识别注入和并发风险。",
+    "explanationZh": "它是 Prisma 官方维护的客户端 API 参考。AI 可以根据项目的 schema 和 Prisma 版本，选择合适的模型方法、字段选择、过滤排序、分页、关系查询或事务形式；必须写原始 SQL 时，优先使用参数化 tagged template，并把会修改或删除数据的操作留给你确认。",
+    "audience": "使用 Prisma ORM 构建 Node.js 或 TypeScript 应用，需要查询示例、事务设计或原始 SQL 安全检查的学生与开发者。",
+    "scenarios": ["为 Prisma 模型编写带过滤、排序和分页的类型安全查询", "设计需要全部成功或全部回滚的顺序事务或交互式事务", "审查原始 SQL、批量更新和删除操作的注入与数据风险"],
+    "inputExample": "演示性示例，尚未实际运行验证：这是我的 Prisma 7 schema 和一段订单结算代码。请先确认模型字段和 Prisma Client 初始化方式，再把查询改为只返回必要字段，并用短事务同时写入订单和库存；不要连接数据库或执行代码。若必须使用原始 SQL，只能给出参数化写法并指出仍需验证的数据库方言。",
+    "outputExample": "可能得到与当前 schema 对齐的 Prisma Client 查询、事务结构、原始 SQL 安全建议和待运行的测试清单；不会自动连接或修改数据库。",
+    "boundaries": ["它是 Prisma Client API 的编写与审查参考，不会替你连接数据库、运行查询、生成 schema 或验证生产数据", "示例必须以项目实际 Prisma 版本、生成的 Client、schema、数据库提供商和适配器为准；静态代码不能证明可运行", "create、update、delete、updateMany、deleteMany 和事务可能修改真实数据，默认只生成或审查代码，执行前需核对环境、过滤条件、备份与回滚方案", "原始 SQL 优先使用 `$queryRaw` 或 `$executeRaw` 的 tagged template 参数化值；`Unsafe` 方法以及把用户输入传给 `Prisma.raw()` 都可能造成 SQL 注入", "表名、列名等 SQL 标识符通常不能作为普通参数安全插入，不应从不可信输入动态构造", "交互式事务应保持简短，避免在事务内执行慢网络请求；隔离级别、超时和重试需结合数据库与并发需求决定", "select、include 和 omit 的组合、关系加载和分页策略会影响类型与性能，需通过测试和查询计划验证", "本条目的订单示例未基于真实项目、schema 或数据库执行"],
+    "tags": ["Prisma", "数据库", "事务"],
+    "keywords": ["Prisma Client", "CRUD", "relations", "transactions", "raw SQL", "queryRaw", "SQL injection", "TypeScript", "数据库查询"],
+    "sourceUrl": "https://www.skills.sh/prisma/skills/prisma-client-api",
+    "repositoryUrl": "https://github.com/prisma/skills",
+    "stats": {"githubStars": 70, "githubRepo": "prisma/skills", "installs": 370900, "installsSource": "skills.sh 页面快照（2026-10-19）", "lastCheckedAt": "2026-10-19T00:00:00+08:00"},
+    "installCommand": "npx skills add https://github.com/prisma/skills --skill prisma-client-api",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "数据库写入、批量操作和原始 SQL 都可能造成数据丢失或注入。默认只生成和审查代码；执行前确认环境、schema、过滤条件、权限、备份与回滚，并优先使用参数化查询。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-19",
+    "detailZh": {
+      "overview": "这是一套面向 Prisma Client 的官方 API 参考，覆盖客户端构造、模型 CRUD、字段选择与排除、过滤排序分页、关系查询、事务和原始 SQL。它适合在已有 Prisma 项目中把需求转换为类型安全查询，也适合审查批量写入、事务边界和 SQL 注入风险。它不代替 schema 设计、数据库迁移或运行时测试。",
+      "workflow": ["先读取项目的 Prisma 版本、schema、Client 生成方式、数据库提供商和连接适配器，不把文档示例当成当前项目事实。", "把业务任务映射到模型操作，判断是 findUnique、findFirst、findMany、create、update、upsert、delete、聚合还是分组。", "用 select、include 或 omit 控制返回形状，补充过滤、排序、游标或偏移分页，并检查关系加载与查询数量。", "需要多个写入保持一致时，选择顺序事务或短小的交互式事务，并明确失败回滚、隔离级别、超时和重试策略。", "只有 Prisma API 无法表达时才考虑原始 SQL；优先参数化 tagged template，禁止把不可信输入拼接进 Unsafe 方法或 `Prisma.raw()`。", "在隔离的测试数据库运行类型检查、成功与失败路径、并发和性能测试；确认环境与备份后，再由用户决定是否对真实数据执行。"],
+      "requirements": ["需要一个已有或准备中的 Prisma ORM 项目，以及可读取的 `schema.prisma` 和依赖版本。", "需要了解目标数据库提供商，因为 SQL 方言、隔离级别和适配器支持存在差异。", "实际运行需要有效的数据库连接和最小必要权限；生产环境还需要备份、审计与回滚计划。", "应准备代表性测试数据，并覆盖空结果、唯一约束、并发冲突、回滚和大结果集。", "使用原始查询时需要对所有动态值与 SQL 标识符进行单独安全审查。"]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：订单结算需要读取商品、写入订单并扣减库存，希望减少无关字段并保证写入一致。本示例未连接数据库。",
+      "steps": ["读取 Prisma 版本、schema 中的订单、商品和库存关系。", "用 select 只取结算必需字段，并确认唯一键和空结果处理。", "把相互依赖的写入放入短交互式事务，避免在事务内调用外部支付网络。", "为库存不足、唯一约束和并发冲突设计失败与重试测试。", "若确需原始 SQL，使用参数化 tagged template 并核对数据库方言。", "只返回代码与测试建议，不执行真实写入。"],
+      "expectedFiles": ["与实际 schema 对齐的 Prisma Client 查询或事务代码", "原始 SQL 安全审查说明", "成功、失败、并发与回滚测试清单", "执行前环境、备份和权限检查项"],
+      "notes": "这是未经实测的演示性输入输出。实际代码必须在目标 Prisma 版本、数据库和隔离测试环境中验证。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "project-development",
+    "audiences": ["编程学习者", "后端开发者", "全栈开发者"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["官方参考覆盖 Client 构造、模型查询、查询形状、过滤、关系、事务和原始 SQL", "模型方法包括 find、create、update、upsert、delete、count、aggregate 和 groupBy 等", "事务支持顺序数组与交互式回调两种形式", "原始查询文档推荐参数化 tagged template，并警告 Unsafe 方法和 Prisma.raw 标识符注入风险", "交互式事务应保持简短，并可配置隔离级别、超时等参数"],
+      "reasonableInferences": ["适合用作已有 Prisma 应用的查询编写和代码审查参考", "在生产执行前应结合真实 schema、环境、权限、备份和测试进行复核"],
+      "untestedClaims": ["订单结算示例未基于真实 schema", "未连接数据库或执行任何查询、事务和原始 SQL", "未验证示例在特定数据库、适配器或 Prisma 补丁版本上的行为"]
+    }
+  },
+  {
+    "id": "prisma/skills/prisma-cli",
+    "name": "prisma-cli",
+    "nameZh": "Prisma 7 命令行参考",
+    "category": "编程开发",
+    "summaryZh": "帮助你在 Prisma ORM 7 项目中选择并安全使用初始化、生成 Client、开发数据库、迁移、同步、校验和调试命令。",
+    "explanationZh": "它是 Prisma 官方维护的 ORM 7 CLI 参考。AI 会先读取项目实际版本和数据库目标，再说明应使用 `prisma init`、`generate`、`db`、`migrate`、`validate`、`format`、`studio` 或调试命令；涉及重置数据库或接受数据丢失的选项时，必须在执行前单独说明影响并取得你对当前操作的明确同意。",
+    "audience": "正在学习、搭建或维护 Prisma ORM 7 项目，需要可靠命令说明、迁移路径和破坏性操作保护的学生与开发者。",
+    "scenarios": ["初始化 Prisma 7 项目并生成与依赖版本匹配的 Client", "在开发、测试和生产环境之间选择 migrate dev、deploy、status 或 diff", "排查 schema、连接或迁移问题，并在危险命令前核对数据库目标和数据影响"],
+    "inputExample": "演示性示例，尚未实际运行验证：请检查这个 Prisma 7 项目的 package.json、prisma.config.ts、schema 和当前迁移状态，告诉我应该先运行哪些只读检查。不要安装最新版本，也不要运行 reset、force-reset 或 accept-data-loss；如确实需要危险命令，先写清目标数据库和会删除什么，再等待我对该次操作明确确认。",
+    "outputExample": "可能得到按风险排序的 Prisma 7 命令计划、预期影响、只读诊断结果和需要单独确认的破坏性步骤；不会默认执行数据库重置。",
+    "boundaries": ["该参考针对 Prisma ORM 7；旧版本、未来版本、完整项目搭建或修复应查阅对应版本文档或 `prisma-orm-setup`", "必须优先使用项目已经固定的 Prisma CLI 版本，不能为了方便安装或调用浮动的 latest", "稳定的 ORM CLI 命令是 `prisma`；公开 Beta 的 Prisma Platform CLI 使用 `@prisma/cli` 或 `prisma-cli`，两者不能混用", "`prisma migrate reset`、`prisma db push --force-reset` 和 `--accept-data-loss` 可能删除或不可逆修改数据，必须在紧邻执行前展示确切目标与影响，并取得针对本次操作的明确同意", "不能伪造、复用、从无关对话推断或绕过用户对危险操作的同意；没有同意时只提供方案和安全替代项", "迁移、db push 和 deploy 前必须确认数据库 URL、环境、迁移目录、备份、权限与回滚路径；开发环境的成功不代表可以直接用于生产", "Studio、MCP 和开发数据库可能暴露真实数据或开启本地服务，应遵守最小权限并确认监听范围", "本条目的命令计划没有在真实项目或数据库中执行"],
+    "tags": ["Prisma", "CLI", "数据库迁移"],
+    "keywords": ["Prisma 7", "prisma CLI", "migrate", "db push", "generate", "studio", "schema validate", "数据库迁移", "migrate reset"],
+    "sourceUrl": "https://www.skills.sh/prisma/skills/prisma-cli",
+    "repositoryUrl": "https://github.com/prisma/skills",
+    "stats": {"githubStars": 70, "githubRepo": "prisma/skills", "installs": 367300, "installsSource": "skills.sh 页面快照（2026-10-19）", "lastCheckedAt": "2026-10-19T00:00:00+08:00"},
+    "installCommand": "npx skills add https://github.com/prisma/skills --skill prisma-cli",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "先确认项目 Prisma 版本、数据库 URL 和环境。任何 reset、force-reset 或 accept-data-loss 操作都必须在执行前展示确切影响并取得对本次操作的明确同意；不得复用或推断授权。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-19",
+    "detailZh": {
+      "overview": "这是一套 Prisma ORM 7 命令行参考，覆盖项目初始化、Client 生成、本地开发数据库、数据库拉取与推送、迁移开发与部署、Studio、MCP、schema 校验格式化和调试。它强调命令必须与项目版本匹配，并把数据库重置和接受数据丢失从普通命令中分离出来，用即时确认保护真实数据。",
+      "workflow": ["读取 `package.json`、锁文件、Prisma 配置、schema、迁移目录和环境说明，确认 ORM 主版本与目标数据库，不安装浮动最新版。", "优先运行不修改数据的检查，例如查看版本、`validate`、`format --check`、迁移状态或 diff，并说明每条命令会读取什么。", "根据任务选择 init、generate、db pull、db push、migrate dev、migrate deploy、studio、mcp 或 debug，区分开发、测试和生产环境。", "对会写数据库的普通操作先展示目标、预期变化、备份和回滚方案；生产迁移使用已评审的迁移文件与适合部署的命令。", "如方案涉及 reset、force-reset 或 accept-data-loss，紧邻执行前再次列出数据库、会删除或改变的数据，并等待用户对该次操作明确同意。", "运行后核对退出状态、schema 与迁移状态，并执行应用测试；失败时保留证据，不连续尝试更危险命令。"],
+      "requirements": ["需要 Prisma ORM 7 项目，或明确准备创建 ORM 7 项目；其他版本需使用相应文档。", "需要项目固定的 Prisma CLI 与 Client 依赖版本、Node.js 环境和包管理器。", "数据库命令需要有效连接配置和最小必要权限，秘密不得写入日志或对话。", "写入、迁移或部署前需要备份、迁移评审、测试环境和回滚计划。", "危险重置类命令还需要用户在执行前针对确切目标和影响给出新的明确同意。"]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：一个 Prisma 7 项目的迁移状态不明确，开发者想知道安全的诊断与下一步。本示例未读取或修改真实数据库。",
+      "steps": ["读取依赖版本、配置、schema、迁移目录和目标环境。", "先运行或建议版本、schema 校验、格式检查、迁移状态和 diff 等低风险检查。", "根据结果区分需要 generate、migrate dev、deploy、resolve 或 db pull 的情况。", "说明每个写入命令的目标、影响、备份和回滚方式。", "若唯一方案涉及 reset 或数据丢失选项，停止并请求对当前确切操作的明确同意。", "完成后核对迁移状态并运行应用测试。"],
+      "expectedFiles": ["按风险排序的 Prisma CLI 操作计划", "项目版本、schema 和迁移状态检查结果", "写入前的数据库目标、备份和回滚说明", "危险命令的独立授权记录与执行后验证清单"],
+      "notes": "这是未经实测的演示性输入输出。实际命令、标志和行为必须以项目固定的 Prisma 7 版本及目标数据库为准。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "project-development",
+    "audiences": ["编程学习者", "后端开发者", "全栈开发者"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["官方参考针对 Prisma ORM 7，并覆盖 init、generate、dev、db、migrate、studio、mcp、validate、format 和 debug", "要求使用与项目版本匹配的 CLI，避免浮动 latest", "稳定 ORM CLI 的包和命令与公开 Beta 的 Prisma Platform CLI 不同", "migrate reset、db push --force-reset 和 --accept-data-loss 被列为破坏性操作", "破坏性操作前必须检查目标与影响，并在紧邻执行前取得明确同意，不能伪造、复用或绕过"],
+      "reasonableInferences": ["适合用作 Prisma 7 项目的命令选择与操作安全清单", "生产迁移前应结合组织流程完成备份、迁移评审、回滚和应用测试"],
+      "untestedClaims": ["迁移诊断示例未读取真实项目", "未运行任何 Prisma 命令、开启服务或连接数据库", "未验证所有命令在特定 Prisma 7 补丁版本与数据库提供商上的行为"]
+    }
+  }
+]

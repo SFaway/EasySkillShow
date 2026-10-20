@@ -1,0 +1,96 @@
+[
+  {
+    "id": "obra/superpowers/verification-before-completion",
+    "name": "verification-before-completion",
+    "nameZh": "完成前证据验证",
+    "category": "编程开发",
+    "summaryZh": "要求 AI 在声称测试通过、构建成功、问题修复或任务完成前，先运行能直接证明该结论的完整检查并报告证据。",
+    "explanationZh": "它为交付声明增加一道统一门槛：先识别什么命令能证明结论，重新完整运行，读取全部输出、退出码和失败数，再核对证据是否真的支持要说的话。测试、lint、构建、原始故障复现和需求清单各自需要对应证据，不能互相替代，也不能只相信其他代理的成功报告。",
+    "audience": "希望 AI 在提交代码、创建 PR、结束任务或汇报修复结果前提供可核验证据的开发者、学生和项目维护者。",
+    "scenarios": ["在宣布测试或构建通过前核对最新命令结果", "验证 bug 原始症状确实消失并有回归测试", "根据需求清单逐项确认任务是否真的完成"],
+    "inputExample": "演示性示例，尚未实际运行验证：请检查这次登录修复是否可以交付。先确认原始复现步骤、相关测试、完整测试命令和构建命令；实际运行后报告退出码、失败数和仍未覆盖的需求。没有证据的部分不要说已完成，也不要提交或创建 PR。",
+    "outputExample": "可能得到验证命令、关键输出、退出码、需求核对表和基于证据的实际状态；若检查失败，会明确报告未完成项而不是声称成功。",
+    "boundaries": ["它是一套完成声明的证据门槛，不是独立测试工具，也不会自动知道每个项目正确的测试、构建或复现命令", "必须运行与具体声明直接对应的完整检查；旧结果、部分测试、模型信心和“应该可以”都不是新鲜证据", "测试通过只能证明这些测试通过，不能自动证明 lint、类型、构建、部署、性能、安全或全部需求满足", "bug 修复需要重新验证原始症状；只有代码已改变或新增测试通过，不能单独证明用户问题消失", "回归测试若要证明能捕获缺陷，应在安全可行时验证 red-green 行为，但不得用破坏真实环境的方式回退生产修复", "其他代理或工具自报成功后仍需查看实际差异并独立运行验证，不能把转述当成证据", "验证命令可能连接数据库、云服务、浏览器或其他外部系统；运行前仍需确认环境、凭据、费用、数据影响和授权", "无法运行命令、缺少依赖或检查失败时，应报告实际阻塞和已获得证据，不能扩大结论", "需求完成还需逐条重读和核对规格，不能只因为测试通过就声称所有业务要求满足", "本条目的登录修复示例未读取代码、运行测试或构建"],
+    "tags": ["完成验证", "测试证据", "交付质量"],
+    "keywords": ["verification before completion", "evidence", "tests pass", "build", "bug fixed", "exit code", "regression", "requirements checklist"],
+    "sourceUrl": "https://www.skills.sh/obra/superpowers/verification-before-completion",
+    "repositoryUrl": "https://github.com/obra/superpowers",
+    "stats": {"githubStars":301600,"githubRepo":"obra/superpowers","installs":244600,"installsSource":"skills.sh 页面快照（2026-10-19，显示为四舍五入值）","lastCheckedAt":"2026-10-19T00:00:00+08:00"},
+    "installCommand": "npx skills add https://github.com/obra/superpowers --skill verification-before-completion",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "先判断验证命令会触达什么环境，再以最小权限运行。不要连接或修改生产系统来证明本地任务完成；检查失败或无法运行时，应如实报告实际状态与证据缺口。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-19",
+    "detailZh": {
+      "overview": "这套方法约束 AI 的最后一步：任何关于“完成、修好、通过、满足要求”的说法，都必须建立在刚刚取得的直接证据上。它将流程固定为识别证明命令、完整运行、读取输出和退出码、判断证据是否支持结论、最后再陈述。不同结论使用不同证据，避免把 lint、局部测试、代码差异或代理报告误当成整体成功。",
+      "workflow": ["把准备声称的结论写清楚，例如相关测试通过、构建成功、原始 bug 已修复或全部需求满足。", "为每个结论确定直接证据：测试命令、构建命令、原始复现步骤、版本差异或逐项需求清单。", "确认命令目标、环境、凭据和副作用，使用允许的最小范围重新完整运行。", "阅读完整输出、退出码、失败数和跳过项，不只看最后一行或部分日志。", "逐项判断证据是否支持声明；失败、缺失或范围不足时报告实际状态和证据缺口。", "只有证据充分时才陈述完成，并附上运行的检查和结果；提交、PR 或切换任务前再次核对。"],
+      "requirements": ["需要知道项目认可的测试、lint、类型检查、构建和复现命令。", "需要能运行这些命令的依赖、环境、测试数据与必要权限。", "涉及外部服务时需要隔离环境、最小权限凭据和明确的成本与数据边界。", "需要原始问题复现步骤或可执行回归测试，才能证明 bug 修复。", "需要当前规格或验收清单，才能判断需求是否逐项满足。"]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：登录失败问题已修改代码，团队希望知道是否可以交付，但尚未查看完整验证结果。本示例未读取仓库。",
+      "steps": ["明确需要证明原始登录问题消失、相关测试通过、完整测试和构建成功。", "确认各命令的测试环境与副作用，避免触达生产账号和数据。", "重新运行原始复现、相关回归测试、完整测试和构建。", "读取退出码、失败与跳过项，并逐条核对登录需求。", "只根据实际输出报告可交付状态和剩余缺口，不自动提交或创建 PR。"],
+      "expectedFiles": ["验证命令与环境说明", "关键输出、退出码和失败数摘要", "原始症状与回归验证结果", "需求核对表和实际完成状态"],
+      "notes": "这是未经实测的演示性输入输出。没有执行任何验证命令，也不能据此声称登录问题已经修复。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "code-review",
+    "audiences": ["编程学习者", "开发者", "项目维护者"],
+    "collections": ["coding-starter", "student-essential"],
+    "reviewEvidence": {
+      "sourceFacts": ["任何完成或正确性声明前都要求新鲜验证证据", "门槛包含识别、运行、读取、核对和再声明五步", "测试、lint、构建、bug 修复、回归测试、代理完成和需求满足各有不同证据", "禁止依赖旧结果、部分检查、信心或代理自报成功", "提交、创建 PR、结束任务、切换任务与代理委派前均适用"],
+      "reasonableInferences": ["适合作为调试、TDD、代码审查和实施条目的统一交付门槛", "外部系统验证仍需服从环境、权限和数据安全约束"],
+      "untestedClaims": ["登录修复示例未读取真实代码", "未运行测试、构建、复现或需求核对", "未验证任何任务已经完成"]
+    }
+  },
+  {
+    "id": "emilkowalski/skills/review-animations",
+    "name": "review-animations",
+    "nameZh": "界面动效代码评审",
+    "category": "设计与内容",
+    "summaryZh": "让 AI 专门审查网页或应用中的动画代码，发现无必要动效、迟缓缓动、错误起点、掉帧风险和减少动态支持缺失。",
+    "explanationZh": "它是一套严格的动效专项评审方法，不负责实现功能或审查无关代码。AI 会逐项判断动画是否有目的、出现频率是否合适、时长和缓动是否响应、是否从正确位置产生、能否被中断、是否只使用适合动画的属性，以及是否尊重减少动态和触控设备；最后用 Before/After/Why 表格和 Block/Approve 结论输出。",
+    "audience": "正在制作网页、组件库或应用交互动效，希望系统检查动效质感、性能和无障碍的设计工程师与前端开发者。",
+    "scenarios": ["审查弹窗、下拉菜单和 tooltip 的进出场动画", "检查 toast、toggle、拖拽和手势动画的可中断性与性能", "排查 hover、键盘快捷操作和减少动态模式中的体验问题"],
+    "inputExample": "演示性示例，尚未实际运行验证：请只评审这个下拉菜单和 toast 的动效代码，不修改文件。结合实际触发频率检查 duration、easing、transform-origin、keyframes、GPU 属性、hover 媒体查询和 prefers-reduced-motion；按 file:line 给出 Before/After/Why 表格及 Block 或 Approve 结论。",
+    "outputExample": "可能得到逐项动效问题表、建议值、影响分级和明确评审结论；代码静态检查之外仍会标出需要浏览器慢放或真机确认的内容。",
+    "boundaries": ["它只审查 animation 和 motion 代码，不实现新功能、不修复无关问题，也不替代通用代码、视觉或可用性评审", "来源规则代表一套高标准动效哲学，其中频率、时长、缓动和结论阈值不应被描述成适用于所有品牌、设备和用户研究的普遍定律", "静态代码可以发现 transition all、ease-in、scale(0)、布局属性动画和缺少 reduced-motion 等问题，但不能直接证明真实帧率或主观感受", "动效是否自然需要查看实际渲染、触发上下文、组件尺寸、连续操作和产品性格；必要时应慢放、逐帧和隔天复看", "来源默认 UI 动画通常小于 300ms，但 modal、drawer、营销解释和特殊交互有不同预算与合理例外", "只动画 transform 与 opacity 是该标准的核心性能规则，但浏览器、合成层、滤镜、clip-path、库实现和设备负载仍会影响结果", "键盘和高频操作倾向删除或大幅减少动画；不能在不了解真实频率时仅根据组件名字下结论", "减少动态偏好通常保留帮助理解的透明度或颜色变化并移除位移，不等于机械禁用所有过渡", "输出中的修复建议仍需结合现有设计系统、浏览器支持、框架版本和回归测试后实施", "本条目的下拉菜单和 toast 示例未读取代码、打开页面或测量性能"],
+    "tags": ["界面动效", "动画评审", "交互设计"],
+    "keywords": ["animation review", "motion", "easing", "duration", "transform-origin", "prefers-reduced-motion", "GPU", "interruptible", "hover", "spring"],
+    "sourceUrl": "https://www.skills.sh/emilkowalski/skills/review-animations",
+    "repositoryUrl": "https://github.com/emilkowalski/skills",
+    "stats": {"githubStars":47400,"githubRepo":"emilkowalski/skills","installs":235500,"installsSource":"skills.sh 页面快照（2026-10-19，显示为四舍五入值）","lastCheckedAt":"2026-10-19T00:00:00+08:00"},
+    "installCommand": "npx skills add https://github.com/emilkowalski/skills --skill review-animations",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "默认先做只读评审。不要把静态规则命中当成真实性能结论；修改前确认范围，完成后在代表性浏览器、输入方式和设备上检查减少动态、连续触发与帧表现。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-19",
+    "detailZh": {
+      "overview": "这套评审方法把动效质量拆成十类硬性检查：目的、频率、缓动、时长、物理起点、可中断性、GPU 友好属性、无障碍、不对称时序和整体一致性。它优先建议删除无目的或高频动画，其次才是缩短、改缓动、修正起点、改为可中断方式和优化性能。输出必须包含逐项 Before/After/Why 表格，再按影响分层并给出 Block 或 Approve。",
+      "workflow": ["说明只读还是允许修改，提供动效代码、文件范围、组件用途、触发方式和真实使用频率。", "读取相关动画、样式、组件状态和减少动态处理；需要精确值时查对应标准，不凭印象估算。", "先判断动画是否有目的、是否因高频或键盘操作而应该删除或大幅减少。", "检查 easing、duration、transform-origin、scale 起点、enter/exit 时序和多元素 stagger。", "检查 keyframes 与 transitions/springs 是否符合可中断性，并标出布局属性、样式重算和主线程风险。", "检查 prefers-reduced-motion、hover/pointer 媒体查询和产品整体动效性格。", "按 file:line 输出 Before/After/Why 表格、影响分级与 Block/Approve；不确定的感受或性能项列入慢放、逐帧和真机复核。"],
+      "requirements": ["需要动效相关源代码、样式文件、使用组件和触发上下文。", "需要知道目标浏览器、框架与动画库版本，例如 CSS、WAAPI、Framer Motion 或 spring 库。", "需要说明动画出现频率、输入方式和产品性格，才能判断是否应该保留。", "真实性能检查需要浏览器开发者工具、代表性设备和繁忙页面场景。", "手势、拖拽和触控行为最好在真实触控设备上验证，并覆盖减少动态设置。"]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：下拉菜单感觉迟缓，连续 toast 偶尔跳动，团队希望先获得只读动效评审。本示例未打开页面。",
+      "steps": ["提供下拉菜单、toast 和相关样式代码，以及触发频率和目标设备。", "检查动画目的、频率、duration、easing、起点与 transform-origin。", "判断连续 toast 是否使用可中断方式，并检查布局属性和 GPU 风险。", "检查 reduced-motion 与 hover/pointer gating。", "输出带 file:line 的问题表、影响分级和结论，再列出慢放与真机复核项。"],
+      "expectedFiles": ["Before/After/Why 动效问题表", "按影响分层的评审说明", "Block 或 Approve 明确结论", "浏览器慢放、逐帧和真机复核清单"],
+      "notes": "这是未经实测的演示性输入输出。没有读取真实代码、渲染动画、采集帧率或验证减少动态模式。"
+    },
+    "categoryId": "design-content",
+    "subcategoryId": "design-review",
+    "audiences": ["设计工程师", "前端开发者", "交互设计师"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["只评审动画与 motion 代码，不处理无关功能和通用代码", "按十项强制标准评估动画", "规则覆盖频率、缓动、时长、物理起点、可中断性、性能、无障碍和一致性", "精确曲线、时长、spring、手势和性能值来自 STANDARDS.md", "输出必须包含单一 Findings 表格与分级 Verdict", "结论为 Block 或 Approve，并要求引用 file:line"],
+      "reasonableInferences": ["适合作为通用设计审查的动效专项补充", "静态评审后仍需真实渲染、慢放和设备测量"],
+      "untestedClaims": ["下拉菜单与 toast 示例未读取真实代码", "未在浏览器或设备上查看动画", "未测量帧率、样式重算、主线程或 GPU 表现"]
+    }
+  }
+]

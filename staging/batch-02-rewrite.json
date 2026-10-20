@@ -1,0 +1,179 @@
+[
+  {
+    "id": "anthropics/skills/frontend-design",
+    "name": "frontend-design",
+    "nameZh": "网页界面设计",
+    "category": "网页设计",
+    "summaryZh": "帮助 AI 根据页面主题设计更有辨识度的网页，减少千篇一律的模板感。",
+    "explanationZh": "它指导 AI 先理解页面主题、受众和主要任务，再有意识地选择配色、字体、布局、动效和文案，并在写代码前检查设计是否过于模板化。",
+    "audience": "准备制作落地页、个人主页、产品页面或网页原型的开发者和设计学习者。",
+    "scenarios": ["为新网页确定清晰的视觉方向", "优化字体、配色、布局和内容层级", "重做看起来过于模板化的已有界面"],
+    "inputExample": "帮我设计一个蓝白配色、简洁清楚的 Skill 搜索页面。",
+    "outputExample": "一套与 Skill 搜索场景相匹配的视觉方案，以及相应的前端页面实现建议或代码（演示性预期，尚未实测）。",
+    "boundaries": [
+      "它提供设计和实现指导，不会自动部署网站",
+      "有辨识度不等于适合所有用户，仍需可用性和真实用户测试",
+      "如果没有主题、受众和真实内容，AI 需要先补问或提出假设",
+      "最终效果会受到现有框架、素材、字体和模型实现能力影响"
+    ],
+    "tags": ["UI", "前端", "设计"],
+    "keywords": ["网页", "网站", "web", "frontend", "react", "ui", "页面", "css", "设计"],
+    "sourceUrl": "https://skills.sh/anthropics/skills/frontend-design",
+    "repositoryUrl": "https://github.com/anthropics/skills",
+    "stats": {"githubStars": 181822, "githubRepo": "anthropics/skills", "installs": null, "installsSource": "skills.sh", "lastCheckedAt": "2026-10-18T04:42:52Z"},
+    "installCommand": "npx skills add https://github.com/anthropics/skills --skill frontend-design",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "生成的网页代码和视觉方案仍需检查可访问性、响应式布局、素材许可和实际交互。",
+    "featured": true,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "unchecked",
+    "sourceCheckedOn": "",
+    "detailZh": {
+      "overview": "这个 Skill 不是一个独立的网页设计软件，而是给兼容 AI 工具的一套视觉设计方法。它要求先从产品主题、目标用户和页面任务出发，再确定配色、字体、布局和内容表达。AI 会先做简短设计计划，检查其中是否只是常见模板套路，然后再实现页面并自我审视。原文还强调响应式、键盘焦点、减少动效和文字易懂等基础质量要求。",
+      "workflow": [
+        "说明页面主题、目标用户、主要任务和必须遵守的品牌或技术要求。",
+        "AI 制定包含颜色、字体、布局和设计原则的简短方案。",
+        "对照需求检查方案是否只是常见模板，并修改缺少针对性的选择。",
+        "按确认后的方向编写或调整网页代码和界面文案。",
+        "通过截图或页面检查审视层级、响应式、焦点状态和多余装饰。"
+      ],
+      "requirements": [
+        "至少需要明确页面主题、受众和主要用途；信息不足时需要允许 AI 先提问或提出假设。",
+        "如要修改现有页面，需要提供可读取的前端代码和所用框架信息。",
+        "如需特定品牌字体、图片或标志，应提供可使用的素材及限制。",
+        "该 Skill 本身没有规定固定前端框架，实际运行环境取决于项目。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "你已经确定要做一个面向普通用户的 Skill 搜索页，希望页面简洁、可信，而且不像常见的通用 AI 模板。",
+      "steps": [
+        "补充目标用户、页面任务、蓝白配色范围和现有内容。",
+        "AI 先确定配色、字体层级、列表布局和交互原则。",
+        "检查设计是否与 Skill 发现任务有关，并移除没有信息作用的装饰。",
+        "实现页面后检查桌面和移动端、键盘焦点、文字层级与空状态。"
+      ],
+      "expectedFiles": ["可能得到前端页面代码、样式文件和一份简短的设计说明，具体取决于你的项目结构。"],
+      "notes": "这是沿用原有 Skill 搜索页情境整理的演示性示例，尚未实际运行。设计质量和代码完整度需要结合真实项目预览确认。"
+    }
+  },
+  {
+    "id": "vercel-labs/agent-skills/web-design-guidelines",
+    "name": "web-design-guidelines",
+    "nameZh": "网页设计规范检查",
+    "category": "网页设计",
+    "summaryZh": "帮助 AI 按最新网页界面规范检查现有代码，并指出具体文件和行号。",
+    "explanationZh": "它会先获取最新的网页界面检查规则，再读取你指定的前端文件，逐条检查设计、交互和可访问性问题，并以简洁的“文件:行号”格式输出发现。",
+    "audience": "已经有网页代码，希望在提交或发布前快速发现界面规范问题的开发者。",
+    "scenarios": ["审查已有网页或组件代码", "检查常见的交互与无障碍问题", "获得能直接定位到代码位置的问题清单"],
+    "inputExample": "检查我的搜索页有没有可用性或无障碍问题。",
+    "outputExample": "一份按“文件:行号”定位的检查结果，列出违反当前网页界面规范的问题（演示性预期，尚未实测）。",
+    "boundaries": [
+      "它主要审查你提供的代码，不等同于真实浏览器、设备或用户测试",
+      "检查依赖远程获取的最新规则，离线或来源不可用时可能无法完整执行",
+      "发现问题不代表会自动修改代码，除非你另外要求并授权",
+      "规范检查通过也不能保证产品体验、视觉风格或业务效果优秀"
+    ],
+    "tags": ["UI", "检查", "开发"],
+    "keywords": ["accessibility", "a11y", "网页规范", "审查", "design", "界面"],
+    "sourceUrl": "https://skills.sh/vercel-labs/agent-skills/web-design-guidelines",
+    "repositoryUrl": "https://github.com/vercel-labs/agent-skills",
+    "stats": {"githubStars": 32573, "githubRepo": "vercel-labs/agent-skills", "installs": null, "installsSource": "skills.sh", "lastCheckedAt": "2026-10-18T04:42:52Z"},
+    "installCommand": "npx skills add https://github.com/vercel-labs/agent-skills --skill web-design-guidelines",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "检查时需要读取项目文件并联网获取最新规则；执行修改前应单独审查建议。",
+    "featured": true,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "unchecked",
+    "sourceCheckedOn": "",
+    "detailZh": {
+      "overview": "这个 Skill 是一套代码审查流程，不是网页设计或浏览器测试软件。使用时，AI 会从指定来源获取最新的 Web Interface Guidelines，读取你给出的文件或文件范围，按规则逐项检查，然后用“文件:行号”的简洁格式报告问题。它适合在已有页面完成初稿后快速找出代码层面的规范问题，但不能代替真实页面预览、辅助技术测试和用户体验研究。",
+      "workflow": [
+        "提供要检查的文件、目录或匹配模式；没有指定时，AI 会先询问范围。",
+        "AI 从原作者指定的网址获取最新网页界面规范。",
+        "读取选定的前端文件，并按全部规则逐项检查。",
+        "以规范要求的简洁格式输出问题，标明文件和行号。",
+        "你根据项目情况决定哪些问题需要进一步确认或修改。"
+      ],
+      "requirements": [
+        "需要可读取的网页或组件源代码，以及明确的检查范围。",
+        "需要联网访问原作者指定的最新规范文件。",
+        "AI 工具需要能够读取项目文件并返回准确行号。",
+        "该 Skill 原文只定义检查流程，没有承诺自动启动浏览器或修复问题。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "你已经完成 Skill 搜索页初稿，准备提交代码，希望先发现常见的可用性和无障碍问题。",
+      "steps": [
+        "指出搜索页对应的 HTML、CSS 或组件文件。",
+        "AI 获取最新检查规则，并读取这些文件。",
+        "逐项核对规则，记录能定位到具体代码位置的问题。",
+        "输出简洁问题清单，由你结合真实页面决定修复优先级。"
+      ],
+      "expectedFiles": ["通常不会生成新文件；主要产物是带文件名和行号的审查结果。"],
+      "notes": "这是沿用原有搜索页检查情境整理的演示性示例，尚未实际审查代码。实际结果取决于提供的文件和当时获取到的规则版本。"
+    }
+  },
+  {
+    "id": "coreyhaines31/marketingskills/ad-creative",
+    "name": "ad-creative",
+    "nameZh": "广告创意与文案",
+    "category": "营销创作",
+    "summaryZh": "帮助 AI 根据产品、受众和投放平台生成广告角度与文案，并按平台限制检查。",
+    "explanationZh": "它会先收集产品、受众、平台、广告形式、品牌限制和已有表现数据，再生成不同创意角度、标题、描述或正文，并检查字符限制、事实依据和测试假设。",
+    "audience": "需要为作品、活动或产品准备广告素材的运营、市场人员和学生项目团队。",
+    "scenarios": ["从零生成多种广告角度和文案", "根据真实表现数据改写已有广告", "批量整理可用于广告平台上传的文案"],
+    "inputExample": "推广一款大学生学习工具，给我 3 种不同的广告切入角度。",
+    "outputExample": "3 组有明确差异的广告角度，每组包含候选标题、核心信息和适用受众说明（演示性预期，尚未实测）。",
+    "boundaries": [
+      "它不会自动替你投放广告，也不保证点击率、转化率或收入",
+      "产品事实、数字、评价和用户证言必须来自可靠材料，不能由 AI 编造",
+      "批量静态创意需要真实的优胜广告、评论或评价作为依据，资料不足时应停止而不是硬编",
+      "广告合规、品牌风险和平台政策仍需人工审查；平台规格也可能变化"
+    ],
+    "tags": ["文案", "营销", "创意"],
+    "keywords": ["广告", "宣传", "marketing", "创意", "推广", "copywriting"],
+    "sourceUrl": "https://skills.sh/coreyhaines31/marketingskills/ad-creative",
+    "repositoryUrl": "https://github.com/coreyhaines31/marketingskills",
+    "stats": {"githubStars": 55271, "githubRepo": "coreyhaines31/marketingskills", "installs": null, "installsSource": "skills.sh", "lastCheckedAt": "2026-10-18T04:42:53Z"},
+    "installCommand": "npx skills add https://github.com/coreyhaines31/marketingskills --skill ad-creative",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "不要把未经证实的数字、用户评价或效果承诺写入广告；发布前需检查平台规则和行业合规要求。",
+    "featured": true,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "unchecked",
+    "sourceCheckedOn": "",
+    "detailZh": {
+      "overview": "这个 Skill 不是广告投放平台，而是给兼容 AI 工具的一套广告创意工作方法。它支持从零生成文案、基于真实表现数据迭代、批量制作有来源依据的静态创意，以及规划持续的创意测试。开始前需要明确投放平台、格式、产品卖点、目标受众和品牌限制；有数据时还会分析优胜与失败素材。输出会按不同角度组织，并检查平台字数限制、重复表达和未经证实的宣传。",
+      "workflow": [
+        "提供产品、优惠、目标用户、投放平台、广告形式和必须遵守的限制。",
+        "如有历史广告和 CTR、转化率或 ROAS，先分析表现较好和较差的模式。",
+        "确定 3～5 个差异明显、能够被测试的创意角度。",
+        "为每个角度生成标题、描述或正文变体，避免虚构事实和模板化表达。",
+        "检查平台字符限制、组合方式、合规风险和测试假设后整理交付。"
+      ],
+      "requirements": [
+        "至少需要产品或活动信息、目标受众、投放平台和广告形式。",
+        "如有品牌语气、禁用词、法规或免责声明，应在生成前提供。",
+        "根据表现数据迭代时，需要提供可靠指标和要比较的广告素材。",
+        "大批量创意生产需要真实优胜广告、用户评价、评论和品牌素材作为依据；连接广告账户属于额外集成，不是本 Skill 的默认能力。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "你要推广一款大学生学习工具，希望先比较三种不同说服方向，再决定制作哪些广告。",
+      "steps": [
+        "补充工具解决的问题、目标学生、投放平台和不能使用的宣传说法。",
+        "AI 提出三个不同动机的角度，例如时间管理、复习组织或学习压力，但不会虚构效果数字。",
+        "每个角度生成候选标题、核心信息和行动指引，并检查平台长度。",
+        "说明每个角度准备验证什么，由你选择后再进入设计或投放。"
+      ],
+      "expectedFiles": ["主要产物是结构化广告文案；变体较多时可以进一步整理为 CSV，但本例不默认生成文件。"],
+      "notes": "这是沿用原有大学生学习工具情境整理的演示性示例，尚未实际生成或投放。任何角度都不代表已验证有效。"
+    }
+  }
+]

@@ -1,0 +1,96 @@
+[
+  {
+    "id": "prisma/skills/prisma-mongodb-upgrade",
+    "name": "prisma-mongodb-upgrade",
+    "nameZh": "Prisma MongoDB 升级决策",
+    "category": "编程开发",
+    "summaryZh": "帮助 Prisma 6 的 MongoDB 项目避开不存在的 Prisma 7 路径，并在继续维护 v6 与试用 Prisma Next 之间评估风险和迁移条件。",
+    "explanationZh": "它是 Prisma 官方为 MongoDB 项目准备的版本决策桥梁。AI 会先确认 `provider = mongodb`、事务使用、MongoDB 版本和团队风险承受度；不能把项目建议升级到没有 MongoDB 连接器的 Prisma 7，也不能擅自改成 SQL 数据库。若考虑 Prisma Next Early Access，则需按实际安装版本重新核对 contract、查询、事务和迁移能力。",
+    "audience": "维护 Prisma ORM 6 与 MongoDB 项目，正在评估版本支持、Early Access 迁移或升级阻塞的后端开发者和项目维护者。",
+    "scenarios": ["判断 MongoDB 项目为何不能升级到 Prisma 7", "评估继续固定在最新 Prisma 6 与试用 Prisma Next 的取舍", "盘点 schema、原始查询、聚合、事务、索引与迁移流程的变化"],
+    "inputExample": "演示性示例，尚未实际运行验证：这是一个 `provider = mongodb` 的 Prisma 6 项目。请先扫描依赖、MongoDB 服务端版本、`$transaction`、raw query、aggregate 和 `db push` 使用情况，比较继续维护 v6 与在数据库副本上试用 Prisma Next 的风险；不要把项目改成 SQL，也不要连接或修改生产数据库。",
+    "outputExample": "可能得到版本决策表、阻塞项、API 与 schema 映射、无数据搬迁的验证清单和回滚条件；不会自动切换 ORM 或修改数据库。",
+    "boundaries": ["这是 Prisma 6 MongoDB 项目的升级决策与迁移桥梁，不适用于 SQL 数据库，也不是 Prisma Next 日常开发的完整文档", "Prisma 7 没有 MongoDB 连接器，不能建议 MongoDB 项目升级到 7，也不能套用 `prisma-upgrade-v7` 的 SQL 驱动适配器路径", "把 MongoDB 改成 PostgreSQL 等 SQL 数据库是独立架构决策，涉及数据模型、查询、运维和迁移，不能作为版本升级的隐含步骤", "Prisma Next 的 MongoDB 支持处于 Early Access，pre-1.0 小版本可能有破坏性变化；所有 Next 侧能力必须按项目实际安装版本重新核对", "来源所核版本要求 MongoDB 8.0+ 和用户安装 `mongodb@^7`，旧 MongoDB 服务端在计划迁移前必须先确认兼容性", "v6 与 Next 的 API 名称看似相似但并不等价：聚合、raw 方法、集合寻址和事务路径均可能改变", "如项目使用多文档事务，当前指南要求先设计底层 MongoDB driver session 等价方案，或继续留在 v6；不能静默失去原子性", "Next 的 MongoDB 迁移不是 v6 的 `db push` 简单替换，包含 contract、plan、migrate、verify 与 sign；DDL 也不是事务性的", "迁移验证应使用数据库副本并核对索引、校验器、查询结果和回滚，不应直接对生产环境试验", "本条目没有读取真实项目、运行 Prisma Next 或连接 MongoDB"],
+    "tags": ["Prisma", "MongoDB", "版本升级"],
+    "keywords": ["Prisma MongoDB", "Prisma 7 MongoDB", "Prisma Next", "Early Access", "provider mongodb", "MongoDB migration", "db push", "transactions", "版本决策"],
+    "sourceUrl": "https://www.skills.sh/prisma/skills/prisma-mongodb-upgrade",
+    "repositoryUrl": "https://github.com/prisma/skills",
+    "stats": {"githubStars":70,"githubRepo":"prisma/skills","installs":344600,"installsSource":"skills.sh 页面快照（2026-10-19）","lastCheckedAt":"2026-10-19T00:00:00+08:00"},
+    "installCommand": "npx skills add https://github.com/prisma/skills --skill prisma-mongodb-upgrade",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "不要把 MongoDB 项目升级到 Prisma 7，也不要隐式改换数据库。迁移 Prisma Next 前核对实际版本、事务与 MongoDB 8.0 要求，并只在可恢复的数据库副本上完成索引、查询和回滚验证。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-19",
+    "detailZh": {
+      "overview": "这套官方指南解决一个容易走错的升级问题：Prisma 6 的 MongoDB 项目没有进入 Prisma 7 的道路。项目可以有意识地继续固定在最新 6.x 并跟踪补丁，也可以评估处于 Early Access 的 Prisma Next；选择前必须盘点事务、MongoDB 服务端、schema、原始查询、聚合、索引和团队接受 pre-1.0 变化的能力。切换后应转交实际安装版本自带的 Prisma Next 文档。",
+      "workflow": ["确认项目确实使用 Prisma 6 和 `provider = mongodb`，记录包版本、MongoDB 服务端版本、schema、部署与回滚方式。", "扫描 `$transaction`、raw query、aggregate、groupBy、`db push`、复合类型、ObjectId、`@@map` 和索引使用，不依赖口头猜测。", "建立决策表：有多文档事务、无法承受 pre-1.0 变化或服务端版本不足时，优先继续维护最新 6.x；否则可在副本上试验 Next。", "若留在 v6，固定最新 6.x、跟踪安全与发行说明，保留 MongoDB 的 `db push` 方式并定期重评。", "若试用 Next，按已安装版本核对 contract、集合存储名、API 映射、raw 与事务路径，以及新的迁移生命周期。", "在同一数据库的可恢复副本上做无数据搬迁的 round-trip，核对索引、验证器、代表性读写、聚合和事务。", "记录结果、阻塞项与回滚条件；真正切换后使用该 Prisma Next 版本自带的 quickstart、contract、queries、migrations 和 runtime 指南。"],
+      "requirements": ["需要 Prisma 6 MongoDB 项目的依赖、`schema.prisma`、查询代码、迁移习惯和测试。", "需要确认 MongoDB 服务端版本、replica set 与多文档事务使用情况。", "试用来源所核的 Prisma Next Mongo 路径需要 MongoDB 8.0+、`mongodb@^7` 和对应 Next 包的版本化文档。", "需要可恢复的数据库副本、索引与数据校验脚本、版本控制分支和回滚计划。", "生产切换需要团队接受 Early Access 风险，并对身份、秘密、停机与数据一致性单独评审。"]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：一个 Prisma 6 MongoDB 服务被要求升级，团队不知道 Prisma 7 是否可用，也不清楚 Next 的事务差异。本示例未读取仓库。",
+      "steps": ["读取 provider、依赖、MongoDB 版本、schema 和关键查询。", "扫描事务、raw、聚合、索引和 db push 使用。", "明确排除 Prisma 7 和隐式 SQL 改写。", "比较继续维护 6.x 与在副本上试用 Next 的阻塞项。", "为 Next 方案列出 contract、API、事务、迁移和 cutover 验证。", "输出决策与回滚条件，不连接生产数据库。"],
+      "expectedFiles": ["MongoDB 项目版本决策表", "v6 与 Next 的 schema、API 和迁移差异清单", "数据库副本 round-trip 与 cutover 验证清单", "阻塞项、风险和回滚条件"],
+      "notes": "这是未经实测的演示性输入输出。Prisma Next 变化很快，必须以项目安装版本和其自带 Skill 为准。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "project-development",
+    "audiences": ["后端开发者", "项目维护者"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["Prisma 7 从未提供 MongoDB 连接器", "不能通过隐式更换为 SQL 数据库解决版本问题", "指南支持继续维护最新 6.x 或评估 Prisma Next Early Access 的决策", "多文档事务是关键阻塞项，当前可通过底层 mongodb driver session 保持原子性", "v6 schema、client API 和 db push 习惯不能机械映射到 Next", "所核 Next 版本要求 MongoDB 8.0+ 和 mongodb@^7，并要求按实际安装版本复核"],
+      "reasonableInferences": ["适合作为上一批 Prisma 7 SQL 升级条目的 MongoDB 分流补充", "生产切换前应在可恢复副本完成索引、查询、事务和迁移验证"],
+      "untestedClaims": ["示例未读取真实 Prisma 项目", "未运行代码扫描、安装 Next 包或连接 MongoDB", "未验证任何迁移、索引、事务和切换结果"]
+    }
+  },
+  {
+    "id": "supabase/agent-skills/supabase",
+    "name": "supabase",
+    "nameZh": "Supabase 全栈开发与安全指南",
+    "category": "编程开发",
+    "summaryZh": "帮助你开发和排查 Supabase 的数据库、认证、Storage、Realtime 与 Edge Functions，并在迁移前检查 RLS、令牌和数据访问风险。",
+    "explanationZh": "它是 Supabase 官方维护的综合指南。AI 会先检查最新 changelog 与当前文档，再根据项目实际版本处理客户端、SSR、数据库 schema、迁移、认证、存储或日志问题；对公开表、JWT、service role、视图、函数和 Storage policy 提供专门安全检查，并要求修改后用测试查询和 advisors 验证。",
+    "audience": "使用 Supabase 构建 Web 或移动应用，需要处理数据库、认证、SSR、存储、实时功能、Edge Functions 或安全策略的学生和开发者。",
+    "scenarios": ["为 Next.js、React 或其他框架接入 Supabase Auth 与 SSR 会话", "设计公开 schema 的 RLS policy、Data API grant 和 Storage 权限", "用 CLI 或 MCP 诊断 schema、迁移、权限、日志和服务错误"],
+    "inputExample": "演示性示例，尚未实际运行验证：请审查这个 Supabase 项目的登录、公开 `profiles` 表和头像上传。先检查当前 Supabase 版本与相关 breaking changes；不要连接生产项目。指出 Data API grant、RLS、JWT metadata、service role、视图和 Storage policy 风险，并给出能在本地数据库验证的 migration 与测试清单。",
+    "outputExample": "可能得到基于当前文档的实现或修复建议、RLS 与 Storage policy、迁移步骤、安全问题和测试查询；不会默认执行生产 SQL 或暴露密钥。",
+    "boundaries": ["这是给兼容 AI 工具使用的 Supabase 综合开发指南，不是独立控制台，也不会自动获得项目、数据库或用户数据访问权", "Supabase 变化频繁，功能签名、CLI、配置和 API 约定必须先查当前 changelog 与官方文档，不能只凭模型记忆", "实时操作需要 Supabase 项目、正确环境和最小权限；MCP、CLI 与 Management API 应使用限定组织、项目和权限的 scoped token", "禁止把 `service_role`、secret key、数据库密码或私密 JWT 暴露到浏览器、日志、代码仓库或对话；`NEXT_PUBLIC_` 变量会进入客户端", "Data API 的表访问 grant 与 RLS 是两个层级；给 anon 或 authenticated grant 时仍必须启用 RLS 并编写符合真实授权模型的 policy", "`user_metadata` 可由用户编辑，不能用于授权；`app_metadata` 和 JWT claim 也可能在 token 刷新前陈旧", "视图、`SECURITY DEFINER` 函数和只写 `TO authenticated` 的 policy 可能绕过或弱化行级授权，需专门审查", "SQL、migration、用户删除、session 撤销、Storage policy 和 Edge Function 部署都可能影响真实数据或登录流程，执行前需确认环境、备份与回滚", "声明式 schema 与命令式 migration 的流程不同，不能混用错误命令制造空 diff 或冲突历史", "本条目的 profiles 示例未连接真实 Supabase 项目，也未执行 SQL、migration、认证或文件上传"],
+    "tags": ["Supabase", "认证", "RLS"],
+    "keywords": ["Supabase", "Postgres", "Auth", "RLS", "Storage", "Realtime", "Edge Functions", "supabase-js", "SSR", "migration", "MCP", "JWT"],
+    "sourceUrl": "https://www.skills.sh/supabase/agent-skills/supabase",
+    "repositoryUrl": "https://github.com/supabase/agent-skills",
+    "stats": {"githubStars":2900,"githubRepo":"supabase/agent-skills","installs":332200,"installsSource":"skills.sh 页面快照（2026-10-19）","lastCheckedAt":"2026-10-19T00:00:00+08:00"},
+    "installCommand": "npx skills add https://github.com/supabase/agent-skills --skill supabase",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "默认在本地或隔离环境验证，使用 scoped token 和最小权限。严禁暴露 service role、secret key 或数据库密码；生产 SQL、迁移、用户或权限变更执行前必须确认目标、备份和回滚。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "unchecked",
+    "sourceCheckedOn": "2026-10-19",
+    "detailZh": {
+      "overview": "这是一套覆盖 Supabase Database、Auth、Storage、Realtime、Edge Functions、Vectors、Cron、Queues、客户端库、SSR、CLI 和 MCP 的官方工作方法。它强调先根据 changelog 和当前文档确认版本，再在正确的 schema 工作流中修改，并把 RLS、令牌、视图、函数与存储权限作为默认安全检查。它与目录中的 Supabase Postgres 最佳实践互补：后者偏数据库性能与设计，本条目偏全产品集成与安全操作。",
+      "workflow": ["读取项目依赖、Supabase CLI 版本、`config.toml`、schema 或 migrations、框架和目标环境；检查 changelog 中与任务相关的 breaking changes。", "从当前官方文档确认产品和客户端 API，不猜 CLI 命令；需要命令时先使用 `--help` 核对版本支持。", "判断项目使用 `supabase/schemas/` 的声明式 schema，还是命令式 migrations，再选择正确的编辑、diff 和生成流程。", "对 Auth、公开表、视图、函数和 Storage 运行安全清单：检查 key、metadata、Data API grant、RLS、USING、WITH CHECK 和执行权限。", "在本地或隔离项目实施最小改动；出错 2 至 3 次后停止重复尝试，转向文档、错误和日志重新判断。", "运行测试查询、`supabase db advisors` 或 MCP advisors，并覆盖匿名、已登录、所有者和越权用户路径。", "审查生成的 migration 与锁文件；确认生产目标、备份和回滚后，再由用户决定是否推送或部署。"],
+      "requirements": ["需要 Supabase 项目代码、依赖版本、schema 或 migration 结构，以及目标框架信息。", "实时操作需要 Supabase 账号、项目 ref、网络和限定范围的 token；数据库命令还可能需要数据库密码。", "应具备本地 Supabase 或隔离测试项目，以验证 SQL、Auth、RLS、Storage 与 migration。", "需要准备不同角色和所有权的测试用户，验证正常访问与越权拒绝。", "生产修改需要数据库备份、migration 审查、秘密管理和回滚方案。"]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：应用要开放用户资料读取和头像上传，但团队担心 RLS 与 Storage 权限过宽。本示例未连接 Supabase。",
+      "steps": ["检查依赖、CLI、schema 工作流和相关 breaking changes。", "区分表的 Data API grant 与行级 RLS，定义公开字段和所有者写入规则。", "检查 JWT metadata、前端 key、视图和函数是否会绕过授权。", "为 Storage objects 编写与 bucket 和用户路径匹配的 policy。", "在本地用匿名、登录、所有者和攻击者场景运行测试查询。", "运行 advisors 并生成待审查 migration，不推送生产。"],
+      "expectedFiles": ["Supabase 集成或修复方案", "RLS 与 Storage policy 草稿", "可审查的 migration 与安全清单", "不同身份的测试查询与预期结果", "生产执行前的备份和回滚步骤"],
+      "notes": "这是未经实测的演示性输入输出。具体 API、CLI 和策略必须以项目版本、当前文档和隔离环境测试为准。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "project-development",
+    "audiences": ["编程学习者", "后端开发者", "全栈开发者"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["实施前要求检查 Supabase changelog 和当前文档", "覆盖 Database、Auth、Edge Functions、Realtime、Storage、Vectors、Cron、Queues、客户端、SSR、CLI 和 MCP", "公开 schema 的表应启用 RLS，并区分 Data API grant 与行级访问", "禁止在公开客户端暴露 service_role 或 secret key，建议使用 scoped personal access token", "列出 user_metadata、视图、SECURITY DEFINER、UPDATE policy 和 Storage upsert 等安全陷阱", "区分声明式 schema 与命令式 migration，并要求修改后运行测试和 advisors"],
+      "reasonableInferences": ["适合作为已收录 Supabase Postgres 最佳实践的全产品集成补充", "生产数据库与权限变更需要独立确认、备份和回滚"],
+      "untestedClaims": ["profiles 与头像示例未连接真实项目", "未运行 SQL、migration、Auth、Storage、CLI 或 MCP", "未验证任何 policy、测试查询或 advisor 结果"]
+    }
+  }
+]

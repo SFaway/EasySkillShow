@@ -1,0 +1,268 @@
+[
+  {
+    "id": "mattpocock/skills/wizard",
+    "name": "wizard",
+    "nameZh": "人工配置向导生成器",
+    "category": "效率自动化",
+    "summaryZh": "把必须由你亲自完成的账号、密钥或部署配置，整理成一个逐步提示、可中断后继续的终端向导。",
+    "explanationZh": "AI 会先阅读项目里的环境变量、说明和 CI 配置，列清每一步从哪里取得信息、写到哪里，再生成交互式 Bash 脚本。向导可打开对应网页、隐藏输入密钥、更新 `.env` 或 GitHub secrets，并在不可逆操作前要求确认。",
+    "audience": "需要配置第三方服务、环境变量或 CI 密钥，且愿意在终端中亲自完成账号操作的大学生、项目维护者和开发者。",
+    "scenarios": [
+      "为课程项目制作可重复的部署配置向导",
+      "引导团队成员设置本地环境变量和 CI secrets",
+      "把一次性迁移或切换流程整理成逐步人工操作"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：请读取当前课程项目的 `.env.example`、README 和 GitHub Actions 配置，先列出部署前必须由我完成的账号与密钥步骤。确认后生成一个 Bash 向导：逐步打开官方页面，密钥输入必须隐藏，只写入需要的位置；不要替我登录或运行完整配置流程。",
+    "outputExample": "可能得到一份可执行的 Bash 向导、阶段与变量清单及静态检查结果；真正的登录、复制密钥和最终确认仍由你完成。",
+    "boundaries": [
+      "它生成的是给人运行的 Bash 脚本，不是安装后单独打开的配置应用，也不替用户登录第三方账号",
+      "只应用在 AI 无法或不应自行完成的人工步骤；AI 本身能安全完成的普通操作不应绕成向导",
+      "向导可能写入 `.env`、GitHub secrets 或变量，因此必须先确认每个值的来源、去向和是否敏感",
+      "原流程只做 Bash 语法、可选 shellcheck 和静态路径检查，不由 AI 端到端运行会打开浏览器并等待输入的脚本",
+      "第三方控制台的页面路径可能变化；原文要求未知时查官方文档或询问，不能编造点击路径",
+      "默认脚本是一次性产物，只有用户明确希望长期复用时才应提交到仓库",
+      "本条目的课程项目示例未在真实账号或仓库中实际运行"
+    ],
+    "tags": ["配置向导", "环境变量", "CI 密钥"],
+    "keywords": ["wizard", "Bash 向导", "环境变量", "API key", "GitHub secrets", "部署配置", "人工步骤"],
+    "sourceUrl": "https://www.skills.sh/mattpocock/skills/wizard",
+    "repositoryUrl": "https://github.com/mattpocock/skills",
+    "stats": {
+      "githubStars": 295597,
+      "githubRepo": "mattpocock/skills",
+      "installs": null,
+      "installsSource": "skills.sh（未取得可复核的精确数值）",
+      "lastCheckedAt": "2026-10-18T20:30:00+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/mattpocock/skills --skill wizard",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "生成的脚本可能接触 API 密钥并修改 `.env` 或 GitHub 设置。运行前必须人工检查脚本和目标仓库，只使用测试或最小权限凭据；不要把密钥打印、提交进 Git 或粘贴到普通对话记录。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个独立安装向导软件，而是一套让兼容 AI 编程工具生成交互式 Bash 向导的方法。它适合第三方控制台、账号授权和密钥复制等必须由人亲自完成的流程。AI 先从项目文件中找出所需变量和人工步骤，再让你确认顺序，最后基于固定模板生成脚本；脚本逐阶段显示当前任务、打开官方页面、隐藏敏感输入、写入指定位置，并在不可逆动作前停下来确认。",
+      "workflow": [
+        "说明要完成的配置、迁移或切换目标，以及哪些动作必须由人亲自操作。",
+        "AI 读取 `.env`、README、容器配置和 CI 工作流，找出所有变量、密钥与目标位置。",
+        "AI 列出有顺序的阶段，并标明每个值从哪里获得、写到哪里、是否敏感，由你增删或调整。",
+        "对每个阶段核对真实页面路径和操作步骤；不确定的界面不得凭空编写。",
+        "AI 复制固定模板并只编写阶段部分，使用隐藏输入、确认门和安全的环境变量更新方式。",
+        "运行 Bash 语法检查和可选 shellcheck，再静态追踪每个值是否落到预定位置，不端到端执行。",
+        "告诉你如何自行运行；一次性向导完成后可删除，只有明确需要复用时才放入仓库。"
+      ],
+      "requirements": [
+        "需要可运行 Bash 的环境；模板能尝试在 macOS、Linux 和 WSL 等环境打开浏览器，但具体系统兼容性仍需检查。",
+        "需要能够读取当前项目配置，并允许在指定位置创建脚本；写入 `.env` 或 GitHub 设置需要额外权限。",
+        "设置 GitHub secrets 或 variables 时需要已安装并登录 `gh`；否则向导会提示改为手动完成。",
+        "最好提供目标服务的官方文档、测试账号和最小权限凭据，不应使用不明来源的页面路径。",
+        "需要用户亲自运行并在每个阶段确认，AI 不能替代账号所有者作出高风险决定。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：课程项目需要设置本地环境变量和 GitHub Actions secrets，但团队成员不熟悉第三方控制台。本示例没有读取真实仓库或账号。",
+      "steps": [
+        "让 AI 读取 `.env.example`、README 和工作流中的 `secrets.*` 引用。",
+        "AI 列出要取得的值、官方页面、写入位置和是否为秘密，请你确认顺序。",
+        "AI 基于模板生成 Bash 向导，普通值可见输入，密钥使用隐藏输入。",
+        "AI 检查脚本语法，并核对每个 GitHub secret 名称与工作流引用完全一致。",
+        "你人工检查脚本后自行运行，完成登录、复制和最终确认；AI 不端到端代跑。"
+      ],
+      "expectedFiles": [
+        "一个位于临时目录或 `scripts/` 的交互式 Bash 向导",
+        "阶段、变量来源、敏感性和写入位置清单",
+        "Bash 语法检查、可选 shellcheck 与静态核对摘要"
+      ],
+      "notes": "这是未经实测的演示性输入输出。真实脚本可能写入环境变量和 GitHub 配置，必须人工审查后运行；第三方页面变化也可能导致步骤失效。"
+    },
+    "categoryId": "automation",
+    "subcategoryId": "workflow",
+    "audiences": ["大学生", "项目维护者", "开发者"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["生成逐阶段交互式 Bash 向导", "固定模板支持打开网址、隐藏密钥输入、更新 .env 和 GitHub secrets", "不可逆动作前使用确认门", "只做静态验证，不由 AI 端到端运行"],
+      "reasonableInferences": ["适合为课程项目和团队准备可重复的部署配置流程", "Windows 用户通常需要 WSL 或其他 Bash 环境并自行验证兼容性"],
+      "untestedClaims": ["课程项目示例未读取真实仓库", "未验证示例脚本、账号登录或 GitHub secrets 写入"]
+    }
+  },
+  {
+    "id": "microsoft/azure-skills/azure-diagnostics",
+    "name": "azure-diagnostics",
+    "nameZh": "Azure 云服务故障诊断",
+    "category": "编程开发",
+    "summaryZh": "让 AI 按资源健康、日志、指标和近期变更的顺序排查 Azure 服务故障，也可只根据你提供的证据做分析。",
+    "explanationZh": "它为 App Service、Functions、Container Apps、AKS、虚拟机、Event Hubs 和 Service Bus 提供分流后的排障方法。AI 会先确认症状和服务类型，再检查平台健康、日志和指标，记录证据、假设与尝试过的处理，而不是看到报错就直接改生产环境。",
+    "audience": "正在学习或维护 Azure 应用，需要分析部署失败、连接异常、性能或消息处理问题，并能提供日志或相应云资源权限的学生和云开发者。",
+    "scenarios": [
+      "根据日志分析 App Service 高 CPU 或部署失败",
+      "排查 Function、Container Apps、AKS 或虚拟机连接问题",
+      "诊断 Event Hubs 与 Service Bus 的 SDK、连接和消息锁异常"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：下面是 Azure App Service 在 14:00 后 CPU 升高的活动日志、应用日志和部署时间线。请只根据这些证据分析，不访问或修改 Azure；区分已确认事实、可能原因和建议的下一步验证。",
+    "outputExample": "可能得到按证据整理的故障时间线、原因假设、仍缺少的信息和下一步检查建议；不会在未授权时查询或修改云资源。",
+    "boundaries": [
+      "它是给兼容 AI 工具使用的 Azure 排障说明，不是独立监控平台，也不能保证一次找到根因",
+      "用户要求仅分析现有证据时，不得连接或修改 Azure；实时收集需要账号、资源标识和相应权限",
+      "诊断范围很广，AKS、虚拟机和消息服务会路由到专门说明，具体能力取决于可用工具与日志",
+      "日志、指标和资源信息可能包含凭据、内部地址或用户数据，分享前应脱敏并限制读取范围",
+      "找到可能原因不等于已经修复；重启、改配置、重置凭据或改变网络规则等生产动作需要单独确认和回滚方案",
+      "本条目的 App Service 示例未连接真实 Azure 资源，也未验证任何修复结果"
+    ],
+    "tags": ["Azure", "故障诊断", "日志分析"],
+    "keywords": ["azure diagnostics", "App Service", "Functions", "AKS", "虚拟机", "Event Hubs", "Service Bus", "日志", "KQL", "故障排查"],
+    "sourceUrl": "https://www.skills.sh/microsoft/azure-skills/azure-diagnostics",
+    "repositoryUrl": "https://github.com/microsoft/azure-skills",
+    "stats": {
+      "githubStars": 1575,
+      "githubRepo": "microsoft/azure-skills",
+      "installs": null,
+      "installsSource": "skills.sh（未取得可复核的精确数值）",
+      "lastCheckedAt": "2026-10-18T20:30:00+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/microsoft/azure-skills --skill azure-diagnostics",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "生产日志和云资源信息可能包含敏感数据。优先使用已脱敏证据和只读权限；任何重启、配置、网络、凭据或资源修改都应在说明影响与回滚方法后单独获得确认。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个新的 Azure 控制台，而是一套让兼容 AI 工具系统排查云服务故障的方法。AI 先识别症状和服务类型，然后从资源健康、日志、指标和近期变更逐层收集证据，再把 App Service、Functions、Container Apps、AKS、虚拟机或消息服务问题交给相应指南。你也可以限定为“只看我提供的证据”，此时它应明确假设和可选验证步骤，不访问 Azure。",
+      "workflow": [
+        "说明受影响的服务、症状、开始时间、影响范围和最近的部署或配置变化。",
+        "先使用你提供的日志、指标和时间线；如要求证据限定分析，则不连接 Azure。",
+        "确认 Azure 资源健康，再查看活动日志、应用日志和相关性能指标，避免一开始就猜代码问题。",
+        "根据服务类型进入 App Service、Functions、Container Apps、AKS、虚拟机或消息服务指南。",
+        "建立证据与假设对应关系，记录已经尝试的操作、仍缺少的信息和下一步验证。",
+        "如果需要实时收集，使用获准的脚本、Azure CLI、AppLens 或 Azure Monitor，只读取必要范围。",
+        "提出修复建议时说明影响、权限和回滚方法；获得单独确认后才执行生产变更。"
+      ],
+      "requirements": [
+        "最低条件是错误信息、时间线和相关日志；只读证据分析不一定需要 Azure 登录。",
+        "实时诊断需要 Azure 账号、资源标识、网络连接和相应只读权限，可能还需要 Azure CLI 或 Azure MCP 工具。",
+        "KQL 日志查询需要对应的 Application Insights 或 Log Analytics 工作区访问权。",
+        "AKS、虚拟机和消息服务问题需要额外的服务信息与专用诊断指南，部分操作还需要更高权限。",
+        "安装 Skill 不会新增 Azure 订阅、监控数据或故障保证，也不会自动获得组织资源访问权。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：App Service 在一次部署后 CPU 升高，你已经导出活动日志、应用日志和部署时间线，希望先做离线分析。本示例没有访问真实 Azure。",
+      "steps": [
+        "提供脱敏日志、异常开始时间、资源类型和最近变更，明确禁止实时访问。",
+        "AI 按时间整理部署、错误和 CPU 变化，区分平台健康信息与应用行为。",
+        "AI 将每个可能原因与支持或反驳它的证据对应，不把相关性直接当成根因。",
+        "列出仍缺少的指标或日志，并给出可选的只读验证命令或控制台位置。",
+        "你决定是否授权进一步查询；未授权前不连接资源或尝试修复。"
+      ],
+      "expectedFiles": [
+        "故障时间线与证据摘要",
+        "按可信程度排列的原因假设",
+        "缺失信息、下一步只读验证和可能修复的影响说明"
+      ],
+      "notes": "这是未经实测的演示性输入输出。没有连接 Azure、运行查询或验证根因；诊断质量取决于日志完整度、时间线和资源上下文。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "debugging",
+    "audiences": ["云计算学习者", "开发者", "运维人员"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["按症状、资源健康、日志、指标和近期变更进行系统诊断", "覆盖 App Service、Functions、Container Apps、AKS、虚拟机和消息服务", "用户限制为证据分析时不得访问或修改 Azure", "可在获准时使用 Azure CLI、AppLens、Azure Monitor 与随附脚本收集信息"],
+      "reasonableInferences": ["适合先做只读证据分析再决定是否连接生产资源", "修复生产故障需要单独确认和回滚计划"],
+      "untestedClaims": ["App Service 高 CPU 示例未连接真实资源", "未运行任何 Azure 查询、诊断脚本或修复"]
+    }
+  },
+  {
+    "id": "google/agents-cli/google-agents-cli-adk-code",
+    "name": "google-agents-cli-adk-code",
+    "nameZh": "Google ADK 智能体开发参考",
+    "category": "编程开发",
+    "summaryZh": "让 AI 按 Google ADK 的官方模式编写智能体代码，包括工具、回调、状态管理、多智能体协作和图工作流。",
+    "explanationZh": "它是 Google Agents CLI 套件中的代码参考。开始写代码前，AI 要先确认需求、研究相应官方示例并检查项目已经建立脚手架；随后根据 Python 或 Go 项目选择正确的 ADK 接口，完成代码并做本地快速验证。",
+    "audience": "希望用 Google Agent Development Kit 开发智能体，并已经具备 Python 或 Go 基础、命令行环境和项目脚手架的编程学习者与开发者。",
+    "scenarios": [
+      "为已有 ADK 项目增加工具、回调或状态管理",
+      "实现顺序、并行、循环或图结构的多智能体工作流",
+      "参考官方示例加入记忆、审批、检索或安全控制"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：这是一个已经用 agents-cli 建立的 ADK Python 项目。请先运行信息检查并阅读项目规格，然后新增一个查询校园活动的工具，把用户选择保存在会话状态中；只做代码和本地快速验证，不部署，也不要更换现有模型。",
+    "outputExample": "可能得到基于现有脚手架的 Python 代码修改、工具与状态处理逻辑以及本地快速验证结果；评测、部署和发布仍属于后续独立阶段。",
+    "boundaries": [
+      "它是 Google Agents CLI 套件中的代码参考，不是独立的智能体搭建应用，也不负责完整生命周期的所有步骤",
+      "写代码前必须先完成工作流中的需求确认、参考示例研究和项目脚手架检查；不能跳过这些阶段直接生成文件",
+      "该 Skill 不负责创建或增强项目脚手架，也不负责评测、部署和发布；这些工作由套件中的其他 Skill 处理",
+      "Python 和 Go 的接口、示例与工作流不同，必须按项目语言和安装版本选择，不能把记忆、审批或检索当成脚手架开关",
+      "本地单次运行只是快速检查，不等于行为评测；原工作流要求之后使用专门评测阶段验证智能体表现",
+      "部署到 Google Cloud 可能需要账号、项目、权限、配额与费用，并且必须再次获得用户明确批准",
+      "本条目的校园活动工具示例未在真实 ADK 项目中实际运行"
+    ],
+    "tags": ["Google ADK", "智能体开发", "Python"],
+    "keywords": ["google agents cli", "ADK", "agent development kit", "智能体", "工具调用", "回调", "状态管理", "多智能体", "workflow"],
+    "sourceUrl": "https://www.skills.sh/google/agents-cli/google-agents-cli-adk-code",
+    "repositoryUrl": "https://github.com/google/agents-cli",
+    "stats": {
+      "githubStars": 6099,
+      "githubRepo": "google/agents-cli",
+      "installs": null,
+      "installsSource": "skills.sh（未取得可复核的精确数值）",
+      "lastCheckedAt": "2026-10-18T20:30:00+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/google/agents-cli --skill google-agents-cli-adk-code",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "智能体代码可能调用外部 API、处理用户数据或触发工具。应先定义权限和禁止事项，保留现有模型及配置，优先使用官方示例；任何云端部署、凭据或基础设施操作都需另行确认。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个独立智能体软件，而是 Google Agents CLI Skill 套件中的 ADK 代码参考。它帮助兼容 AI 编程工具选择正确的 Python 或 Go 接口，编写 Agent、工具、回调、插件、状态、产物、多智能体编排和图工作流。真正开始编码前，完整工作流要求先确认需求、研究与能力匹配的官方示例，并确认项目已经由 agents-cli 建立或增强。",
+      "workflow": [
+        "先使用完整开发工作流澄清智能体目标、数据来源、外部工具、安全边界和是否只做原型。",
+        "查看参考示例索引；涉及检索、记忆、审批、沙箱、OAuth 或安全控制时，先研究对应官方 recipe。",
+        "运行 `agents-cli info` 检查项目；没有脚手架时先使用 scaffold Skill 创建或增强项目。",
+        "根据项目语言读取 Python 或 Go 参考，选择 Agent、工具、回调、状态或工作流接口。",
+        "只修改任务要求的代码，保留现有模型、版本、环境变量和其他配置。",
+        "使用 `agents-cli run` 做快速本地检查，出现问题时按复现、定位、单点修复和重新验证的顺序处理。",
+        "代码阶段完成后进入专门评测；只有评测结果被用户接受并再次批准，才考虑部署。"
+      ],
+      "requirements": [
+        "需要安装 `uv` 和兼容版本的 `google-agents-cli`，原文要求约 1.10.0，并可用 `agents-cli info` 检查。",
+        "需要 Python 或 Go 开发环境，以及已经创建或增强的 agents-cli 项目；代码 Skill 本身不负责脚手架。",
+        "涉及官方 recipe 时可能需要联网读取或克隆 Google ADK 示例，并阅读其中的 AGENTS.md。",
+        "本地开发可不立即部署；云端能力则需要 Google Cloud 项目、认证、权限、区域、配额和可能的费用。",
+        "安装本 Skill 不会自动创建可运行项目、云资源、评测数据或部署结果。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：已有一个 agents-cli 创建的 ADK Python 项目，需要增加校园活动查询工具并记住用户的选择。本示例未运行真实项目。",
+      "steps": [
+        "读取 `.agents-cli-spec.md` 和现有项目配置，确认只做本地代码修改。",
+        "运行项目信息检查，确认脚手架、语言、当前模型和依赖版本。",
+        "查看 Python ADK 的工具和状态管理参考，避免凭记忆猜接口。",
+        "新增查询工具与会话状态逻辑，保持未要求的模型和配置不变。",
+        "使用一个本地提示做快速检查并记录结果；不把它冒充完整评测，也不部署。"
+      ],
+      "expectedFiles": [
+        "现有 ADK Python 项目中的智能体代码修改",
+        "校园活动查询工具和会话状态处理逻辑",
+        "本地快速验证摘要及后续评测建议"
+      ],
+      "notes": "这是未经实测的演示性输入输出。没有安装 agents-cli、修改真实项目、调用模型或运行评测；实际接口与可用模型必须以项目版本和目标区域为准。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "project-development",
+    "audiences": ["编程学习者", "AI 应用开发者", "后端开发者"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["提供 Python 与 Go 的 ADK API 和代码模式", "覆盖工具、回调、状态、插件、多智能体和图工作流", "写代码前要求完成设计、研究 recipe 并检查脚手架", "脚手架、评测、部署和发布由套件中其他 Skill 负责"],
+      "reasonableInferences": ["适合已经有 agents-cli 项目的 AI 编程进阶用户", "在目录中应明确它不是一站式无代码智能体工具"],
+      "untestedClaims": ["校园活动工具示例未实际运行", "未安装 agents-cli、调用模型、运行评测或部署"]
+    }
+  }
+]

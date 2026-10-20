@@ -1,0 +1,96 @@
+[
+  {
+    "id": "microsoft/azure-skills/azure-cost",
+    "name": "azure-cost",
+    "nameZh": "Azure 云成本分析与优化",
+    "category": "编程开发",
+    "summaryZh": "帮助你按订阅或资源组查看 Azure 历史费用、预测未来支出并寻找节省机会，同时区分真实账单、预测值和估算建议。",
+    "explanationZh": "它是 Microsoft 维护的 Azure 成本管理流程。AI 会先确认查询范围和只读权限，再调用 Cost Management 数据，展示总账单、服务或资源成本、趋势和预测；优化时还会结合资源利用率与当前价格，但不会把估算节省包装成已实现收益，也不会未经确认删除或降配资源。",
+    "audience": "需要理解 Azure 账单、解释成本变化或准备优化清单，并具备相应只读权限的云计算学习者、开发者、运维和成本管理人员。",
+    "scenarios": ["查看某个订阅本月总费用并按服务或资源组拆分", "根据已有历史数据预测本月剩余或未来数月支出", "识别闲置资源、规格过大或存储层级不合理的节省机会"],
+    "inputExample": "演示性示例，尚未实际运行验证：请只读分析这个 Azure 订阅近 30 天费用。先展示完整账单总额、币种和前三项成本驱动，再用利用率证据列出可能的节省机会。不要删除、停止、降配资源，也不要购买预留实例；所有节省金额必须标明是实际数据、当前报价还是估算。",
+    "outputExample": "可能得到带时间范围、范围标识、总费用、成本拆分、预测和证据等级的优化报告，以及需要进一步确认的资源操作清单；不会自动执行资源变更。",
+    "boundaries": ["它是给兼容 AI 工具使用的 Azure 成本分析流程，不是新的计费平台，也不能替代正式发票、预算审批或财务结算", "实时查询需要 Azure 登录、准确的订阅或其他范围标识，以及目标范围上的 Cost Management Reader、Monitoring Reader 和 Reader 等权限", "费用查询支持订阅、资源组、管理组和部分计费范围，但可用维度、时间跨度和数据延迟取决于范围与协议类型", "历史查询、预测和优化是不同流程；预测至少需要足够历史数据，分组历史成本不能直接当成预测 API 的分组结果", "优化建议必须先展示实际总账单并验证利用率和当前价格；估算节省不是承诺，也可能牺牲性能、可用性、冗余或合规", "删除闲置资源、调整规格或存储层级、购买预留或节省计划都属于外部变更，需要说明影响、回滚和承诺期后单独确认", "账单、资源 ID、标签和使用指标可能包含敏感业务信息，应限制范围、脱敏输出并避免暴露凭据", "Cost Management API 有分页和限流约束，遇到 429 应按响应的最长重试时间等待，不能密集重试", "本条目的近 30 天示例未连接真实 Azure 账号，也未验证任何费用或节省结果"],
+    "tags": ["Azure", "云成本", "FinOps"],
+    "keywords": ["Azure Cost Management", "Azure bill", "cost query", "forecast", "cost optimization", "FinOps", "rightsizing", "orphaned resources", "云成本", "费用预测"],
+    "sourceUrl": "https://www.skills.sh/microsoft/azure-skills/azure-cost",
+    "repositoryUrl": "https://github.com/microsoft/azure-skills",
+    "stats": {"githubStars": 1600, "githubRepo": "microsoft/azure-skills", "installs": 362600, "installsSource": "skills.sh 页面快照（2026-10-19）", "lastCheckedAt": "2026-10-19T00:00:00+08:00"},
+    "installCommand": "npx skills add https://github.com/microsoft/azure-skills --skill azure-cost",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "默认使用最小只读权限并先展示完整账单。任何删除、停止、降配、存储迁移或长期购买承诺都必须验证影响与价格，并在执行前获得针对具体资源的明确确认。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-19",
+    "detailZh": {
+      "overview": "这套官方流程把 Azure 成本工作分为三类：查询已经发生的费用、预测未来支出、根据成本和利用率寻找优化机会。AI 会先锁定订阅、资源组、管理组或计费范围，再用只读权限取得数据；报告中必须保留总账单、币种、时间范围和证据来源，并把实际成本、预测和估算节省清楚分开。它不负责部署、故障诊断或自动执行资源变更。",
+      "workflow": ["确认要分析的 Azure 范围、时间段、币种、成本口径和允许的数据访问边界；检查当前身份与只读角色。", "先查询完整范围的实际或摊销成本，记录总额，再按服务、资源、资源组或标签做必要拆分；处理分页与限流。", "如需预测，改用预测流程并确认至少有足够历史数据、结束日期在未来；不要求预测 API 完成不支持的分组。", "如需优化，把总账单、主要成本驱动、资源清单和利用率指标结合起来，验证当前 Azure 价格与服务约束。", "将建议分为低风险、需要评估和长期承诺，分别标注实际成本、估算节省、性能与可靠性影响。", "生成报告和可复核的数据附件；对删除、降配、迁移层级或购买承诺只给计划，等待用户单独批准后才执行。"],
+      "requirements": ["需要 Azure 账号、正确租户与订阅或计费范围，以及联网能力。", "查询通常需要目标范围上的 Cost Management Reader；优化还可能需要 Monitoring Reader 和 Reader 读取资源与利用率。", "需要 Azure CLI、Azure MCP 或可调用 Cost Management API 的等效工具，并遵守组织的审计与数据处理规则。", "预测通常需要至少 28 天历史成本数据；数据不足时只能报告现有实际成本。", "优化建议需要可复核的当前价格、资源配置和使用指标，不能只凭资源名称猜测闲置或过配。"]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：团队想知道一个订阅最近 30 天为何超支，并在不改动生产资源的前提下获得优化线索。本示例未连接 Azure。",
+      "steps": ["确认订阅、30 天范围、成本口径和只读限制。", "查询总费用和币种，再按服务与资源拆分主要成本。", "将异常增长与时间、部署或用量指标对齐，不把相关性直接当成原因。", "对候选闲置和过配资源获取配置及利用率证据，并核对当前价格。", "报告实际成本、预测和估算节省，单独列出性能、可靠性和承诺期影响。", "停止在报告与待确认清单，不执行资源变更。"],
+      "expectedFiles": ["Azure 成本分析与优化报告", "可复核的成本查询结果或摘要", "带证据等级、风险和预计节省的建议清单", "需要用户另行批准的资源操作列表"],
+      "notes": "这是未经实测的演示性输入输出。实际数字取决于 Azure 账号、范围、计费协议、数据延迟、权限和查询时间。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "project-development",
+    "audiences": ["云计算学习者", "开发者", "运维人员", "成本管理人员"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["官方 Skill 分为费用查询、成本预测和成本优化三条流程", "支持订阅、资源组、管理组和计费账号等范围", "快速参考列出 Cost Management Reader、Monitoring Reader 和 Reader 角色", "历史查询支持分组并有日期、维度、分页和限流约束", "预测不支持分组、需要至少 28 天历史数据且未来结束日期", "优化模板要求展示实际总账单、实际指标、验证后的价格和估算节省"],
+      "reasonableInferences": ["适合与已有 Azure 故障诊断条目形成成本管理互补", "任何资源删除、降配或长期购买承诺都应独立于只读分析获得明确批准"],
+      "untestedClaims": ["近 30 天成本分析示例未连接真实订阅", "未调用 Cost Management API、Azure Monitor 或价格接口", "未验证任何费用、预测、闲置资源或节省金额"]
+    }
+  },
+  {
+    "id": "prisma/skills/prisma-upgrade-v7",
+    "name": "prisma-upgrade-v7",
+    "nameZh": "Prisma 6 升级到 7 指南",
+    "category": "编程开发",
+    "summaryZh": "帮助你把使用 SQL 数据库的 Prisma ORM 6 项目分阶段升级到 7，并处理生成器、驱动适配器、配置、环境变量和导入路径的破坏性变化。",
+    "explanationZh": "它是 Prisma 官方的 6 到 7 迁移指南。AI 会先确认数据库类型、运行时和当前配置，再更新依赖、生成器输出、`prisma.config.ts`、环境加载、驱动适配器和 Client 导入；MongoDB 项目会被明确拦截，不会误套 SQL 升级路径。最后需要在隔离环境重新生成 Client，并完成类型、连接、迁移和应用回归测试。",
+    "audience": "维护 Prisma ORM 6 的 Node.js 或 TypeScript 项目，准备升级到 Prisma 7 或正在排查升级后导入与连接错误的开发者。",
+    "scenarios": ["评估现有 Prisma 6 SQL 项目升级到 7 的影响和顺序", "修复新 `prisma-client` 生成器、显式 output 或导入路径问题", "为 PostgreSQL、MySQL、SQLite 等项目配置 Prisma 7 驱动适配器和连接池"],
+    "inputExample": "演示性示例，尚未实际运行验证：请审查这个 Prisma 6 项目是否能升级到 7。先确认数据库 provider、Node.js、TypeScript、模块格式和当前连接方式，再列出分阶段修改与回滚点；不要连接生产数据库或运行迁移。如果 provider 是 mongodb，立即停止 Prisma 7 SQL 升级并说明替代路径。",
+    "outputExample": "可能得到兼容性检查、逐文件升级计划、依赖和代码修改建议、风险清单与验证步骤；不会自动修改生产数据库。",
+    "boundaries": ["该指南只针对 Prisma ORM 6 升级到 7，不是任意版本迁移、全新项目搭建或 Prisma 8 指南", "Prisma 7 没有 MongoDB 连接器；`provider = mongodb` 的项目不能套用本指南，应有意识地留在最新 Prisma 6 或使用专门的 Prisma 8 迁移路径", "来源版本列出的最低环境是 Node.js 20.19.0+ 和 TypeScript 5.4.0+，实际项目还需核对框架、部署平台和固定的 Prisma 版本", "新 `prisma-client` 生成器需要显式 output，并会改变 Client、models、enums 和 browser 等导入入口；全仓库调用方必须同步检查", "SQL 提供商需要与实际数据库匹配的驱动适配器；底层驱动的连接池、超时和 SSL 默认值可能与 v6 不同", "`prisma.config.ts` 不会自动加载 `.env`，需要显式环境加载；连接字符串和证书不得写入代码、日志或对话", "升级可能涉及生成代码、依赖锁文件、模块系统、迁移和生产连接，必须分支实施、保留回滚点并先在隔离环境验证", "禁用 SSL 证书校验只能是理解风险后的特例，生产环境应优先配置可信 CA", "本条目的审查示例未读取真实项目，也未运行安装、generate、迁移或数据库连接"],
+    "tags": ["Prisma", "版本升级", "数据库"],
+    "keywords": ["Prisma 7", "Prisma 6 upgrade", "prisma-client", "driver adapter", "prisma.config.ts", "ESM", "generated client", "数据库升级", "breaking changes"],
+    "sourceUrl": "https://www.skills.sh/prisma/skills/prisma-upgrade-v7",
+    "repositoryUrl": "https://github.com/prisma/skills",
+    "stats": {"githubStars": 70, "githubRepo": "prisma/skills", "installs": 351800, "installsSource": "skills.sh 页面快照（2026-10-19）", "lastCheckedAt": "2026-10-19T00:00:00+08:00"},
+    "installCommand": "npx skills add https://github.com/prisma/skills --skill prisma-upgrade-v7",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "升级前确认数据库不是 MongoDB，并在独立分支和隔离数据库中实施。保护连接字符串，记录回滚点，核对驱动适配器、连接池和 SSL；未经单独确认不要运行生产迁移。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-19",
+    "detailZh": {
+      "overview": "这是一套从 Prisma ORM 6 迁移到 7 的官方升级路径，重点处理会让旧项目直接报错或行为变化的部分：默认生成器、必填输出目录、生成入口、驱动适配器、ESM 与 CommonJS、集中配置、显式环境加载，以及被移除的中间件和指标能力。它首先按数据库类型分流，MongoDB 不进入这条 SQL 升级路径。",
+      "workflow": ["读取 `package.json`、锁文件、Node.js 与 TypeScript 版本、模块格式、`schema.prisma`、Client 初始化、环境加载和部署平台，建立可回滚基线。", "检查 datasource provider；如为 MongoDB，停止 Prisma 7 SQL 升级，说明留在 Prisma 6 或使用 Prisma 8 专门路径。", "在独立分支更新 Prisma 包到固定的 7.x 版本，并根据 ESM 或 CommonJS 选择模块配置，不机械强制全项目转 ESM。", "将生成器改为 `prisma-client`，设置显式 output；把连接 URL 与迁移配置移入项目根部的 `prisma.config.ts`，显式加载环境变量。", "为实际 SQL 数据库安装匹配的驱动适配器，更新 Client 初始化和全仓库导入；复核连接池、超时、SSL 与 serverless 差异。", "替换 `Prisma.validator()`、`$use()` 和其他被改变或移除的模式，再重新生成 Client。", "在隔离环境完成类型检查、单元与集成测试、连接、查询、事务、迁移状态和部署构建验证；审查通过后再计划生产迁移。"],
+      "requirements": ["项目当前应使用 Prisma ORM 6，并计划升级到 Prisma 7；MongoDB 项目不适用。", "需要 Node.js 20.19.0 或更高、TypeScript 5.4.0 或更高，并核对框架和部署平台兼容性。", "需要可读取的 schema、依赖锁文件、Client 初始化、环境加载、迁移目录和测试。", "SQL 数据库需要对应驱动适配器及底层驱动，并准备隔离测试数据库。", "需要安全的秘密管理、版本控制分支、依赖与数据库回滚方案，以及生产迁移的单独批准。"]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：一个 Prisma 6 的 TypeScript 服务准备升级，但团队不确定生成器、驱动适配器和 ESM 影响。本示例未读取真实仓库。",
+      "steps": ["盘点运行时、依赖、数据库 provider、模块格式、schema、环境加载和 Client 初始化。", "若发现 MongoDB，停止并转向适合 MongoDB 的版本决策。", "为 SQL 项目制定固定版本、独立分支和回滚点。", "更新生成器、output、配置、适配器、导入和被移除 API。", "重新生成 Client，并在隔离数据库验证连接、查询、事务与迁移。", "汇总未解决风险，生产变更留待单独批准。"],
+      "expectedFiles": ["Prisma 6 到 7 兼容性审查", "按文件与阶段排列的升级计划", "依赖、schema、配置、适配器和导入修改建议", "类型、连接、迁移、回归与回滚检查清单"],
+      "notes": "这是未经实测的演示性输入输出。实际升级必须以项目固定版本、数据库、框架和部署环境为准。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "project-development",
+    "audiences": ["后端开发者", "全栈开发者", "项目维护者"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["官方指南面向 Prisma ORM 6 到 7 的迁移", "覆盖 prisma-client 生成器、显式 output、驱动适配器、模块系统、prisma.config.ts、环境加载、导入和移除功能", "明确规定 MongoDB 项目不应套用 Prisma 7 SQL 路径", "列出 Node.js 20.19.0+ 和 TypeScript 5.4.0+ 要求", "Prisma 7 SQL 连接需要驱动适配器，底层驱动连接池默认可能不同", "最终步骤包括 prisma generate 和测试"],
+      "reasonableInferences": ["适合对升级做分阶段代码审查和迁移计划", "生产升级前应在隔离数据库完成连接、查询、事务和迁移验证，并保留回滚方案"],
+      "untestedClaims": ["升级审查示例未读取真实项目", "未安装或升级任何依赖", "未运行 Prisma generate、数据库连接、迁移或应用测试"]
+    }
+  }
+]

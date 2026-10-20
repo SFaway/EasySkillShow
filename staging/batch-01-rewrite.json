@@ -1,0 +1,216 @@
+[
+  {
+    "id": "vercel-labs/skills/find-skills",
+    "name": "find-skills",
+    "nameZh": "Skill 搜索助手",
+    "category": "发现工具",
+    "summaryZh": "帮助 AI 根据你的任务查找合适的 Skill，并给出来源和安装方式。",
+    "explanationZh": "它为支持 Skills 的 AI 提供一套查找流程：先弄清你的具体任务，再查看热门目录或按关键词搜索，核对来源和基础数据，最后整理候选项与安装方法。",
+    "audience": "想为 Codex、Claude Code 等 AI 工具增加能力，但不知道该搜索什么 Skill 的用户。",
+    "scenarios": [
+      "根据具体任务寻找可安装的 Skill",
+      "比较候选 Skill 的用途、来源和基础数据",
+      "找不到合适结果时获得替代建议"
+    ],
+    "inputExample": "帮我找一个能设计网页 UI 的 Skill。",
+    "outputExample": "一份候选 Skill 清单，包含用途、来源、安装数据和安装命令（演示性预期，尚未实测）。",
+    "boundaries": [
+      "它是给 AI 使用的查找流程，不是独立的插件商店应用",
+      "搜索结果和热度数据不能代替源码检查或安全审计",
+      "搜索与安装通常需要联网；真正执行安装还需要 Node.js 和 npx",
+      "可能找不到完全匹配的 Skill，此时只能调整关键词、直接完成任务或自行创建"
+    ],
+    "tags": ["搜索", "推荐", "入门"],
+    "keywords": ["找插件", "查找", "discover", "search", "查询", "怎么找"],
+    "sourceUrl": "https://skills.sh/vercel-labs/skills/find-skills",
+    "repositoryUrl": "https://github.com/vercel-labs/skills",
+    "stats": {
+      "githubStars": 35396,
+      "githubRepo": "vercel-labs/skills",
+      "installs": null,
+      "installsSource": "skills.sh",
+      "lastCheckedAt": "2026-10-18T04:42:51Z"
+    },
+    "installCommand": "npx skills add https://github.com/vercel-labs/skills --skill find-skills",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "候选 Skill 来自公开目录，不代表已经通过安全审核；安装前仍需检查仓库、脚本和权限。",
+    "featured": true,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "unchecked",
+    "sourceCheckedOn": "",
+    "detailZh": {
+      "overview": "这不是一个独立的 Skill 商店，而是一套交给兼容 AI 工具使用的查找方法。它会先理解你想完成的任务，再从 skills.sh 榜单或 Skills CLI 中寻找候选项，并结合安装量、仓库来源和 Stars 等线索进行初步筛选。找到结果后，它会说明每个 Skill 的用途、来源、安装命令和详情链接；如果没有合适结果，也会建议换关键词、直接让 AI 处理，或创建自己的 Skill。",
+      "workflow": [
+        "说明你想完成的具体任务、所属领域和必要限制。",
+        "AI 先查看常见或热门 Skill，再用更具体的关键词继续搜索。",
+        "对候选项核对安装量、仓库来源和 Stars，不只看搜索排名。",
+        "整理候选 Skill 的用途、来源、安装命令和详情链接供你比较。",
+        "如果没有合适结果，调整关键词或改用通用能力完成任务。"
+      ],
+      "requirements": [
+        "需要通过能够读取并使用 Skill 的 AI 工具运行；安装后不会出现一个独立桌面应用。",
+        "搜索 skills.sh 或运行 Skills CLI 时需要联网。",
+        "如要执行 npx skills 命令，需要本机已安装 Node.js 和 npm/npx。",
+        "安装任何第三方 Skill 前，应人工检查仓库内容、脚本和权限。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "你正在制作个人项目页面，希望 AI 的界面设计更专业，但不知道应该搜索哪个 Skill。",
+      "steps": [
+        "告诉 AI 任务是网页 UI 设计，并补充所用框架、页面类型或设计目标。",
+        "AI 使用“web design”“UI”“frontend design”等具体关键词查找。",
+        "对结果比较用途、作者来源、安装数据和仓库信息。",
+        "将较合适的候选项连同安装命令和详情链接列出，由你决定是否安装。"
+      ],
+      "expectedFiles": [
+        "通常不会直接生成文件；主要产物是一份可比较的候选 Skill 清单和安装命令。"
+      ],
+      "notes": "这是沿用原有网页 UI 情境整理的演示性示例，尚未实际运行。候选顺序和可用性会随目录、网络和 AI 工具而变化。"
+    }
+  },
+  {
+    "id": "anthropics/skills/pdf",
+    "name": "pdf",
+    "nameZh": "PDF 阅读与处理",
+    "category": "办公文档",
+    "summaryZh": "帮助 AI 阅读、整理和修改 PDF，也能合并、拆分、OCR 或创建 PDF。",
+    "explanationZh": "它为 AI 提供处理 PDF 的常用方法，包括提取文字和表格、合并或拆分页、旋转、加水印、提取图片、填写表单、加密解密、创建新 PDF，以及识别扫描版文字。",
+    "audience": "需要处理论文、讲义、合同、表单或扫描资料的学生和办公用户。",
+    "scenarios": [
+      "读取论文或讲义中的文字和表格",
+      "合并、拆分、旋转或加水印",
+      "识别扫描 PDF，或制作、填写新的 PDF"
+    ],
+    "inputExample": "读取这份 PDF，整理所有章节标题。",
+    "outputExample": "一份章节标题清单，并尽可能标注对应页码或位置（演示性预期，扫描版效果受质量影响）。",
+    "boundaries": [
+      "扫描件的 OCR 可能识别错误，模糊、倾斜或复杂版面会进一步降低准确率",
+      "复杂表格、多栏排版和特殊字体不一定能完整保留",
+      "OCR、表单填写、渲染或高级编辑可能需要额外工具和依赖",
+      "加密文件通常需要合法密码；输出文件仍应人工检查内容和页面效果"
+    ],
+    "tags": ["PDF", "办公", "学习"],
+    "keywords": ["pdf", "论文", "提取文字", "扫描", "ocr", "文档", "合并", "拆分"],
+    "sourceUrl": "https://skills.sh/anthropics/skills/pdf",
+    "repositoryUrl": "https://github.com/anthropics/skills",
+    "stats": {
+      "githubStars": 181822,
+      "githubRepo": "anthropics/skills",
+      "installs": null,
+      "installsSource": "skills.sh",
+      "lastCheckedAt": "2026-10-18T04:42:52Z"
+    },
+    "installCommand": "npx skills add https://github.com/anthropics/skills --skill pdf",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "PDF 可能包含敏感内容或不可信附件；处理前应确认文件来源，输出后需人工复核。",
+    "featured": true,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "unchecked",
+    "sourceCheckedOn": "",
+    "detailZh": {
+      "overview": "这个 Skill 不是一个新的 PDF 阅读器，而是给兼容 AI 工具的一套 PDF 处理方法。它能根据任务选择合适的方式读取文字和表格，合并、拆分或旋转页面，添加水印，提取图片，创建新 PDF，处理表单与密码，并在扫描件没有可复制文字时尝试 OCR。不同任务依赖的工具不同，因此安装前需要确认运行环境；复杂版面和扫描识别结果也需要人工复核。",
+      "workflow": [
+        "提供 PDF 文件，并说明要读取、整理、修改还是创建新文件。",
+        "AI 判断文件是可直接读取的文本 PDF，还是需要 OCR 的扫描件。",
+        "根据任务提取文字或表格，或执行合并、拆分、旋转、加水印等操作。",
+        "需要时生成新的 PDF、填写表单、处理密码或导出图片。",
+        "检查提取内容和输出页面，特别关注扫描识别、表格和复杂排版。"
+      ],
+      "requirements": [
+        "基础读取与页面操作通常使用 Python PDF 工具，如 pypdf 或 pdfplumber。",
+        "创建 PDF 可使用 ReportLab；命令行操作可能需要 qpdf、pdftk 或 Poppler。",
+        "扫描件 OCR 通常还需要 Tesseract、pdf2image 等额外依赖。",
+        "填写表单和高级处理需要读取该 Skill 的对应补充说明；不同环境未必预装全部工具。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "你拿到一份篇幅较长的课程讲义或论文，希望先快速了解结构，再决定重点阅读哪些章节。",
+      "steps": [
+        "AI 先尝试读取每一页的文字；如果是扫描件，则改用 OCR。",
+        "从页面内容中识别章节标题，并保留可确定的页码或位置。",
+        "按原文顺序整理标题层级，避免把正文中的普通句子误当成标题。",
+        "对无法确认的标题或页码作出提示，方便你回到原 PDF 复核。"
+      ],
+      "expectedFiles": [
+        "章节标题清单；如果你另有要求，也可以保存为文本或表格文件。"
+      ],
+      "notes": "这是沿用原有“整理章节标题”情境扩写的演示性示例，尚未实际运行。标题识别和页码定位是基于提取文本的合理处理步骤，实际准确度取决于 PDF 结构和扫描质量。"
+    }
+  },
+  {
+    "id": "anthropics/skills/docx",
+    "name": "docx",
+    "nameZh": "Word 文档制作",
+    "category": "办公文档",
+    "summaryZh": "帮助 AI 制作、读取和修改可编辑的 Word 文档，适合报告、论文和简历等任务。",
+    "explanationZh": "它为 AI 提供处理 DOCX 和 Word 模板的方法，可以创建带标题、目录、页码、表格和图片的文档，也能读取、重排或修改现有内容，并处理查找替换、批注和修订。",
+    "audience": "需要编写实验报告、论文、简历、通知、备忘录或其他 Word 材料的用户。",
+    "scenarios": [
+      "创建带目录、表格和页码的 Word 报告",
+      "读取或重组已有 DOCX 文档",
+      "修改内容，并处理批注、图片或修订记录"
+    ],
+    "inputExample": "将这份实验内容整理成带标题、表格和结论的 Word 报告。",
+    "outputExample": "一份可以继续编辑的 DOCX 实验报告（演示性预期，尚未实测）。",
+    "boundaries": [
+      "复杂排版、目录、分页和表格仍需在 Word 中人工复核",
+      "读取、编辑和预览分别依赖不同工具，运行环境未必全部具备",
+      "旧版 .doc 文件需要先转换为 .docx；Google Docs、PDF 和表格任务不属于该 Skill",
+      "不同 Office 软件和字体环境可能造成页面换行或样式差异"
+    ],
+    "tags": ["Word", "办公", "写作"],
+    "keywords": ["doc", "docx", "word", "报告", "论文", "简历", "办公文档"],
+    "sourceUrl": "https://skills.sh/anthropics/skills/docx",
+    "repositoryUrl": "https://github.com/anthropics/skills",
+    "stats": {
+      "githubStars": 181822,
+      "githubRepo": "anthropics/skills",
+      "installs": null,
+      "installsSource": "skills.sh",
+      "lastCheckedAt": "2026-10-18T04:42:52Z"
+    },
+    "installCommand": "npx skills add https://github.com/anthropics/skills --skill docx",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "外部 Word 文件可能包含不可信内容；编辑现有文档时应保留原件，并在交付前检查修订、批注和页面效果。",
+    "featured": true,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "unchecked",
+    "sourceCheckedOn": "",
+    "detailZh": {
+      "overview": "这个 Skill 不是一个独立的 Word 软件，而是给兼容 AI 工具的一套 DOCX 工作方法。它可以从零创建可编辑文档，读取现有 Word 内容，或在原文件基础上修改结构、文字、图片、批注和修订。创建和编辑使用的技术路径不同，完成后还会将文档转换为可查看的页面进行排版检查。它适合生成报告、论文、简历、信函和模板，但复杂格式及不同 Office 环境下的显示仍需人工确认。",
+      "workflow": [
+        "提供文字、现有 Word 文件或模板，并说明文档类型、结构和格式要求。",
+        "AI 根据任务选择新建、读取或编辑现有 DOCX 的处理方式。",
+        "组织标题、段落、表格、图片、目录或页码等文档元素。",
+        "如修改现有文件，按要求处理替换、批注或修订，并验证文档结构。",
+        "将结果渲染成可查看页面，检查分页、文字、表格和图片后交付 DOCX。"
+      ],
+      "requirements": [
+        "输入通常是文字、.docx 或 .dotx 文件；旧版 .doc 需要先转换。",
+        "创建文档通常依赖 Node.js 的 docx 工具；读取内容需要 Pandoc。",
+        "预览和视觉检查通常需要 LibreOffice 与 Poppler。",
+        "编辑现有文件和处理批注、修订时还需要该 Skill 附带的脚本；具体依赖应以运行环境为准。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "你已经整理好实验目的、步骤、数据和结论，但内容还是零散文字，希望得到一份可继续修改和提交的 Word 报告。",
+      "steps": [
+        "提供实验内容，并说明标题层级、表格字段、结论和学校格式要求。",
+        "AI 将内容组织为标题、正文、数据表格和结论等部分。",
+        "生成 DOCX 后渲染预览，检查分页、表格宽度和文字是否被截断。",
+        "根据检查结果调整版式，再交付可编辑的 Word 文件。"
+      ],
+      "expectedFiles": [
+        "一份可继续编辑的 DOCX 实验报告。",
+        "运行环境允许时，可产生用于排版检查的临时 PDF 或页面图片；这些不是最终交付物。"
+      ],
+      "notes": "这是沿用原有实验报告情境扩写的演示性示例，尚未实际运行。最终排版会受到模板、字体和 Office 软件版本影响，提交前仍应在目标软件中打开检查。"
+    }
+  }
+]

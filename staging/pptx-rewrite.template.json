@@ -1,0 +1,57 @@
+{
+  "id": "anthropics/skills/pptx",
+  "name": "pptx",
+  "nameZh": "PPT 制作与编辑",
+  "category": "办公文档",
+  "summaryZh": "让 AI 更系统地制作、读取和修改 PPT 文件。",
+  "explanationZh": "提供 PowerPoint 文件处理的流程指导，包括从零创建演示文稿、理解已有内容、基于模板编辑并进行页面质量检查。",
+  "audience": "做课程展示、产品汇报、项目路演的学生或办公用户。",
+  "scenarios": [
+    "根据主题生成演示文稿",
+    "整理已有课件内容",
+    "检查页面中的文字溢出和排版问题"
+  ],
+  "inputExample": "用我的课程总结做一份 8 页的 PPT，要求简洁、清楚。",
+  "outputExample": "生成 PPTX 文件及检查结果（示意；取决于环境和依赖）。",
+  "boundaries": [
+    "可能需要 Node.js、PPT 相关工具或渲染环境",
+    "复杂动画及特定字体效果不能保证完全一致",
+    "Skill 是操作指导，不是独立的 PPT 桌面应用"
+  ],
+  "tags": [
+    "PPT",
+    "办公",
+    "学习"
+  ],
+  "keywords": [
+    "presentation",
+    "slides",
+    "幻灯片",
+    "课件",
+    "pptx",
+    "powerpoint",
+    "演示文稿"
+  ],
+  "sourceUrl": "https://skills.sh/anthropics/skills/pptx",
+  "repositoryUrl": "https://github.com/anthropics/skills",
+  "installCommand": "npx skills add https://github.com/anthropics/skills --skill pptx",
+  "reviewStatus": "pending",
+  "demoStatus": "illustrative",
+  "safetyNote": "来源页显示过第三方审计警告，需自行核查最新结果",
+  "featured": true,
+  "screenshots": [],
+  "platforms": [],
+  "licenseStatus": "unchecked",
+  "sourceCheckedOn": "2026-10-18",
+  "detailZh": {
+    "overview": "",
+    "workflow": [],
+    "requirements": []
+  },
+  "exampleDetails": {
+    "context": "",
+    "steps": [],
+    "expectedFiles": [],
+    "notes": ""
+  }
+}

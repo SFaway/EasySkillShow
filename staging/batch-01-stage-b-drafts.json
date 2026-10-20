@@ -1,0 +1,430 @@
+[
+  {
+    "id": "mattpocock/skills/tdd",
+    "name": "tdd",
+    "nameZh": "测试驱动开发助手",
+    "category": "编程开发",
+    "summaryZh": "帮助 AI 先写失败测试，再用最少代码实现功能，适合开发新功能和修复缺陷。",
+    "explanationZh": "给支持 Skill 的 AI 工具增加一套测试驱动开发规则：先和你确认要从哪些公开接口验证行为，再按“一个失败测试、最少实现、继续下一个行为”的节奏推进，减少测试只盯内部实现或批量猜测需求的问题。",
+    "audience": "希望用测试驱动方式开发功能或修复缺陷，并且项目已经具备可运行测试环境的开发者和编程学习者。",
+    "scenarios": [
+      "为已有项目的新功能补充行为测试",
+      "修复缺陷前先用失败测试复现问题",
+      "检查测试是否过度依赖内部实现"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：请用测试驱动方式修复购物车重复提交的问题。先说明准备测试哪些公开接口和行为，等我确认后再写第一个失败测试。",
+    "outputExample": "可能得到经你确认的测试边界、逐个出现的失败测试与最少实现，以及最终可运行的测试和代码修改；实际结果取决于项目测试环境。",
+    "boundaries": [
+      "它不是测试框架，也不会替项目安装或配置 Jest、Vitest、pytest 等测试工具",
+      "原文将它定义为 TDD 规则参考，不是从需求到交付的完整项目开发流程",
+      "必须先确认要测试的公开接口；行为和接口尚不清楚时，应先完成需求或接口设计",
+      "不适合为了凑覆盖率测试私有方法、内部调用次数或没有独立预期值的简单代码",
+      "本条目的示例未在 EasySkillShow 环境中实际运行"
+    ],
+    "tags": ["TDD", "测试", "编程"],
+    "keywords": ["tdd", "测试驱动开发", "红绿循环", "red green", "单元测试", "集成测试", "缺陷复现"],
+    "sourceUrl": "https://www.skills.sh/mattpocock/skills/tdd",
+    "repositoryUrl": "https://github.com/mattpocock/skills",
+    "stats": {
+      "githubStars": 295340,
+      "githubRepo": "mattpocock/skills",
+      "installs": 1103871,
+      "installsSource": "skills.sh structured data",
+      "lastCheckedAt": "2026-10-18T14:34:14+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/mattpocock/skills --skill tdd",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "会在代码库中创建测试并修改实现；运行前应确认测试范围、保留现有改动，并检查测试命令不会连接生产服务或使用真实凭据。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个新的测试软件，而是一套交给兼容 AI 工具使用的测试驱动开发方法。你提供要实现或修复的具体行为后，AI 会先提出应该从哪些公开接口观察结果，并等待确认；随后一次只处理一个行为：先写会失败的测试，再补最少代码让它通过。它强调测试用户或调用方能观察到的结果，不把内部函数、私有方法或调用次数当作主要目标。",
+      "workflow": [
+        "说明要新增的行为或需要复现的缺陷，并提供相关代码、需求和测试命令。",
+        "AI 阅读项目词汇、已有设计决定和测试结构，提出准备测试的公开接口与边界。",
+        "你确认测试边界后，AI 先写一个能够真实失败的测试。",
+        "只补足让这个测试通过所需的最少实现，不提前实现尚未被测试的功能。",
+        "运行测试确认由失败变为通过，再根据上一轮结果继续下一个行为。",
+        "完成后检查测试是否只验证公开行为、预期值是否有独立依据，并把进一步重构留到代码审查阶段。"
+      ],
+      "requirements": [
+        "通过能够读取代码并执行测试命令的 AI 编程工具使用；安装 Skill 不会新增一个独立测试应用。",
+        "项目需要已有或可明确配置的测试框架、依赖和测试命令。",
+        "需要给出可观察的输入、输出或缺陷复现条件；模糊需求应先澄清。",
+        "运行外部 API、数据库、邮件或时间相关测试时，应使用测试环境或受控替代，不应连接生产数据。",
+        "原文还会参考同仓库的测试示例和 Mock 指南；Mock 主要用于外部系统边界。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：购物车偶尔会重复提交订单，你希望先把问题固定成可重复验证的测试，再修改代码。本示例没有在真实项目中运行。",
+      "steps": [
+        "提供复现步骤、购物车公开接口和现有测试命令。",
+        "AI 提议从“提交一次后再次提交”的可观察结果验证行为，并等你确认测试边界。",
+        "AI 写出第一个会失败的测试，运行并确认它确实暴露重复提交问题。",
+        "AI只修改让该测试通过所需的代码，再重新运行测试。",
+        "你和 AI 决定是否还需要下一个行为测试，而不是一次写完所有猜测场景。"
+      ],
+      "expectedFiles": [
+        "一个或多个针对公开行为的测试文件",
+        "让已确认测试通过的最小代码修改",
+        "测试运行结果或仍需处理的问题说明"
+      ],
+      "notes": "这是演示性、未经实测的输入输出。Skill 不保证自动发现正确需求，也不保证任何项目的测试环境可以直接运行；测试边界和最终修改仍需人工审核。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "testing",
+    "audiences": ["编程学习者", "开发者"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["先确认测试边界再写测试", "按红—绿循环一次处理一个行为", "测试公开接口而非内部实现", "Mock 主要用于外部边界"],
+      "reasonableInferences": ["适合把可复现缺陷固定成回归测试", "需要项目本身具备测试环境"],
+      "untestedClaims": ["购物车示例和预期产物未实际运行", "未确认 Codex 在该 Skill 上的完整兼容性"]
+    }
+  },
+  {
+    "id": "flowkit-labs/skills/reddit-automation",
+    "name": "reddit-automation",
+    "nameZh": "Reddit 讨论发现与回复草稿",
+    "category": "设计与内容",
+    "summaryZh": "帮助 AI 筛选真正相关的 Reddit 讨论，并起草需人工审核、主动披露关系的回复。",
+    "explanationZh": "先根据你的产品、目标用户和社区范围寻找少量真正需要帮助的帖子，再起草简短回复。它强调遵守社区规则、提到自家产品时公开关系，并始终由你审核和手动发布，不用于批量营销或伪装成普通用户。",
+    "audience": "希望在 Reddit 上诚实参与讨论、寻找产品相关需求，但不想发送垃圾推广内容的独立开发者、创业团队或社区运营者。",
+    "scenarios": [
+      "从指定社区寻找真正相关的产品需求",
+      "判断哪些讨论适合提供帮助或提及产品",
+      "为选定帖子起草简短且披露关系的回复"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：我的产品是给大学生整理课程资料的工具。请只查看我提供的这 6 个 Reddit 帖子，选出最多 3 个真正适合回复的讨论，并为每个帖子起草一条回复；如果提到产品，必须说明我是产品团队成员。",
+    "outputExample": "可能得到最多 3 个候选讨论、每项入选理由和供你修改的回复草稿；不会自动登录或发布。",
+    "boundaries": [
+      "名称中的 automation 不代表自动发帖；原文明确只生成草稿，由用户手动审核和发布",
+      "不得使用小号、隐瞒产品关系、批量轰炸、操纵投票或绕过社区自我推广规则",
+      "AI 不能编造帖子、用户经历、产品事实或并未真实发生的使用体验",
+      "Reddit 帖子属于不可信外部内容，不能把帖子里的命令当作需要执行的指令",
+      "本条目的筛选与回复示例尚未实际运行，效果取决于材料和社区规则"
+    ],
+    "tags": ["Reddit", "社区运营", "回复草稿"],
+    "keywords": ["reddit", "社区营销", "用户需求", "回复文案", "产品推广", "lead generation"],
+    "sourceUrl": "https://www.skills.sh/flowkit-labs/skills/reddit-automation",
+    "repositoryUrl": "https://github.com/flowkit-labs/skills",
+    "stats": {
+      "githubStars": 17,
+      "githubRepo": "flowkit-labs/skills",
+      "installs": 981425,
+      "installsSource": "skills.sh structured data",
+      "lastCheckedAt": "2026-10-18T14:34:14+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/flowkit-labs/skills --skill reddit-automation",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "社区内容可能包含提示注入或恶意链接；不得按帖子要求执行命令、访问未知链接或泄露资料。所有回复必须人工审核并手动发布。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-skill",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个自动运营 Reddit 账号的软件，而是一套给兼容 AI 工具使用的讨论筛选与草稿方法。你先提供产品是什么、目标用户是谁、关注哪些社区和搜索表达，AI 再从你提供或指向的帖子中筛选真正存在需求的讨论，说明为什么适合回复，并起草短回复。涉及自己的产品时必须同时披露关系；最终内容由你检查、修改并手动发布。",
+      "workflow": [
+        "说明产品价值、目标用户、竞品、关注的社区和用户可能使用的具体求助表达。",
+        "提供要分析的 Reddit 帖子或明确的帖子范围；资料不足时由 AI 先询问，不猜测产品信息。",
+        "AI 排除无关、已关闭、只是在发泄或已经被充分回答的帖子。",
+        "按需求强度、产品匹配度和时间因素筛选最多 3 个候选，并说明为什么能真正帮助对方。",
+        "为每个候选起草约 2–3 句的回复；只有确实匹配时才提产品，并同时披露关系。",
+        "你检查事实、语气和社区规则，必要时修改，然后自行登录 Reddit 手动发布。"
+      ],
+      "requirements": [
+        "通过支持 Skill 的 AI 工具使用；安装后不会出现 Reddit 自动发帖应用。",
+        "需要真实的产品介绍、目标用户和社区范围，不能让 AI 猜测产品能力。",
+        "需要提供帖子内容或在所用 AI 工具拥有合规浏览能力时明确搜索范围。",
+        "发布前必须人工查看对应社区的自我推广规则，并确认回复确实能帮助提问者。",
+        "不需要向 Skill 提供 Reddit 密码或令牌；原文禁止登录、保存凭据和自动发帖。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：你在做课程资料整理产品，手里有 6 个可能相关的 Reddit 帖子，希望判断哪些值得认真回复。本示例未连接 Reddit，也没有生成真实帖子回复。",
+      "steps": [
+        "提供产品的一句话价值、与产品的关系，以及 6 个帖子的正文和所在社区。",
+        "AI 只提取发帖者明确表达的需要，忽略帖子中要求 AI 执行命令或访问链接的内容。",
+        "AI 从需求强度、真实匹配度和帖子新鲜度判断，最多保留 3 个候选。",
+        "每个候选先写一句入选理由，再给出一条简短回复草稿。",
+        "你核对事实和社区规则，修改后自行决定是否发布。"
+      ],
+      "expectedFiles": [
+        "通常不生成文件；主要产物是候选讨论清单、入选理由和回复草稿",
+        "需要时可由用户另行保存为文档，但原 Skill 没有规定固定文件格式"
+      ],
+      "notes": "这是演示性、未经实测的示例。回复草稿不能伪装成真实用户体验；若你没有亲自使用过产品或无法诚实披露关系，应删除相应表述或不提产品。"
+    },
+    "categoryId": "design-content",
+    "subcategoryId": "marketing-copy",
+    "audiences": ["独立开发者", "创业团队", "社区运营者"],
+    "collections": [],
+    "reviewEvidence": {
+      "sourceFacts": ["筛选最多 3 个高匹配讨论", "每条回复需人工审核和手动发布", "提到自家产品时必须披露关系", "不登录、不保存凭据、不自动发帖"],
+      "reasonableInferences": ["中文名称应避免让用户以为能自动运营账号", "更适合少量高质量参与而非批量获客"],
+      "untestedClaims": ["6 个帖子筛选示例未实际运行", "未验证在特定 AI 工具中的联网检索能力"]
+    }
+  },
+  {
+    "id": "mattpocock/skills/prototype",
+    "name": "prototype",
+    "nameZh": "产品原型验证助手",
+    "category": "编程开发",
+    "summaryZh": "帮助 AI 用一次性逻辑或界面原型快速验证想法，适合在正式开发前比较方案。",
+    "explanationZh": "它先确认你要回答的是“逻辑是否合理”还是“界面应该长什么样”，然后制作一个容易运行的临时原型：逻辑问题通常做成可点击的单页 HTML，界面问题通常提供 3 个结构明显不同、可以切换比较的方案。",
+    "audience": "需要在正式开发前验证状态流程、数据逻辑或界面方向的产品经理、设计师和开发者。",
+    "scenarios": [
+      "用可点击页面验证状态变化和边界情况",
+      "为已有页面比较多个结构明显不同的 UI 方案",
+      "在投入正式开发前记录结论并淘汰错误方向"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：请为当前任务列表页面做 3 个结构明显不同的界面原型，沿用项目现有数据和组件，每个方案都能通过底部切换栏比较；不要连接真实写入接口。",
+    "outputExample": "可能得到一个临时原型入口、3 个可切换的界面方案和待确认的设计结论；原型不是可直接上线的生产代码。",
+    "boundaries": [
+      "原型的目标是回答一个明确问题，不是同时完成完整产品、测试和生产级错误处理",
+      "逻辑原型默认只用内存状态，不应连接真实数据库；UI 原型需要写操作时应使用假数据或桩接口",
+      "原型代码必须明确标记为临时内容，不能未经重写和测试直接发布到生产环境",
+      "界面分支强调结构差异，不是只换颜色或文字；默认 3 个方案，最多 5 个",
+      "验证结束后应把结论合入正式实现，并从主分支移除剩余原型和切换器"
+    ],
+    "tags": ["原型", "UI", "逻辑验证"],
+    "keywords": ["prototype", "产品原型", "状态机", "界面方案", "UI 对比", "交互验证"],
+    "sourceUrl": "https://www.skills.sh/mattpocock/skills/prototype",
+    "repositoryUrl": "https://github.com/mattpocock/skills",
+    "stats": {
+      "githubStars": 295340,
+      "githubRepo": "mattpocock/skills",
+      "installs": 954696,
+      "installsSource": "skills.sh structured data",
+      "lastCheckedAt": "2026-10-18T14:34:14+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/mattpocock/skills --skill prototype",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "会在代码库附近创建临时原型文件或路由。应使用独立分支、避免真实数据写入，并在确定方案后清理主分支中的原型代码。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个独立的原型设计软件，而是一套让兼容 AI 工具快速回答设计问题的方法。开始前要先确定问题属于逻辑还是界面：逻辑原型让非开发者通过按钮观察状态变化；界面原型让用户在真实页面环境中切换多个结构明显不同的方案。它追求快速学习，不追求生产级完整度；结论确认后，应重写正式实现并清理临时代码。",
+      "workflow": [
+        "写清楚这次原型只需要回答的一个问题，并判断它是逻辑问题还是界面问题。",
+        "逻辑问题制作一个可双击打开的单页 HTML，用业务语言展示当前状态、操作按钮和典型场景。",
+        "界面问题优先放在现有页面中，默认制作 3 个布局和信息层级明显不同的方案。",
+        "提供简单的启动方式或可分享入口，让产品、设计或业务人员实际点击比较。",
+        "记录用户发现的问题、选中的方案和原因，而不是把原型本身当作最终成果。",
+        "把确认过的逻辑或设计决定重新实现到正式代码中，并将原型保存在临时分支、从主分支清理。"
+      ],
+      "requirements": [
+        "需要通过能读取和修改项目文件的 AI 编程工具使用；安装 Skill 不会出现独立原型应用。",
+        "必须提供项目代码或至少说明现有技术栈、页面位置、数据和要验证的问题。",
+        "逻辑原型通常只需要浏览器即可打开；UI 原型使用项目现有的框架、组件库和启动命令。",
+        "最好在独立 Git 分支中工作，避免临时路由和切换器混入主分支。",
+        "原型默认不需要测试、完整错误处理或持久化；这些应在确定方案后的正式开发中补齐。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：任务列表页面的信息层级不清楚，团队对布局方向没有共识，希望先比较 3 种方案再正式开发。本示例没有生成真实页面。",
+      "steps": [
+        "提供当前页面代码、现有数据和这次要解决的设计问题。",
+        "AI 保留现有数据读取和认证逻辑，只替换页面的展示结构。",
+        "AI 制作 3 个结构明显不同的方案，并用 URL 参数和底部切换栏切换。",
+        "团队实际点击比较，记录选中的方案、保留的局部设计和原因。",
+        "将确定方案重新实现为正式代码，并删除主分支中的切换器和淘汰方案。"
+      ],
+      "expectedFiles": [
+        "临时原型页面或组件",
+        "用于切换不同方案的临时控件",
+        "方案选择及理由记录；具体保存位置由项目工作流决定"
+      ],
+      "notes": "这是演示性、未经实测的示例。原型代码按原文故意省略测试和完整错误处理，因此只能用于验证方向，不能视为已经达到上线质量。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "project-development",
+    "audiences": ["产品经理", "设计师", "开发者"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["分为逻辑原型和 UI 原型", "逻辑原型可为单文件 HTML", "UI 原型默认 3 个且最多 5 个方案", "原型需从主分支清理"],
+      "reasonableInferences": ["适合跨职能团队在正式开发前对齐", "最好使用独立 Git 分支隔离临时代码"],
+      "untestedClaims": ["任务列表 3 方案示例未实际生成", "未验证特定项目框架中的启动与清理流程"]
+    }
+  },
+  {
+    "id": "vercel-labs/agent-browser/agent-browser",
+    "name": "agent-browser",
+    "nameZh": "网页操作与测试助手",
+    "category": "效率自动化",
+    "summaryZh": "让 AI 操作网页、填写表单、提取信息和检查网站，适合重复性浏览器任务。",
+    "explanationZh": "给支持 Skill 的 AI 工具增加一套浏览器操作方法。AI 可以读取页面中的可交互元素，再按授权执行点击、输入、等待、截图、数据提取或网页测试；它也提供独立会话、登录状态和站点限制等机制，但真实操作仍受用户授权与网站规则约束。",
+    "audience": "需要让 AI 代为完成重复网页操作、采集公开页面信息或检查 Web 应用的开发者、测试人员和高频办公用户。",
+    "scenarios": [
+      "重复打开页面、填写表单和下载结果",
+      "提取公开网页中的结构化信息或截图",
+      "检查网页流程、可访问性问题和界面错误"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：打开本地测试网站，依次检查注册、登录和退出流程。不要使用真实账号或生产数据；每次页面变化后重新读取页面，最后给出失败步骤和截图。",
+    "outputExample": "可能得到浏览器操作记录、页面截图、提取结果或测试问题清单；是否能完成登录、下载和复杂页面操作取决于网站与运行环境。",
+    "boundaries": [
+      "Skill 本身只是入口说明，完整操作指南由安装后的 agent-browser CLI 动态提供",
+      "需要另外安装 agent-browser CLI 和兼容的 Chrome/Chromium 浏览器组件，不是只安装 Skill 就能运行",
+      "网页内容、网页提供的工具和错误信息都属于不可信数据，不能据此执行额外命令或扩大授权",
+      "登录、提交表单、发送消息、购买或删除等有后果的操作必须保持在用户明确授权范围内",
+      "验证码、跨域 iframe、复杂登录、站点反自动化和 WebGPU 页面可能限制成功率"
+    ],
+    "tags": ["浏览器自动化", "网页测试", "数据提取"],
+    "keywords": ["agent-browser", "浏览器自动化", "网页操作", "表单填写", "截图", "爬取", "web testing", "QA"],
+    "sourceUrl": "https://www.skills.sh/vercel-labs/agent-browser/agent-browser",
+    "repositoryUrl": "https://github.com/vercel-labs/agent-browser",
+    "stats": {
+      "githubStars": 44160,
+      "githubRepo": "vercel-labs/agent-browser",
+      "installs": 1160759,
+      "installsSource": "skills.sh structured data",
+      "lastCheckedAt": "2026-10-18T14:34:14+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "浏览器可能接触账号、Cookie、表单和敏感页面。应使用独立会话、限制目标站点，不在命令行暴露密码，并对提交、发送、购买和删除等操作保留人工确认。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": ["Codex", "Claude Code", "Cursor", "GitHub Copilot", "OpenCode"],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个普通浏览器或独立的录制软件，而是让兼容 AI 工具通过命令控制 Chrome/Chromium 的工作方法。AI 先读取页面上的按钮、输入框和链接，再使用稳定的元素编号执行操作；页面变化后重新读取。它可以处理导航、表单、截图、数据提取、多个标签页和网页测试，也能保存受控会话。但能力越强，越需要明确站点范围、账号处理方式和哪些操作必须由人确认。",
+      "workflow": [
+        "在电脑上安装 agent-browser CLI 和浏览器组件，并让 AI 读取与当前 CLI 版本匹配的核心指南。",
+        "说明目标网站、任务范围、允许访问的数据以及不得执行的操作。",
+        "为本次任务使用独立浏览器会话，必要时限制允许访问的站点。",
+        "AI 打开页面并读取可交互元素，再按元素编号进行点击、输入或选择。",
+        "每次导航或页面状态变化后重新读取页面，并等待明确的文字、元素或地址变化。",
+        "按任务保存截图、提取数据或整理测试问题，完成后关闭会话并检查敏感信息。"
+      ],
+      "requirements": [
+        "先安装 Skill，再另外执行 `npm i -g agent-browser` 和 `agent-browser install`；Linux 环境可能还要安装浏览器系统依赖。",
+        "需要 Node.js/npm、受支持的 Chrome/Chromium 环境和运行命令的权限。",
+        "首次执行前需通过 CLI 读取 `agent-browser skills get core`，以获得与版本一致的说明。",
+        "涉及登录时应使用安全的凭据方式或由用户完成登录，不能把密码直接写进公开命令或文档。",
+        "来源明确列出 Codex 等多个 AI 工具，但具体主机、系统和浏览器组合仍需实际验证。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：你有一个本地测试网站，希望检查注册、登录和退出流程，但不想手工重复点击。本示例没有真实启动浏览器或执行测试。",
+      "steps": [
+        "提供本地测试地址、测试账号使用规则和允许执行的操作范围。",
+        "AI 建立独立会话，打开注册页并读取可交互元素。",
+        "按流程填写测试数据；每次页面变化后重新读取并等待预期状态。",
+        "遇到错误时记录当前地址、可见提示和截图，不自行尝试超出授权的修复。",
+        "完成登录与退出检查后，整理成功步骤、失败步骤和证据文件。"
+      ],
+      "expectedFiles": [
+        "页面截图或带标注的截图",
+        "测试步骤与成功、失败状态清单",
+        "按任务提取的结构化数据；具体格式由请求决定"
+      ],
+      "notes": "这是演示性、未经实测的示例。网站结构、验证码、登录策略、网络状态和浏览器版本都会影响结果；任何真实账号或有后果的提交操作都需要额外确认。"
+    },
+    "categoryId": "automation",
+    "subcategoryId": "task-automation",
+    "audiences": ["开发者", "测试人员", "办公用户"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["使用页面快照和元素编号操作", "支持表单、截图、数据提取、标签页和网页测试", "需要额外安装 CLI 与浏览器组件", "来源明确列出 Codex 等 AI 工具"],
+      "reasonableInferences": ["适合重复网页操作和回归检查", "有后果的网页操作需要比普通读取更严格的确认"],
+      "untestedClaims": ["本地网站登录示例未实际运行", "未验证当前 Windows 环境中的 CLI 和浏览器组件"]
+    }
+  },
+  {
+    "id": "mattpocock/skills/grill-me",
+    "name": "grill-me",
+    "nameZh": "想法追问与决策梳理",
+    "category": "效率自动化",
+    "summaryZh": "让 AI 分轮追问你的想法、计划或设计，帮助在动手前暴露遗漏和未决问题。",
+    "explanationZh": "它不会直接替你生成最终方案，而是调用配套的 grilling Skill，把一个模糊想法拆成有前后依赖的决策树。AI 每轮只询问当前已经具备前提的问题，并给出推荐答案；你回答后，它再继续展开下一层，直到没有隐藏假设。",
+    "audience": "准备做产品、设计、写作或技术方案，希望在投入执行前系统检查决策是否完整的学生、产品经理和开发者。",
+    "scenarios": [
+      "在写 PRD 或开发前梳理模糊想法",
+      "压力测试产品、设计或技术方案",
+      "找出依赖其他决定才能回答的隐藏问题"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：我想做一个面向大学生的实习信息整理工具。请先追问我，帮我把目标用户、核心问题、数据来源、隐私边界和第一版范围想清楚；每轮问题都给出你的推荐答案，但不要开始开发。",
+    "outputExample": "可能得到多轮问题、AI 的推荐答案和你逐步确认的决策；它不会自动生成或执行最终项目。",
+    "boundaries": [
+      "`grill-me` 本身只是调用 `grilling` 的入口，单独安装时可能因缺少依赖而无法按原设计工作",
+      "AI 负责查找环境中的事实，用户负责做取舍；它不会替用户承担产品、法律或商业决策",
+      "原流程会等待用户逐轮回答，不适合要求一次性立即输出完整方案",
+      "会话结束条件是所有当前决策分支已讨论完，并由用户确认达到共同理解",
+      "本条目的实习工具示例尚未实际运行"
+    ],
+    "tags": ["需求澄清", "决策", "产品思考"],
+    "keywords": ["grill me", "追问", "压力测试", "想法梳理", "决策树", "需求澄清", "challenge plan"],
+    "sourceUrl": "https://www.skills.sh/mattpocock/skills/grill-me",
+    "repositoryUrl": "https://github.com/mattpocock/skills",
+    "stats": {
+      "githubStars": 295340,
+      "githubRepo": "mattpocock/skills",
+      "installs": 1380060,
+      "installsSource": "skills.sh structured data",
+      "lastCheckedAt": "2026-10-18T14:34:14+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/mattpocock/skills --skill grill-me",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "会话可能涉及未公开的产品或业务信息；不应提供密码、密钥或不必要的个人数据。其建议是决策辅助，不代替专业意见。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个独立的规划软件，而是一套给兼容 AI 工具使用的深度追问方法。`grill-me` 只是入口，真正的流程由同仓库的 `grilling` Skill 提供。AI 会把想法画成由前置决定和后续决定组成的树，每轮询问当前已经可以回答的问题，并附上推荐选择；你回答后再展开下一层。它的目标是在行动前形成共同理解，不是替你迅速写出一个看似完整的计划。",
+      "workflow": [
+        "提供一个值得认真讨论但尚未完全想清楚的想法、计划或设计。",
+        "AI 将问题拆成有依赖关系的决策树，区分当前可以回答和必须等待的问题。",
+        "每一轮列出当前可以决定的问题，并为每个问题给出推荐答案。",
+        "你接受、修改或拒绝推荐，并补充只有你能决定的目标与取舍。",
+        "AI 根据回答重新计算下一轮问题；能从文件或环境中查到的事实由 AI 自行核对。",
+        "当所有分支都已讨论、没有隐藏假设时，由你确认达到共同理解，再决定是否进入规划或执行。"
+      ],
+      "requirements": [
+        "需要通过能够加载 Skill 的 AI 工具使用；安装后不会出现独立桌面应用。",
+        "必须同时具备 `grilling` 依赖；仓库维护者已确认只安装 `grill-me` 可能无法独立工作。",
+        "适合在尚未形成完整方案时使用；如果方案已经确定，持续追问的收益会较低。",
+        "需要用户参与多轮回答，不能在用户离线时替用户做完所有主观决策。",
+        "涉及敏感项目时，应先限定可读取的文件和可以讨论的信息范围。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：你有一个“大学生实习信息整理工具”的初步想法，但还没确定核心用户、数据来源和第一版范围。本示例没有实际开展追问会话。",
+      "steps": [
+        "告诉 AI 当前想法，并明确只做追问和决策梳理，不开始开发。",
+        "AI 第一轮询问已经可以决定的上层问题，例如目标用户和最重要的问题，并附推荐答案。",
+        "你回答后，AI 才继续询问依赖这些答案的数据来源、隐私边界和第一版功能。",
+        "AI 从你提供的项目资料中自行核对能查到的事实，不把检索工作推给你。",
+        "所有分支讨论完后，由你确认结论，再把这些决定交给后续 PRD 或开发流程。"
+      ],
+      "expectedFiles": [
+        "原 Skill 没有规定固定文件产物；主要结果是多轮问答中逐步确认的决策",
+        "如需 PRD、决策记录或任务清单，应在会话结束后另行明确要求"
+      ],
+      "notes": "这是演示性、未经实测的示例。追问质量取决于初始背景、AI 能读取的资料和用户是否真实做出取舍；推荐答案不等于已经验证的产品结论。"
+    },
+    "categoryId": "automation",
+    "subcategoryId": "workflow",
+    "audiences": ["大学生", "产品经理", "开发者"],
+    "collections": ["student-essential"],
+    "reviewEvidence": {
+      "sourceFacts": ["grill-me 只调用 grilling", "grilling 按决策树和问题前沿分轮追问", "每个问题附推荐答案", "未讨论完前不进入行动"],
+      "reasonableInferences": ["适合 PRD 或开发前的需求澄清", "主要产物是决策而非固定文件"],
+      "untestedClaims": ["大学生实习工具示例未实际运行", "未验证依赖组合在 Codex 中的行为"]
+    }
+  }
+]

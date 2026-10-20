@@ -1,0 +1,369 @@
+{
+  "schemaVersion": "student-candidate-audit-v1",
+  "generatedAt": "2026-10-18T05:20:27Z",
+  "publicationStatus": "staging-only",
+  "notes": [
+    "本文件是专项候选审核数据，不是 data/skills.json 的直接导入包。",
+    "所有使用示例均为演示性示例，尚未实际运行验证。",
+    "GitHub Stars 是仓库级数据，不代表单个 Skill 的质量或安全性。",
+    "平台可安装不等于完整工作流已经在该平台实测通过。"
+  ],
+  "candidates": [
+    {
+      "id": "microsoft/cat-agent-skills/study-flashcards",
+      "name": "study-flashcards",
+      "nameZh": "复习卡片与小测验",
+      "status": "candidate",
+      "category": "课程学习",
+      "recommendationRank": 1,
+      "priority": "P0-pilot",
+      "summaryZh": "把课件、笔记或 PDF 变成有出处的复习卡片和小测验，并可生成浏览器里直接打开的互动复习页。",
+      "audience": "需要准备期中期末、证书考试或课堂测验的大学生。",
+      "scenarios": [
+        "根据一章课件整理重点并制作知识卡片",
+        "根据课堂笔记生成选择题、判断题和简答题",
+        "把复习资料做成可离线打开的互动 HTML 页面"
+      ],
+      "inputExample": "演示性示例，尚未实际运行验证：根据我上传的《管理学》第 3 章课件，制作 20 张知识卡片和 15 道复习题；每条答案标注对应页码，不要补充课件之外的知识。",
+      "outputExample": "可能得到按主题分组的卡片、题目与独立答案，以及一个可在浏览器打开的 HTML 复习页；实际效果取决于源文件能否被当前 AI 工具读取。",
+      "detailZh": {
+        "overview": "这是给兼容 AI 工具使用的一套学习资料处理方法，不是独立的背单词软件。它要求 AI 只依据用户提供的课件、笔记、文档、PDF 或网页内容提取知识点，再制作一题一知识点的卡片和带答案出处的练习题。默认的互动版会保存为单个 HTML 文件，也可按要求改成 Word、PDF、Markdown 或聊天文本。",
+        "coreCapabilities": [
+          "从指定资料中提取术语、定义、公式、日期、因果关系和步骤",
+          "按原资料章节分组制作约 10 至 30 张卡片，不为凑数量填充内容",
+          "混合生成选择题、判断题和少量简答题，并把答案单独放置",
+          "为卡片和答案保留页码、幻灯片编号或标题等来源位置",
+          "将卡片和测验填入自带模板，生成带翻卡、复习节奏和进度显示的单文件 HTML"
+        ],
+        "suitableScenarios": [
+          "一门课结束后把讲义整理成期末复习材料",
+          "从认证考试资料中制作自测题",
+          "把会议笔记或培训材料转成记忆卡片"
+        ],
+        "workflow": [
+          "确认要使用的文件、章节和复习范围；没有源资料时先向用户索取。",
+          "把材料拆成可核对的单一知识点，并记录每个知识点的来源位置。",
+          "先制作简短卡片，再生成难度混合、答案分离的练习题。",
+          "按用户选择输出互动 HTML、可打印文档或聊天文本。",
+          "若环境支持预览，检查翻卡、随机顺序、测验提交、计分和进度保存。"
+        ],
+        "requirements": [
+          "必须提供可读取的课件、笔记、PDF、文档、文本或网页内容。",
+          "生成互动版时需要 Skill 包内的 flashcard-quiz-app.html 模板和写文件能力。",
+          "HTML 本身无需服务器、联网或额外安装，现代浏览器即可打开。",
+          "来源页面仅确认 Cowork、Copilot Studio、Scout；Codex 尚未完成兼容性验证。"
+        ],
+        "usageSteps": [
+          "在已确认支持该 Skill 的 AI 工具中添加 Skill 包。",
+          "上传资料并说明课程、章节、题量、题型和希望的输出格式。",
+          "要求答案标注来源，并明确不要加入资料外内容。",
+          "打开生成文件抽查事实、页码和题目答案，再开始复习。"
+        ],
+        "expectedArtifacts": [
+          "复习卡片列表",
+          "练习题与独立答案",
+          "默认情况下为一个自包含的 .html 互动复习页"
+        ],
+        "technicalNotes": [
+          "互动模板把用户资料当作不可信文本处理，并要求在写入脚本前进行 JSON 序列化和字符转义。",
+          "浏览器允许本地存储时可记住进度；受限预览环境中可能无法保留进度。"
+        ]
+      },
+      "boundaries": [
+        "不用于没有源资料的常识问答或随意出题",
+        "不负责作文评分、开放式辅导或完整课程设计",
+        "来源内容错误或过时时，输出也会沿用来源，并应提示冲突",
+        "当前没有在 Codex 中实际安装和运行的验证结果"
+      ],
+      "sourceUrl": "https://microsoft.github.io/cat-agent-skills/skills/study-flashcards/",
+      "repositoryUrl": "https://github.com/microsoft/cat-agent-skills",
+      "skillFileUrl": "https://github.com/microsoft/cat-agent-skills/blob/main/submissions/study-flashcards/SKILL.md",
+      "install": {
+        "method": "从官方候选页下载 Skill bundle，再添加到页面列出的支持平台",
+        "command": null,
+        "barrier": "medium-high",
+        "notes": "官方页面没有给出 Codex 安装命令；不要用通用安装命令替代兼容性验证。"
+      },
+      "compatibility": {
+        "confirmedPlatforms": ["Cowork", "Copilot Studio", "Scout"],
+        "codex": "unverified",
+        "notes": "SKILL.md 使用通用 Markdown 指令，但互动模板、文件返回方式和工具名称仍需在 Codex 中实测。"
+      },
+      "runtimeRequirements": ["能读取用户资料的 AI 工具", "写文件能力", "现代网页浏览器"],
+      "license": {
+        "status": "confirmed-repository",
+        "value": "MIT",
+        "source": "https://github.com/microsoft/cat-agent-skills/blob/main/LICENSE"
+      },
+      "securityRisks": [
+        "课件或笔记可能含个人信息，上传前应先检查内容和平台数据政策。",
+        "生成的 HTML 会嵌入用户资料；对外分享前需要确认其中没有敏感信息。",
+        "本轮只做了源码静态核查，没有执行模板或进行行为测试。"
+      ],
+      "stats": {
+        "githubStars": 88,
+        "githubRepo": "microsoft/cat-agent-skills",
+        "installs": null,
+        "installsSource": null,
+        "lastCheckedAt": "2026-10-18T05:20:27Z"
+      },
+      "evidence": {
+        "sourceFacts": [
+          "原文要求所有卡片和题目严格基于用户给定资料，并保留来源位置。",
+          "默认互动产物是无需服务器的单个 HTML 文件。",
+          "官方候选页列出的平台是 Cowork、Copilot Studio、Scout。"
+        ],
+        "reasonableInferences": [
+          "对有现成课件、需要短期复习的大学生具有较高使用频率。",
+          "如果 Codex 能正确读取资源模板和输出 HTML，该工作流可能可以移植，但尚未验证。"
+        ],
+        "exampleStatus": "illustrative-untested"
+      }
+    },
+    {
+      "id": "github/awesome-copilot/excalidraw-diagram-generator",
+      "name": "excalidraw-diagram-generator",
+      "nameZh": "流程图与思维导图",
+      "status": "candidate",
+      "category": "文档作业",
+      "recommendationRank": 2,
+      "priority": "P0",
+      "summaryZh": "把文字描述转换成可继续编辑的流程图、思维导图、架构图或数据关系图。",
+      "audience": "需要为课程作业、项目答辩或编程设计画图的学生。",
+      "scenarios": ["把知识点整理成思维导图", "绘制实验或业务流程", "制作系统架构、时序或数据库关系图"],
+      "inputExample": "演示性示例，尚未实际运行验证：把 TCP 建立连接和断开连接的过程画成两张简洁流程图，标出客户端、服务器和每次状态变化。",
+      "outputExample": "可能得到可在 Excalidraw 网站或相关编辑器中打开的 .excalidraw 文件，以及图形数量和打开方法说明。",
+      "detailZh": {
+        "overview": "这个 Skill 让 AI 先从文字中识别步骤、角色、实体和关系，再生成 Excalidraw 使用的可编辑图表文件。它不是一个新的绘图软件；用户仍要用 Excalidraw 网页或支持该格式的编辑器打开、检查和微调成图。",
+        "coreCapabilities": ["生成流程图、关系图、思维导图和系统架构图", "支持数据流图、泳道图、类图、时序图和 ER 图", "输出标准 .excalidraw JSON 文件", "可选使用用户提供的 Excalidraw 图标库和附带 Python 工具"],
+        "suitableScenarios": ["课程知识梳理", "小组项目流程说明", "软件工程设计与数据库建模"],
+        "workflow": ["判断图表类型和复杂度。", "提取关键元素及它们之间的关系。", "按模板和布局规则生成图形与连线。", "检查 ID、坐标、文字、颜色和 JSON 格式。", "保存文件并提示用户用 Excalidraw 打开。"],
+        "requirements": ["需要清楚描述要展示的元素和关系。", "基础图形只需写入 JSON 文件；使用附带图标工具时需要 Python。", "查看和编辑结果需要 Excalidraw 网页或兼容编辑器。", "GitHub 官方仓库主要面向 GitHub Copilot；在 Codex 中可通过通用 Skills CLI 安装，但本候选尚未进行端到端实测。"],
+        "usageSteps": ["安装 Skill。", "说明要画什么、图表类型、包含哪些节点及关系。", "让 AI 输出 .excalidraw 文件。", "在 Excalidraw 中打开并检查重叠、连线和文字。"],
+        "expectedArtifacts": ["一个或多个 .excalidraw 文件", "图表类型与元素数量摘要", "打开和继续编辑的说明"],
+        "technicalNotes": ["附带模板、格式说明和 3 个 Python 辅助脚本。", "静态扫描发现脚本会读取和改写图表或图标库文件，未发现网络请求或外部命令执行；本轮未运行脚本。"]
+      },
+      "boundaries": ["复杂曲线、嵌入图片和自动避让能力有限", "原文建议一张图少于约 20 个元素", "不会判断课程知识或系统设计本身是否正确", "生成后仍需人工检查布局和关系"],
+      "sourceUrl": "https://skills.sh/github/awesome-copilot/excalidraw-diagram-generator",
+      "repositoryUrl": "https://github.com/github/awesome-copilot",
+      "skillFileUrl": "https://github.com/github/awesome-copilot/blob/main/skills/excalidraw-diagram-generator/SKILL.md",
+      "install": {"method": "Skills CLI 或 GitHub Skills CLI", "command": "npx skills add https://github.com/github/awesome-copilot --skill excalidraw-diagram-generator", "barrier": "medium", "notes": "需要 Node.js/npm；使用图标辅助脚本时还需要 Python。"},
+      "compatibility": {"confirmedPlatforms": ["GitHub Copilot"], "codex": "installable-unverified", "notes": "Vercel Skills CLI 支持把基础 Skill 安装到 Codex，但本 Skill 的文件生成和脚本流程尚未在 Codex 实测。"},
+      "runtimeRequirements": ["Node.js/npm（使用 Skills CLI 时）", "文件读写", "Python（仅图标辅助功能）", "Excalidraw 网页或兼容编辑器"],
+      "license": {"status": "confirmed-repository", "value": "MIT", "source": "https://github.com/github/awesome-copilot/blob/main/LICENSE"},
+      "securityRisks": ["附带脚本会改写指定的 .excalidraw 文件，运行前应备份。", "第三方 .excalidrawlib 图标库需要单独核对来源和许可。", "图中可能包含项目架构或个人信息，上传到在线编辑器前应检查。"],
+      "stats": {"githubStars": 40138, "githubRepo": "github/awesome-copilot", "installs": 31363, "installsSource": "skills.sh structured data", "lastCheckedAt": "2026-10-18T05:20:27Z"},
+      "evidence": {"sourceFacts": ["原始 Skill 列出 9 类图表并要求输出 .excalidraw JSON。", "仓库提供模板、格式参考和 Python 辅助脚本。"], "reasonableInferences": ["对需要做课程图解或项目答辩的学生较容易理解和展示。", "基础图形生成比带第三方图标库的方案安装门槛低。"], "exampleStatus": "illustrative-untested"}
+    },
+    {
+      "id": "trainwithshubham/skills/resume-review",
+      "name": "resume-review",
+      "nameZh": "实习简历检查",
+      "status": "candidate",
+      "category": "求职就业",
+      "recommendationRank": 3,
+      "priority": "P0-with-warning",
+      "summaryZh": "根据简历 PDF 和目标岗位说明，找出表达、关键词和版式问题，并给出可直接修改的建议。",
+      "audience": "准备投递实习、校招或技术岗位的学生和职场新人。",
+      "scenarios": ["投递前检查一页简历", "对照岗位说明补充关键词", "把模糊的经历描述改成更具体的成果表达"],
+      "inputExample": "演示性示例，尚未实际运行验证：这是我的产品经理实习简历 PDF 和目标岗位 JD。请先指出最影响筛选的 3 个问题，再改写两条项目经历；不要虚构我没有做过的成果。",
+      "outputExample": "可能得到启发式 ATS 分数、优缺点、岗位关键词差距、修改优先级和经历改写示例；分数不代表真实招聘系统结果。",
+      "detailZh": {
+        "overview": "这个 Skill 用一套固定量表模拟招聘人员和简历筛选系统的检查思路，重点查看 PDF 是否容易解析、关键词是否匹配岗位、经历是否体现影响、结构是否合适。它能帮助用户发现问题和改写文字，但不能访问真实公司的 ATS，也不能预测是否获得面试。",
+        "coreCapabilities": ["按五个维度给出 0 至 100 的启发式评分", "区分应届、初中级和资深候选人的侧重点", "对照岗位说明检查已有、缺失和位置不显眼的关键词", "找出 3 至 5 条薄弱经历并给出前后对照改写", "输出明确的修改优先级和下一步建议"],
+        "suitableScenarios": ["首次准备实习简历", "同一份简历针对不同岗位做调整", "技术类简历的 ATS 可读性检查"],
+        "workflow": ["取得文字可读取的简历 PDF 和目标岗位说明。", "判断候选人阶段与目标市场。", "按量表检查解析性、关键词、影响力、结构和联系方式。", "列出主要问题并重写最值得改进的经历。", "给出模拟结论，同时说明不确定性。"],
+        "requirements": ["必须提供文字型 PDF 简历；扫描图片型简历不适合。", "需要提供目标岗位 JD 才能完成关键词匹配。", "通用 Skills CLI 安装需要 Node.js/npm。", "原仓库示例面向 Claude，Codex 中的 PDF 读取和触发行为尚未实测。"],
+        "usageSteps": ["安装 Skill。", "上传简历 PDF，并粘贴或链接岗位说明。", "说明目标地区和岗位类型。", "逐条核对建议，只采用符合真实经历的改写。"],
+        "expectedArtifacts": ["Markdown 格式的简历检查报告", "评分分解与关键词差距", "经历描述的前后对照改写"],
+        "technicalNotes": ["DevOps、SRE、云和基础设施岗位规则最完整。", "评分规则和市场判断来自作者的自定义方法，不是招聘平台官方标准。"]
+      },
+      "boundaries": ["ATS 分数、JD 匹配比例和招聘结论都只是启发式模拟", "不能保证通过简历筛选或获得面试", "不能为了匹配岗位添加不存在的技能和成果", "对非技术岗位的规则覆盖可能较弱"],
+      "sourceUrl": "https://skills.sh/trainwithshubham/skills/resume-review",
+      "repositoryUrl": "https://github.com/TrainWithShubham/skills",
+      "skillFileUrl": "https://github.com/TrainWithShubham/skills/blob/main/skills/resume-review/SKILL.md",
+      "install": {"method": "Skills CLI", "command": "npx skills add https://github.com/trainwithshubham/skills --skill resume-review", "barrier": "medium", "notes": "需要 Node.js/npm，并需要当前 AI 工具能读取 PDF。"},
+      "compatibility": {"confirmedPlatforms": ["Claude（仓库示例）"], "codex": "installable-unverified", "notes": "Skills CLI 支持 Codex，但原文使用 Claude 的工具表述，本候选未完成 Codex 运行验证。"},
+      "runtimeRequirements": ["文字型 PDF 读取能力", "目标岗位说明", "Node.js/npm（使用 Skills CLI 时）"],
+      "license": {"status": "confirmed-repository", "value": "MIT", "source": "https://github.com/TrainWithShubham/skills/blob/main/LICENSE"},
+      "securityRisks": ["简历含姓名、电话、邮箱和经历等敏感个人信息，上传前必须确认平台政策。", "报告中的评分和市场判断可能造成误导，需要显著标注为模拟。", "来源仓库规模较小，发布前建议人工复核引用规则和更新记录。"],
+      "stats": {"githubStars": 44, "githubRepo": "TrainWithShubham/skills", "installs": 186, "installsSource": "skills.sh structured data", "lastCheckedAt": "2026-10-18T05:20:27Z"},
+      "evidence": {"sourceFacts": ["原文要求同时提供 PDF 简历和目标岗位说明。", "输出包括五维评分、关键词分析、问题清单和经历改写。"], "reasonableInferences": ["求职季对大学生的使用频率较高。", "产品、设计等非技术岗位仍可获得文字建议，但量表适配度可能低于技术岗位。"], "exampleStatus": "illustrative-untested"}
+    },
+    {
+      "id": "bytedance/deer-flow/academic-paper-review",
+      "name": "academic-paper-review",
+      "nameZh": "单篇论文阅读与评议",
+      "status": "candidate",
+      "category": "论文科研",
+      "recommendationRank": 4,
+      "priority": "P0-research",
+      "summaryZh": "阅读一篇论文，梳理研究问题、方法、贡献、证据和局限，并给出结构化评议。",
+      "audience": "需要读论文、做组会汇报或准备研究选题的高年级本科生和研究生。",
+      "scenarios": ["快速理解一篇陌生论文", "准备论文汇报或读书笔记", "检查一篇研究的实验设计与局限"],
+      "inputExample": "演示性示例，尚未实际运行验证：阅读我上传的 Transformer 论文，先用本科生能懂的语言解释研究问题和核心方法，再列出 3 个贡献、3 个局限，并标注对应章节。",
+      "outputExample": "可能得到论文元数据、摘要、贡献、优缺点、方法评价、作者问题和改进建议组成的 Markdown 报告。",
+      "detailZh": {
+        "overview": "这个 Skill 提供单篇论文的深度阅读与同行评议框架。AI 会先完整理解论文并提取主要主张，再根据论文中的实验、图表和章节检查证据是否足够；必要时通过外部搜索了解相关研究。它比普通摘要更强调批判性评价，因此也更依赖论文全文和可靠检索。",
+        "coreCapabilities": ["提取论文题目、作者、年份、领域和论文类型", "逐项核对主要主张与论文证据", "评价方法、创新性、可复现性、实验设计和统计严谨性", "归纳贡献、优点、缺点及可执行改进建议", "结合外部检索说明论文在相关研究中的位置"],
+        "suitableScenarios": ["课程论文阅读报告", "实验室组会前准备", "投稿前的自查或模拟评审"],
+        "workflow": ["完整读取论文，而不是只看摘要。", "记录论文元数据和核心主张。", "检查方法、实验和结论是否互相支持。", "搜索必要的相关研究进行定位。", "按照固定结构生成评议并披露无法核实的部分。"],
+        "requirements": ["需要可读取的论文 PDF 或公开论文链接。", "文献定位部分需要网页搜索或抓取能力。", "付费墙后的内容只能基于可访问材料。", "原文使用 DeerFlow 的 web_fetch、Read 和 present_files 等工具语义，Codex 兼容性未确认。"],
+        "usageSteps": ["安装到合适的 AI 环境。", "上传论文或提供可访问链接。", "说明是要通俗解读、课堂报告还是同行评议。", "核对章节引用、数字、公式和相关论文来源。"],
+        "expectedArtifacts": ["Markdown 论文评议报告", "简短执行摘要", "方法和贡献评价表"],
+        "technicalNotes": ["原文建议在沙盒中保存为 review-{topic}.md。", "所谓‘顶级会议标准’是作者给出的工作框架，不等于获得真实同行评审资格。"]
+      },
+      "boundaries": ["不能代替领域专家或正式同行评审", "复杂证明、统计结果和实验复现可能无法充分验证", "外部检索质量会影响相关工作定位", "未公开论文涉及保密和知识产权风险"],
+      "sourceUrl": "https://skills.sh/bytedance/deer-flow/academic-paper-review",
+      "repositoryUrl": "https://github.com/bytedance/deer-flow",
+      "skillFileUrl": "https://github.com/bytedance/deer-flow/blob/main/skills/public/academic-paper-review/SKILL.md",
+      "install": {"method": "Skills CLI", "command": "npx skills add https://github.com/bytedance/deer-flow --skill academic-paper-review", "barrier": "medium-high", "notes": "安装容易，但完整流程还要求 PDF 读取、网页检索和文件输出工具。"},
+      "compatibility": {"confirmedPlatforms": ["DeerFlow"], "codex": "unverified", "notes": "SKILL.md 包含 DeerFlow 特定工具和路径语义，不能仅凭标准文件格式宣称 Codex 完整兼容。"},
+      "runtimeRequirements": ["PDF 或网页读取", "网页搜索/抓取", "Markdown 文件输出"],
+      "license": {"status": "confirmed-repository", "value": "MIT", "source": "https://github.com/bytedance/deer-flow/blob/main/LICENSE"},
+      "securityRisks": ["上传未发表论文前需确认保密要求。", "外部检索会把研究主题发送给搜索服务。", "AI 对方法和统计的判断可能出错，必须人工核对。"],
+      "stats": {"githubStars": 84040, "githubRepo": "bytedance/deer-flow", "installs": 2656, "installsSource": "skills.sh structured data", "lastCheckedAt": "2026-10-18T05:20:27Z"},
+      "evidence": {"sourceFacts": ["原文规定了论文理解、批判分析和评议合成三个阶段。", "输出模板包含贡献、优缺点、方法评价和建议。"], "reasonableInferences": ["通俗解释可以作为结构化评议的简化呈现，但原文默认更接近专业评审。"], "exampleStatus": "illustrative-untested"}
+    },
+    {
+      "id": "anthropics/skills/doc-coauthoring",
+      "name": "doc-coauthoring",
+      "nameZh": "结构化写作协作",
+      "status": "previous-candidate",
+      "category": "文档作业",
+      "recommendationRank": 5,
+      "priority": "P1-license-review",
+      "summaryZh": "通过收集背景、分段写作和读者测试，和 AI 一起完成提案、课程报告或需求文档。",
+      "audience": "需要写较长、需要反复修改的课程或项目文档的学生。",
+      "scenarios": ["搭建课程报告结构", "撰写社团项目提案", "共同完成产品需求文档或技术方案"],
+      "inputExample": "演示性示例，尚未实际运行验证：我要写一份校园二手交易平台的产品需求文档，读者是指导老师和开发同学。请先帮我补齐背景和目标，再逐段完成，不要一开始就写完整稿。",
+      "outputExample": "可能得到带章节占位的文档、逐段草稿、修改记录和面向新读者的问题检查结果。",
+      "detailZh": {
+        "overview": "这是一个与 AI 共同写长文档的三阶段流程，不是 Word 编辑器。它先帮助用户把隐含背景讲清楚，再按章节讨论、筛选和修改内容，最后让一个没有对话背景的读者视角检查文档是否存在歧义或信息缺口。",
+        "coreCapabilities": ["通过问题补齐文档类型、读者、目标和限制", "把零散背景整理成章节结构", "逐节进行头脑风暴、筛选、起草和局部修改", "检查重复、矛盾和空泛内容", "用新的 AI 上下文模拟读者提问并发现盲点"],
+        "suitableScenarios": ["课程报告和研究提案", "产品需求文档、决策文档和技术说明", "需要多人阅读理解的项目文档"],
+        "workflow": ["收集文档目标、读者、模板和所有背景资料。", "确定章节结构，并从最不确定的部分开始。", "每个章节依次提问、列选项、筛选、起草和修改。", "通读全文检查连贯性、重复和空话。", "使用全新上下文测试读者能否正确理解。"],
+        "requirements": ["用户需要持续提供背景和反馈，不适合只给一句话就要求成稿。", "创建和局部编辑文件需要 AI 环境具备相应文件工具。", "读取团队资料需要已连接且经授权的外部服务。", "原文大量使用 Claude、Reader Claude、create_file 和 str_replace 的术语，Codex 中需适配。"],
+        "usageSteps": ["说明文档类型、读者、目标、模板和截止时间。", "把现有资料一次性提供或授权读取。", "逐节选择保留、删除和合并的要点。", "完成后进行新读者测试并人工终审。"],
+        "expectedArtifacts": ["Markdown 或平台文档中的章节框架", "逐节完善的完整文档", "读者问题与歧义检查结果"],
+        "technicalNotes": ["当前仓库仅保留 SKILL.md，没有 doc-coauthoring 专属脚本。", "主仓库没有统一许可证，当前 Skill 目录也没有独立 LICENSE 文件。"]
+      },
+      "boundaries": ["不能替用户决定真实目标、立场和事实", "读者测试是 AI 模拟，不等于真实用户测试", "连接器不可用时需要手动粘贴资料", "许可证未明确前不建议把原文打包再分发"],
+      "sourceUrl": "https://skills.sh/anthropics/skills/doc-coauthoring",
+      "repositoryUrl": "https://github.com/anthropics/skills",
+      "skillFileUrl": "https://github.com/anthropics/skills/blob/main/skills/doc-coauthoring/SKILL.md",
+      "install": {"method": "Skills CLI", "command": "npx skills add https://github.com/anthropics/skills --skill doc-coauthoring", "barrier": "medium-high", "notes": "基础指令可安装，但外部连接、文档工具和子代理能力决定完整流程是否可用。"},
+      "compatibility": {"confirmedPlatforms": ["Claude 环境（原文）"], "codex": "adaptation-required", "notes": "工作流概念可移植，但工具名和 Reader Claude 流程不是 Codex 原生契约。"},
+      "runtimeRequirements": ["文档创建与局部编辑能力", "可选的共享文档/消息连接器", "可选的新上下文或子代理能力"],
+      "license": {"status": "not-found-for-skill", "value": null, "source": "当前仓库根目录和 skills/doc-coauthoring 目录均未发现适用许可证文件"},
+      "securityRisks": ["可能读取团队频道、共享文档和组织背景，应遵守最小权限原则。", "未经确认不应主动搜索未知项目或人员资料。", "读者测试可能把完整文档复制到另一个模型上下文。"],
+      "stats": {"githubStars": 181825, "githubRepo": "anthropics/skills", "installs": 91753, "installsSource": "skills.sh structured data", "lastCheckedAt": "2026-10-18T05:20:27Z"},
+      "evidence": {"sourceFacts": ["原文明确分为背景收集、结构与修改、读者测试三个阶段。", "原文允许用户拒绝结构化流程并改为自由写作。"], "reasonableInferences": ["适合跨专业的长文档任务，但交互轮次较多。"], "exampleStatus": "illustrative-untested"}
+    },
+    {
+      "id": "obra/superpowers/systematic-debugging",
+      "name": "systematic-debugging",
+      "nameZh": "编程报错排查",
+      "status": "candidate",
+      "category": "编程开发",
+      "recommendationRank": 6,
+      "priority": "P1",
+      "summaryZh": "让 AI 先复现问题、收集证据和验证原因，再修改代码，减少反复猜错。",
+      "audience": "学习编程、做课程项目或参加开发实践的学生。",
+      "scenarios": ["排查测试失败", "定位项目启动或构建错误", "分析偶发问题和性能异常"],
+      "inputExample": "演示性示例，尚未实际运行验证：我的 Python 项目运行测试时出现 KeyError。请先帮我稳定复现并追踪错误值从哪里产生，确认根因后再提出最小修改。",
+      "outputExample": "可能得到复现步骤、证据记录、单一根因假设、最小验证实验、修复与回归测试结果。",
+      "detailZh": {
+        "overview": "这个 Skill 不是自动修复软件，而是一套要求 AI ‘先找根因、后改代码’的调试流程。它把排错分成根因调查、模式比较、假设测试和修复验证四个阶段，尤其适合已经尝试多次仍未解决的问题。",
+        "coreCapabilities": ["阅读错误信息并建立稳定复现", "检查近期代码、依赖和配置变化", "沿调用链或组件边界收集证据", "一次只验证一个明确假设", "先建立失败测试，再做单一修复并运行回归验证"],
+        "suitableScenarios": ["课程项目报错", "自动化测试失败", "多组件系统的构建、集成和性能问题"],
+        "workflow": ["读取完整错误并稳定复现。", "检查近期变化并定位问题出现在哪一层。", "比较正常与异常案例，列出差异。", "提出一个可证伪的根因假设并做最小实验。", "建立失败测试、修复根因并确认没有破坏其他功能。"],
+        "requirements": ["需要能够查看代码、错误日志和测试结果。", "修复阶段通常需要运行项目测试。", "完整 Superpowers 流程还会调用测试驱动开发和完成前验证等配套 Skill。", "官方仓库明确提供 Codex App 与 Codex CLI 插件安装方式。"],
+        "usageSteps": ["在 Codex 插件市场安装 Superpowers，或按支持平台的官方方式安装。", "提供报错、复现步骤、项目环境和最近变更。", "允许 AI 先做只读检查和最小验证，不要要求立即猜修复。", "审查修改并运行完整测试。"],
+        "expectedArtifacts": ["根因和证据说明", "最小失败测试或复现脚本", "针对根因的代码修改与测试结果"],
+        "technicalNotes": ["目录包含 Bash 测试定位脚本，会逐个运行 npm test；Windows 可能需要 Bash 环境。", "当前 SKILL.md 的环境变量示例只检查是否存在，不输出密钥值。"]
+      },
+      "boundaries": ["不能在缺少复现和证据时保证找到根因", "运行测试和修改代码可能消耗时间或改变项目状态", "第三次以上失败修复应停止并讨论架构，而不是继续试错", "只适合技术问题，不适合一般学习答疑"],
+      "sourceUrl": "https://skills.sh/obra/superpowers/systematic-debugging",
+      "repositoryUrl": "https://github.com/obra/superpowers",
+      "skillFileUrl": "https://github.com/obra/superpowers/blob/main/skills/systematic-debugging/SKILL.md",
+      "install": {"method": "Codex 官方插件市场（推荐）或 Skills CLI", "command": "npx skills add https://github.com/obra/superpowers --skill systematic-debugging", "barrier": "low-medium", "notes": "官方 README 明确提供 Codex App 和 Codex CLI 安装路径；单独安装 Skill 不一定包含完整配套流程。"},
+      "compatibility": {"confirmedPlatforms": ["Codex App", "Codex CLI", "Claude Code", "Cursor", "GitHub Copilot CLI", "Gemini CLI"], "codex": "confirmed-by-source", "notes": "兼容性来自仓库官方 README，不代表本轮已做功能实测。"},
+      "runtimeRequirements": ["项目源码与日志访问", "项目测试环境", "Bash（仅使用 find-polluter.sh 时）"],
+      "license": {"status": "confirmed-repository", "value": "MIT", "source": "https://github.com/obra/superpowers/blob/main/LICENSE"},
+      "securityRisks": ["调试过程可能运行项目测试和修改代码，应仅用于受信任仓库。", "日志和诊断信息可能包含密钥或用户数据，记录时必须脱敏。", "附带 find-polluter.sh 会多次运行 npm test，本轮未执行。"],
+      "stats": {"githubStars": 301295, "githubRepo": "obra/superpowers", "installs": 297525, "installsSource": "skills.sh structured data", "lastCheckedAt": "2026-10-18T05:20:27Z"},
+      "evidence": {"sourceFacts": ["原文规定四阶段调试流程并禁止在根因调查前提出修复。", "仓库 README 明确列出 Codex 安装方式。"], "reasonableInferences": ["对计算机相关专业价值高，但非编程学生使用频率较低。"], "exampleStatus": "illustrative-untested"}
+    },
+    {
+      "id": "vercel-labs/skills/find-skills",
+      "name": "find-skills",
+      "nameZh": "Skill 搜索助手",
+      "status": "existing-catalog",
+      "category": "AI 工具",
+      "recommendationRank": 7,
+      "priority": "P1-existing",
+      "summaryZh": "告诉 AI 你想完成什么，它会搜索候选 Skill，并给出来源、安装方式和使用前检查建议。",
+      "audience": "已经在使用 Codex 等 AI 工具，但不知道需要安装哪个 Skill 的用户。",
+      "scenarios": ["按任务关键词寻找 Skill", "比较候选的来源与热度", "获取安装命令并决定是否安装"],
+      "inputExample": "演示性示例，尚未实际运行验证：帮我找一个能把课程笔记整理成闪卡的 Skill。请优先列出来源明确、支持我当前 AI 工具的候选，并说明安装前需要核对什么。",
+      "outputExample": "可能得到候选名称、用途、安装量、来源、安装命令和详情链接；搜索结果不等于已经通过安全审核。",
+      "detailZh": {
+        "overview": "这个 Skill 自己不会制作 PPT、论文或卡片，而是教 AI 使用 skills.sh 和 Skills CLI 查找其他 Skill。它先弄清用户的领域和具体任务，再搜索、检查来源与热度并展示安装选项。",
+        "coreCapabilities": ["把自然语言需求转换成搜索关键词", "先查看排行榜，再用 npx skills find 搜索", "检查安装量、来源声誉和 GitHub Stars", "展示候选用途、来源、安装命令和链接", "找不到合适 Skill 时说明结果并建议直接完成任务或创建新 Skill"],
+        "suitableScenarios": ["第一次接触 Skill 不知道名称", "为特定编程或文档任务寻找扩展", "比较多个候选后再安装"],
+        "workflow": ["确认领域和具体任务。", "查看 skills.sh 热门候选。", "使用 Skills CLI 搜索更具体的关键词。", "核对来源、安装量、Stars 和说明。", "把候选及风险交给用户选择，获得同意后再安装。"],
+        "requirements": ["需要 Node.js/npm 才能运行 npx skills。", "搜索和安装需要网络访问。", "安装私有仓库可能需要现有 Git 或 GitHub 凭据。", "官方 Skills CLI 明确支持 Codex。"],
+        "usageSteps": ["安装 find-skills。", "直接描述要完成的任务，而不必知道 Skill 名称。", "检查候选来源、许可证、权限和兼容性。", "确认后再执行安装命令。"],
+        "expectedArtifacts": ["候选 Skill 清单", "来源和热度信息", "安装命令与详情链接"],
+        "technicalNotes": ["Skills CLI 会对确认是公开 GitHub 仓库的来源发送匿名使用数据；可用 DISABLE_TELEMETRY 或 DO_NOT_TRACK 关闭。", "安装第三方 Skill 会把文件写入项目或用户级 Skill 目录。"]
+      },
+      "boundaries": ["排名和安装量不能证明安全、准确或适合新手", "不会自动审计所有脚本和权限", "搜索需要网络，结果可能随时间变化", "安装必须由用户明确确认"],
+      "sourceUrl": "https://skills.sh/vercel-labs/skills/find-skills",
+      "repositoryUrl": "https://github.com/vercel-labs/skills",
+      "skillFileUrl": "https://github.com/vercel-labs/skills/blob/main/skills/find-skills/SKILL.md",
+      "install": {"method": "Skills CLI", "command": "npx skills add https://github.com/vercel-labs/skills --skill find-skills", "barrier": "low", "notes": "需要 Node.js/npm；安装时会写入对应 AI 工具的 Skill 目录。"},
+      "compatibility": {"confirmedPlatforms": ["Codex", "Claude Code", "Cursor", "GitHub Copilot", "OpenCode"], "codex": "confirmed-by-source", "notes": "官方 README 将 Codex 列入支持的 Agent 和兼容性表。"},
+      "runtimeRequirements": ["Node.js/npm", "网络访问", "目标 AI 工具的 Skill 目录写权限"],
+      "license": {"status": "confirmed-repository", "value": "MIT", "source": "https://github.com/vercel-labs/skills/blob/main/LICENSE"},
+      "securityRisks": ["可能推荐来源不明或权限过大的第三方 Skill。", "安装命令会从远程仓库下载文件并写入本地目录。", "CLI 默认包含可关闭的匿名遥测，用户应知情。"],
+      "stats": {"githubStars": 35401, "githubRepo": "vercel-labs/skills", "installs": 3907466, "installsSource": "skills.sh structured data", "lastCheckedAt": "2026-10-18T05:20:27Z"},
+      "evidence": {"sourceFacts": ["原文规定先理解需求、搜索、核对质量，再向用户展示安装选项。", "官方 Skills CLI 文档明确列出 Codex 支持。"], "reasonableInferences": ["它适合已经愿意使用 AI 开发工具的学生，不是所有大学生的高频入口。"], "exampleStatus": "illustrative-untested"}
+    },
+    {
+      "id": "bytedance/deer-flow/systematic-literature-review",
+      "name": "systematic-literature-review",
+      "nameZh": "多篇论文综述",
+      "status": "candidate",
+      "category": "论文科研",
+      "recommendationRank": 8,
+      "priority": "P1-specialist",
+      "summaryZh": "围绕一个研究主题搜索并比较多篇 arXiv 论文，整理共同主题、分歧、空白和参考文献。",
+      "audience": "已经确定研究方向、需要做文献综述的研究生或高年级本科生。",
+      "scenarios": ["整理一个方向近年的研究路线", "制作带注释的参考文献清单", "比较多篇论文的方法、结论和局限"],
+      "inputExample": "演示性示例，尚未实际运行验证：围绕‘交通标志识别’检索 10 篇近三年的 arXiv 论文，用 APA 格式整理；比较主要方法、共同结论、分歧和研究空白。",
+      "outputExample": "可能得到带执行摘要、主题综合、逐篇注释和统一参考文献的 Markdown 报告；它只覆盖 arXiv 检索结果。",
+      "detailZh": {
+        "overview": "这个 Skill 面向多篇论文的横向综述，而不是单篇精读。它使用自带脚本只搜索 arXiv，随后要求多个子任务并行提取研究问题、方法、发现和局限，最后归纳主题、共识、分歧与空白，并按 APA、IEEE 或 BibTeX 输出报告。",
+        "coreCapabilities": ["按主题、时间和 arXiv 类别检索最多 50 篇论文", "批量提取论文元数据、研究问题、方法、发现和局限", "跨论文归纳主题、共同结论、分歧和研究空白", "输出 APA、IEEE 或 BibTeX 参考文献", "生成完整 Markdown 文献综述"],
+        "suitableScenarios": ["毕业论文前期选题", "研究方向概览", "小范围注释书目与方法比较"],
+        "workflow": ["确认主题、论文数量、时间范围和引用格式。", "把主题压缩成 2 至 3 个关键词，仅调用一次 arXiv 搜索脚本。", "把论文摘要分批交给子任务提取信息。", "跨论文综合主题、共识、分歧和空白。", "按选定格式保存并展示报告。"],
+        "requirements": ["需要 Python；搜索脚本没有强制第三方依赖，但需要访问 arXiv。", "需要支持子任务/子代理，完整流程对此为硬性要求。", "需要 Markdown 文件写入和文件交付能力。", "固定的 /mnt 路径、task 工具和 present_files 是 DeerFlow 语义，不能直接视为 Codex 已兼容。"],
+        "usageSteps": ["确认当前 AI 环境具备所需工具。", "说明研究主题、论文数量、时间范围、类别和引用格式。", "运行后抽查论文题目、arXiv 链接、日期和引用。", "用学校数据库补充非 arXiv 文献，再人工修订综述。"],
+        "expectedArtifacts": ["Markdown 系统化文献综述", "逐篇论文注释", "APA、IEEE 或 BibTeX 参考文献"],
+        "technicalNotes": ["自带 arxiv_search.py 使用 arXiv 公共 API，优先 requests，不存在时退回 Python 标准库。", "脚本端点使用 http://export.arxiv.org，传输安全性低于 HTTPS；本轮没有运行。"]
+      },
+      "boundaries": ["只检索 arXiv，不覆盖知网、Web of Science、PubMed、Google Scholar 等", "最多 50 篇，超过后应拆分主题", "摘要提取不能替代阅读全文和人工核对", "不能自动保证所谓‘系统综述’满足 PRISMA 或学校方法规范"],
+      "sourceUrl": "https://skills.sh/bytedance/deer-flow/systematic-literature-review",
+      "repositoryUrl": "https://github.com/bytedance/deer-flow",
+      "skillFileUrl": "https://github.com/bytedance/deer-flow/blob/main/skills/public/systematic-literature-review/SKILL.md",
+      "install": {"method": "Skills CLI", "command": "npx skills add https://github.com/bytedance/deer-flow --skill systematic-literature-review", "barrier": "high", "notes": "安装只是第一步；完整流程依赖 Python、arXiv 网络访问、子代理和 DeerFlow 风格工具。"},
+      "compatibility": {"confirmedPlatforms": ["DeerFlow"], "codex": "adaptation-required", "notes": "Codex 虽有多代理能力，但原 Skill 要求的 task 返回格式、固定路径和工具名不同，未经适配不能宣称兼容。"},
+      "runtimeRequirements": ["Python 3", "arXiv 网络访问", "子代理/子任务能力", "Markdown 文件写入"],
+      "license": {"status": "confirmed-repository", "value": "MIT", "source": "https://github.com/bytedance/deer-flow/blob/main/LICENSE"},
+      "securityRisks": ["研究主题会发送到 arXiv 公共接口。", "脚本使用 HTTP 端点，存在传输被篡改的理论风险。", "自动生成的论文元数据、主题和引用可能出错，必须逐项核对。"],
+      "stats": {"githubStars": 84040, "githubRepo": "bytedance/deer-flow", "installs": 2418, "installsSource": "skills.sh structured data", "lastCheckedAt": "2026-10-18T05:20:27Z"},
+      "evidence": {"sourceFacts": ["原文限定 arXiv、最多 50 篇，并要求子代理并行提取。", "原文要求综合主题而不是逐篇简单罗列。"], "reasonableInferences": ["更适合研究阶段明确的学生，不是普通课程学习的高频入口。"], "exampleStatus": "illustrative-untested"}
+    }
+  ]
+}

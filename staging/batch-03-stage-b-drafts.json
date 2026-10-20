@@ -1,0 +1,436 @@
+[
+  {
+    "id": "open.feishu.cn/lark-markdown",
+    "name": "lark-markdown",
+    "nameZh": "飞书 Markdown 文件助手",
+    "category": "文档办公",
+    "summaryZh": "让 AI 在授权后读取、创建、比较或更新飞书云盘里的 Markdown 文件，适合维护 README、课程笔记和协作草稿。",
+    "explanationZh": "它通过飞书提供的命令行工具处理云端原生 Markdown 文件。你可以让 AI 新建文件、获取内容、比较两个版本，或只替换指定文字；写入后应重新获取或比较，确认没有误改其他部分。",
+    "audience": "已经使用飞书云盘，希望让 AI 协助维护远端 Markdown 文档，并能够完成账号授权的学生、团队成员和开发者。",
+    "scenarios": [
+      "在飞书云盘新建 README 或课程笔记",
+      "比较远端文档与本地草稿的差异",
+      "只更新文档中的指定段落并复核结果"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：请比较飞书云盘里的项目 README 与本地 README.md，先总结差异；我确认后，只更新“提交截止时间”这一处，并重新获取文件检查结果。",
+    "outputExample": "可能得到版本差异摘要、更新后的云端文件标识和写后复核结果；实际操作需要飞书登录、文件权限和网络连接。",
+    "boundaries": [
+      "它处理飞书云盘中作为普通文件保存的原生 Markdown，不负责飞书云文档 Docx，也不是单纯的本地文件编辑器",
+      "创建的文件名必须带 .md 后缀；搜索、移动、删除、分享设置和评论应使用其他飞书能力",
+      "局部替换的实际流程是下载、在本地替换、再整篇覆盖，并非原子操作；多人同时编辑时可能覆盖新变化",
+      "整篇覆盖会替换远端全部内容，执行前必须确认目标和版本，写后应重新读取或比较",
+      "本条目的 README 示例未在真实飞书账号中实际运行"
+    ],
+    "tags": ["飞书", "Markdown", "版本比较"],
+    "keywords": ["lark markdown", "飞书 Markdown", "README", "云盘文件", "diff", "文档更新"],
+    "sourceUrl": "https://www.skills.sh/site/open.feishu.cn/lark-markdown",
+    "repositoryUrl": "https://open.feishu.cn/",
+    "stats": {
+      "githubStars": null,
+      "githubRepo": "open.feishu.cn/well-known",
+      "installs": null,
+      "installsSource": "skills.sh（页面仅显示四舍五入值，未写入精确数）",
+      "lastCheckedAt": "2026-10-18T19:30:00+08:00"
+    },
+    "installCommand": "npx skills add https://open.feishu.cn/ --skill lark-markdown",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "会访问并可能覆盖云端文件。应使用最小权限，修改前确认文件标识与当前版本；多人协作时先重新获取最新内容，避免覆盖他人的更新。不要把账号凭据写入文档或对话。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "provider-published",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个独立的 Markdown 编辑软件，而是一套让兼容 AI 工具通过飞书官方能力处理云端 Markdown 文件的方法。完成登录与授权后，AI 可以创建或读取文件、比较远端版本或远端与本地草稿的差异，也可以按明确文字做小范围替换。由于局部替换最终仍会覆盖整篇远端内容，原流程强调先取最新版本、先看差异、得到确认后再写入并复核。",
+      "workflow": [
+        "提供飞书 Markdown 文件链接或标识，说明要创建、读取、比较还是更新。",
+        "AI 检查 lark-cli、共享说明、登录身份和目标文件权限。",
+        "修改前获取最新远端内容；如有本地草稿，先比较并展示差异。",
+        "你确认目标文字和影响范围后，AI 执行局部替换或整篇覆盖。",
+        "AI 重新获取文件或再次比较，确认目标已更新且其他内容未被意外改变。",
+        "返回文件标识、版本信息和复核摘要；移动、分享或评论交给相应的飞书能力。"
+      ],
+      "requirements": [
+        "需要安装并可运行 lark-cli，同时具备 lark-shared 的共享说明。",
+        "需要联网、飞书账号登录，以及目标云盘文件的读取或编辑权限；通常以用户身份操作。",
+        "目标必须是飞书云盘中保存的原生 Markdown 文件，文件名必须带 .md 后缀。",
+        "组织管理员可能需要批准应用权限，实际范围取决于租户和账号配置。",
+        "安装 Skill 不会新增独立桌面应用，也不会自动同步本地文件夹。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：小组把项目 README 存在飞书云盘，本地也有一个新草稿。你想先看差异，再只更新提交截止时间。本示例未连接真实飞书账号。",
+      "steps": [
+        "提供远端文件链接、本地 README.md 和只允许修改的文字。",
+        "AI 获取远端最新版本，比较远端与本地内容并总结差异。",
+        "你确认只采用截止时间这一处变化，其他差异全部保留原样。",
+        "AI 执行精确替换，再重新获取或比较远端文件。",
+        "检查目标文字、文件版本和周边内容后返回结果。"
+      ],
+      "expectedFiles": [
+        "更新后的飞书云盘 Markdown 文件",
+        "差异摘要、文件标识或版本信息及写后复核结果",
+        "本地 README.md 只作为比较输入，除非另行授权，不应被修改"
+      ],
+      "notes": "这是未经实测的演示性输入输出。能否完成取决于 lark-cli、账号授权、组织权限和文件当前状态；局部替换也可能受重复文字或协作更新影响。"
+    },
+    "categoryId": "document-office",
+    "subcategoryId": "structured-writing",
+    "audiences": ["大学生", "团队成员", "开发者"],
+    "collections": ["student-essential"],
+    "reviewEvidence": {
+      "sourceFacts": ["处理飞书云盘中的原生 Markdown 文件", "支持创建、获取、diff、patch 和 overwrite", "patch 是下载后替换再覆盖，且写后应复核", "需要 lark-cli、登录和权限"],
+      "reasonableInferences": ["适合维护 README、课程笔记和团队草稿", "多人同时编辑时应先重新获取最新版本"],
+      "untestedClaims": ["README 示例未连接真实账号", "未验证当前 Windows 与飞书租户中的完整授权和写入流程"]
+    }
+  },
+  {
+    "id": "mattpocock/skills/implement",
+    "name": "implement",
+    "nameZh": "按需求实施代码",
+    "category": "编程开发",
+    "summaryZh": "让 AI 按已经确认的单个需求编写代码、运行测试和检查结果，最后提交到当前 Git 分支。",
+    "explanationZh": "当任务范围、验收条件和技术方案已经谈清楚时，它会直接进入实现：读取任务，按约定位置补测试，小步修改并频繁检查，最后做一次完整测试和代码审查，再创建提交。",
+    "audience": "已经有明确任务或规格，熟悉 Git 分支和项目测试，希望让 AI 完成一项可提交代码改动的编程学习者和开发者。",
+    "scenarios": [
+      "按已确认的课程项目任务实现功能",
+      "根据 issue 或规格完成一个小范围代码改动",
+      "在当前分支完成实现、测试、复核和提交"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：当前分支已用于任务“给课程列表增加学期筛选”。需求和验收条件在 issue #42。请只完成这一个任务，按既定测试位置补测试，运行检查并提交；不要创建新分支或关闭 issue。",
+    "outputExample": "可能得到代码改动、相应测试、检查结果和当前分支上的 Git 提交；不会自动创建 PR、关闭任务或重新决定需求。",
+    "boundaries": [
+      "它适合已经确定的工作，不负责把模糊想法重新规划成需求；有歧义时应先停下来询问",
+      "一次只处理一个任务，并假设当前 Git 分支已经正确；原流程不会替你创建或切换分支",
+      "会直接修改代码并创建提交，但不会自动关闭 issue、核对所有验收项或创建 Pull Request",
+      "测试驱动开发只用于事先约定的边界，项目必须有可运行的类型检查和测试环境",
+      "原文把代码审查放在提交前；若审查工具只能读取已提交差异，可能看不到全部未提交改动，需要额外确认",
+      "本条目的课程筛选示例未在真实代码库中实际运行"
+    ],
+    "tags": ["代码实现", "测试", "Git"],
+    "keywords": ["implement", "需求实现", "issue", "TDD", "测试", "Git 提交", "功能开发"],
+    "sourceUrl": "https://www.skills.sh/mattpocock/skills/implement",
+    "repositoryUrl": "https://github.com/mattpocock/skills",
+    "stats": {
+      "githubStars": 295588,
+      "githubRepo": "mattpocock/skills",
+      "installs": null,
+      "installsSource": "skills.sh（页面仅显示四舍五入值，未写入精确数）",
+      "lastCheckedAt": "2026-10-18T19:30:00+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/mattpocock/skills --skill implement",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "该 Skill 会改代码并创建 Git 提交。开始前应确认当前分支、任务范围和未提交改动，避免把无关修改混入提交；私有代码、密钥和生产数据应继续遵守项目的访问规则。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个独立开发工具，而是一套给兼容 AI 编程工具使用的实施流程。它假设需求、范围和主要决策已经确定，因此不会重新发散讨论方案。AI 会先读取一个任务并复述目标，遇到歧义才询问；随后按已约定的位置补测试、实现代码，频繁运行小范围检查，最后再跑完整检查、审查改动并提交到当前分支。",
+      "workflow": [
+        "确认当前分支已经正确，并提供一个任务、规格或 issue 及其验收条件。",
+        "AI 读取任务并复述标题和范围；若关键内容含糊，先询问而不是猜测。",
+        "在事先约定的功能边界补充或更新测试，再小步实现代码。",
+        "开发过程中频繁运行类型检查和单项测试，及时处理局部问题。",
+        "实现完成后运行一次完整测试和项目检查，并审查当前改动。",
+        "将本任务相关变更提交到当前分支，报告改动、测试和仍需人工确认的事项。"
+      ],
+      "requirements": [
+        "需要位于正确的 Git 仓库和分支，并允许 AI 读取、修改代码及创建提交。",
+        "需要一个已经确定的单个任务，最好包含验收条件、相关文件和不应改动的范围。",
+        "项目应提供可运行的类型检查、测试或构建命令；依赖应已安装或另行获得安装授权。",
+        "原流程会调用测试驱动开发与代码审查能力，所用 AI 工具需要具备相应 Skill 或等效能力。",
+        "安装 Skill 不会自动连接任务平台，也不保证所有项目都能一次通过测试。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：课程项目已有 issue #42，要求为课程列表增加学期筛选，当前分支也已经准备好。本示例未在真实仓库执行。",
+      "steps": [
+        "提供 issue、验收条件、当前分支和项目测试命令。",
+        "AI 复述任务，确认只实现学期筛选，不顺带重构其他功能。",
+        "在既定位置补筛选测试，再实现界面与数据逻辑。",
+        "持续运行类型检查和相关测试，完成后再跑完整测试。",
+        "审查差异，确认没有混入无关改动后创建 Git 提交。"
+      ],
+      "expectedFiles": [
+        "完成学期筛选的代码改动",
+        "与既定测试结构一致的新增或更新测试",
+        "测试与检查摘要及当前分支上的 Git 提交"
+      ],
+      "notes": "这是未经实测的演示性示例。是否能成功实现取决于规格质量、项目结构、依赖和测试环境；提交并不等于已经完成 PR、上线或人工验收。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "project-development",
+    "audiences": ["编程学习者", "开发者"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["面向已经确定的工作，一次处理一个任务", "按约定位置使用 TDD 并频繁运行类型检查和单项测试", "最终运行完整测试、代码审查并提交当前分支", "不创建分支、不关闭任务且没有内置 PR 模式"],
+      "reasonableInferences": ["适合从明确 issue 到可提交代码的实施阶段", "开始前应检查当前分支和未提交改动"],
+      "untestedClaims": ["课程筛选示例未实际运行", "未验证当前项目中的审查工具能否读取全部未提交改动"]
+    }
+  },
+  {
+    "id": "mattpocock/skills/wayfinder",
+    "name": "wayfinder",
+    "nameZh": "大型项目决策地图",
+    "category": "效率自动化",
+    "summaryZh": "把一个大到无法在一次对话中想清楚的项目拆成相互依赖的决策问题，并用任务看板持续推进。",
+    "explanationZh": "它先固定项目终点，再在问题跟踪器里建立一张总地图，把尚未确定的内容拆成研究、原型、讨论或实施任务，并标出依赖关系。默认只做规划，不会直接把所有任务都执行完。",
+    "audience": "需要规划毕业设计、长期软件项目或复杂产品工作，并愿意在任务看板中持续记录决策的学生、产品经理和开发者。",
+    "scenarios": [
+      "把毕业设计拆成可追踪的研究与决策任务",
+      "为跨多次会话的大型项目建立共同地图",
+      "根据依赖关系找到当前真正可以推进的任务"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：我准备做一个校园二手交易平台，目标是形成可开发、可答辩的第一版方案。请先建立决策地图，拆出数据来源、隐私、信任机制和 MVP 范围等任务，标明依赖；本轮只规划，不执行任务。",
+    "outputExample": "可能在问题跟踪器中得到一个总地图、多个带类型的子任务、依赖关系和“当前可推进”清单；不会在同一轮自动完成全部研究和开发。",
+    "boundaries": [
+      "它是大型工作的规划与协调方法，不是自动替你完成整个项目的应用；默认只建立地图而不执行",
+      "会在选定的问题跟踪器中创建、更新或关闭任务，属于可见的外部写入，应先确认目标项目和权限",
+      "需要明确的最终目标；研究、原型和关键讨论可能依赖其他 Skill、工具或用户参与",
+      "一次会话通常只处理一个当前任务；多人并行时依赖认领、分配和阻塞关系避免重复工作",
+      "没有问题跟踪器时可退回本地 Markdown，但协作和依赖能力会受到限制",
+      "本条目的校园平台示例未在真实任务看板中实际运行"
+    ],
+    "tags": ["项目规划", "决策地图", "任务依赖"],
+    "keywords": ["wayfinder", "大型项目", "毕业设计", "issue tracker", "决策地图", "任务依赖", "项目拆解"],
+    "sourceUrl": "https://www.skills.sh/mattpocock/skills/wayfinder",
+    "repositoryUrl": "https://github.com/mattpocock/skills",
+    "stats": {
+      "githubStars": 295588,
+      "githubRepo": "mattpocock/skills",
+      "installs": null,
+      "installsSource": "skills.sh（页面仅显示四舍五入值，未写入精确数）",
+      "lastCheckedAt": "2026-10-18T19:30:00+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/mattpocock/skills --skill wayfinder",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "会在问题跟踪器中产生团队可见的任务、评论或状态变化。开始前应确认仓库、项目和权限，避免把敏感资料写进公开 issue；关键目标和取舍仍需用户确认。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个独立项目管理软件，而是一套给兼容 AI 工具使用的大型工作拆解方法。它适合任务太大、信息不足或存在许多相互依赖的决定时使用。AI 先和你固定最终目的，再在问题跟踪器中建立总地图，把未知内容拆成研究、原型、需要用户讨论的决策或真正能实施的任务；地图会随着结果持续更新，而不是假装一开始就知道完整路线。",
+      "workflow": [
+        "说明最终要到达的结果、成功标准、截止时间和本轮只规划还是继续推进。",
+        "AI 选择现有问题跟踪器；若没有，则明确使用本地 Markdown 作为能力有限的替代。",
+        "建立带 `wayfinder:map` 标签的总地图，并把未知内容拆成研究、原型、讨论或实施任务。",
+        "为子任务标注依赖、阻塞关系和需要用户参与的节点，形成当前可推进的任务前沿。",
+        "团队或 AI 每次认领一个未阻塞任务，完成后把结论写回任务并更新总地图。",
+        "随着决定增加，继续关闭已解决问题、展开新的必要问题，直到到达终点或重新定义目标。"
+      ],
+      "requirements": [
+        "需要一个明确的最终目的，以及可创建和更新任务的问题跟踪器；本地 Markdown 仅作为退路。",
+        "外部任务平台需要账号、项目访问权和写入许可，团队应约定标签、分配和状态规则。",
+        "研究、原型、领域建模或深度追问可能需要相应辅助 Skill 或等效能力。",
+        "涉及主观取舍的任务需要用户在线参与，不能把人工确认伪装成已自动完成。",
+        "安装 Skill 不会新增独立项目看板，也不会自动完成地图中的所有工作。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：校园二手交易平台的目标已提出，但数据来源、隐私、信任机制和第一版范围都还不确定。本示例未创建真实 issue。",
+      "steps": [
+        "确认终点是形成可开发、可答辩的第一版方案，而不是立刻写完整产品。",
+        "创建总地图，并把四个未知领域拆成研究、原型或需要用户讨论的任务。",
+        "标明例如“数据来源”会阻塞“商品搜索设计”，“隐私边界”会阻塞“用户资料字段”。",
+        "列出当前没有前置依赖、可以开始的任务，但本轮不认领和执行。",
+        "由你审核任务、优先级和公开范围后，再决定下一轮推进哪一项。"
+      ],
+      "expectedFiles": [
+        "问题跟踪器中的一条总地图任务",
+        "带类型、依赖与状态的子任务",
+        "当前可推进清单和已确认决定摘要"
+      ],
+      "notes": "这是未经实测的演示性输入输出。具体字段和依赖表达取决于所用问题跟踪器；规划质量取决于目标是否明确以及关键人员是否真实参与决策。"
+    },
+    "categoryId": "automation",
+    "subcategoryId": "workflow",
+    "audiences": ["大学生", "产品经理", "开发者"],
+    "collections": ["student-essential", "coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["在问题跟踪器中建立总地图与子任务", "默认只规划不执行", "子任务分为研究、原型、讨论和实施等类型", "通过依赖关系维护可推进前沿，通常一次会话只处理一个任务"],
+      "reasonableInferences": ["适合毕业设计和跨多次会话的长期项目", "外部任务写入前应确认项目、权限和公开范围"],
+      "untestedClaims": ["校园二手平台示例未创建真实 issue", "未验证当前环境与具体问题跟踪器的完整兼容性"]
+    }
+  },
+  {
+    "id": "uizze.sh/ui-taste",
+    "name": "ui-taste",
+    "nameZh": "界面设计与体验检查",
+    "category": "设计与内容",
+    "summaryZh": "让 AI 先理解界面目标，再设计、改进或审查网页与 iOS 界面，并通过真实渲染检查不同尺寸和交互状态。",
+    "explanationZh": "它把界面工作分为新设计、已有页面改进、规范提取和只读审查等流程。AI 会先读取项目与设计约束，再选择合适流程；完成后应查看真实页面或原生界面，而不是只凭代码猜测效果。",
+    "audience": "需要制作或改进课程项目、社团页面、作品集网页或 iOS 界面，并希望获得结构化体验检查的学生、设计师和开发者。",
+    "scenarios": [
+      "为新网页确定视觉方向并实现界面",
+      "在保留品牌和现有结构的前提下改进页面",
+      "只读审查响应式、无障碍、主题和加载状态"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：请只审查当前社团报名页，不修改代码。分别检查 390px 和 1440px 宽度，以及键盘操作、加载和错误状态；按 P0 到 P3 列出有证据的问题和建议。",
+    "outputExample": "可能得到按严重程度整理的界面问题、出现条件、影响和建议；本次示例只生成审查报告，不会自动修改或发布页面。",
+    "boundaries": [
+      "它是一套给兼容 AI 工具使用的设计与审查方法，不是安装后单独打开的设计软件",
+      "基础 Skill 免费且不要求账号、依赖或可执行程序；Uizze MCP 是可选付费扩展，不是必须条件",
+      "只读审查在用户未要求修复时不得修改文件；发布、购买、安装依赖和账号变更也不在默认授权内",
+      "新视觉工作可以在具备并获准使用图片生成工具时先做目标图，但精确还原需要明确目标图并用真实渲染对比",
+      "网页和 iOS 都必须在代表性尺寸、状态和交互中检查；没有实际运行时要明确标注未验证",
+      "本条目的社团报名页示例未在真实项目中实际运行"
+    ],
+    "tags": ["界面设计", "UX 审查", "响应式"],
+    "keywords": ["ui taste", "UI 设计", "UX 审查", "响应式", "无障碍", "iOS", "界面优化"],
+    "sourceUrl": "https://www.skills.sh/site/uizze.sh/ui-taste",
+    "repositoryUrl": "https://uizze.sh/",
+    "stats": {
+      "githubStars": null,
+      "githubRepo": "uizze.sh/well-known",
+      "installs": null,
+      "installsSource": "skills.sh（页面仅显示四舍五入值，未写入精确数）",
+      "lastCheckedAt": "2026-10-18T19:30:00+08:00"
+    },
+    "installCommand": "npx skills add https://uizze.sh/ --skill ui-taste",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "审查或设计可能读取项目代码、界面截图和品牌素材。应限制敏感信息范围，并明确是只读检查还是允许修改；未经授权不要发布、购买服务、安装依赖或改变账号设置。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "provider-published",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个独立界面编辑器，而是一套让兼容 AI 工具进行设计、实现和体验审查的工作方法。AI 会先读取项目简介、现有组件、设计变量和素材，再判断是从零设计、在现有界面上改进、提炼设计规范，还是只做审查。完成工作后，它应打开真实页面或原生界面，检查代表性尺寸、主题、状态与交互，并把已验证内容和尚未验证内容分开说明。",
+      "workflow": [
+        "说明界面目标、用户、平台、允许修改的范围，并提供现有项目、截图或品牌素材。",
+        "AI 读取组件、设计变量和资源，选择新设计、改进、规范提取、审查或 iOS 等流程。",
+        "新视觉工作在工具可用且获准时可先制作目标图；已有批准稿件则以它为优先依据。",
+        "按信息层级、布局、样式和交互状态实现或检查界面，尽量复用现有设计系统。",
+        "在真实网页或原生应用中查看代表性尺寸、键盘操作、主题、加载、空白和错误状态。",
+        "输出已修复内容或按 P0 至 P3 排列的审查结果，并明确没有实际验证的部分。"
+      ],
+      "requirements": [
+        "基础 Skill 本身不要求账号、依赖或额外可执行程序，但需要能读取项目和查看真实界面的 AI 工具。",
+        "新建或修改界面最好提供项目简介、目标用户、组件、设计变量、素材和允许变更的范围。",
+        "图片生成只在工具已存在且用户授权时使用；可选的 Uizze MCP 可能需要付费。",
+        "网页需要浏览器与代表性视口；原生 iOS 需要相应项目和可检查的原生界面环境。",
+        "安装 Skill 不会自动部署网站，也不会替代用户测试、辅助技术测试或最终设计评审。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：社团报名页已经可以运行，你只想先发现手机与桌面端的问题，不希望 AI 修改代码。本示例未打开真实页面。",
+      "steps": [
+        "提供项目入口和只读审查范围，明确检查 390px 与 1440px。",
+        "AI 查看页面结构、样式、组件与关键交互，并打开真实渲染。",
+        "检查键盘操作、焦点、颜色对比、响应式布局、加载和错误状态。",
+        "只记录能够说明出现条件和影响的问题，按 P0 至 P3 排序。",
+        "返回审查报告，等待你选择需要修复的项目，不直接改代码。"
+      ],
+      "expectedFiles": [
+        "按 P0 至 P3 排序的界面体验审查报告",
+        "每项问题的出现位置、复现条件、用户影响和建议",
+        "如后续授权修复，才可能产生代码改动与复核截图"
+      ],
+      "notes": "这是未经实测的演示性输入输出。当前没有对示例页面进行真实渲染或辅助技术测试，因此不能把列出的检查范围当成已经通过。"
+    },
+    "categoryId": "design-content",
+    "subcategoryId": "design-review",
+    "audiences": ["大学生", "设计师", "前端开发者"],
+    "collections": ["student-essential", "coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["覆盖网页和原生 iOS 的设计、改进与审查", "基础 Skill 不要求账号、依赖或可执行程序", "审查覆盖无障碍、性能、主题、响应式和实现，并按 P0 至 P3 标级", "未经用户要求，审查不修改文件且不授权发布或安装依赖"],
+      "reasonableInferences": ["适合课程项目与作品集界面的结构化检查", "真实渲染是判断完成质量的重要依据"],
+      "untestedClaims": ["社团报名页示例未实际运行", "未验证当前环境中的网页与 iOS 检查工具链"]
+    }
+  },
+  {
+    "id": "remotion-dev/skills/remotion-best-practices",
+    "name": "remotion-best-practices",
+    "nameZh": "Remotion 视频制作规范",
+    "category": "设计与内容",
+    "summaryZh": "让 AI 按 Remotion 的正确流程用 React 制作或编辑视频，先打开可交互预览，只有你明确要求时才导出。",
+    "explanationZh": "它会根据任务调用创建、动画、字幕、媒体、地图或渲染等参考规则，把视频写成 React 代码。制作过程中优先在 Remotion Studio 里预览和调整，不会因为完成了代码就默认导出 MP4。",
+    "audience": "希望用代码制作作品集视频、课程演示或自动化视频，并具备基础前端环境的学生、内容创作者和 React 开发者。",
+    "scenarios": [
+      "用文字、图片和音乐制作代码化短视频",
+      "为现有 Remotion 项目添加动画、字幕或媒体",
+      "先在 Studio 中预览，确认后再导出视频或静帧"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：根据我提供的文字、Logo 和配色，制作一段 20 秒的 1080p 作品集开场。先建立 Remotion 项目并打开 Studio 预览，保留可编辑代码；我确认前不要导出 MP4。",
+    "outputExample": "可能得到可编辑的 React/Remotion 项目和 Studio 预览；只有在你明确确认后，才会进一步渲染 MP4、静帧或帧序列。",
+    "boundaries": [
+      "它是给兼容 AI 编程工具使用的 Remotion 规则集合，不是时间线式视频剪辑软件",
+      "视频由 React 组件和按帧计算的动画生成，需要代码项目、Node.js 环境和 Remotion Studio",
+      "原流程要求尽早打开预览，但默认不执行最终渲染；只有用户明确要求导出时才运行渲染",
+      "字体、图片、音频和视频素材需要合法来源并与项目版本兼容，远程素材还会受到网络影响",
+      "生成代码不等于画面已经正确，仍需在代表性时间点检查布局、动画、字幕和声音",
+      "本条目的 20 秒作品集示例未在真实 Remotion 项目中实际运行"
+    ],
+    "tags": ["Remotion", "视频制作", "React"],
+    "keywords": ["remotion", "React 视频", "动画", "字幕", "视频预览", "MP4", "作品集视频"],
+    "sourceUrl": "https://www.skills.sh/remotion-dev/skills/remotion-best-practices",
+    "repositoryUrl": "https://github.com/remotion-dev/skills",
+    "stats": {
+      "githubStars": 5306,
+      "githubRepo": "remotion-dev/skills",
+      "installs": null,
+      "installsSource": "skills.sh（页面仅显示四舍五入值，未写入精确数）",
+      "lastCheckedAt": "2026-10-18T19:30:00+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/remotion-dev/skills --skill remotion-best-practices",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "项目可能安装依赖、读取媒体并消耗较多计算资源。开始前应确认素材许可、包版本和磁盘空间；不要把未授权音乐、字体或个人素材发布到成品，未明确要求时不要执行最终渲染。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "repository-license-not-declared-by-api",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个独立视频剪辑应用，而是一套让兼容 AI 编程工具正确使用 Remotion 的规则。它根据你的任务选择创建项目、React 画面、媒体、字幕、地图、交互或导出等参考说明，把视频结构和动画保存在可编辑代码中。原流程强调尽早启动 Remotion Studio，让用户持续看到真实预览；写完代码并不等于自动导出，最终渲染必须由用户明确要求。",
+      "workflow": [
+        "提供视频目的、时长、画面尺寸、文字、素材、配色和是否允许安装依赖。",
+        "AI 检查现有 Remotion 项目；没有项目时，经授权后创建项目并安装所需依赖。",
+        "建立 Composition 与 React 组件，使用按帧计算的动画和 Remotion 媒体组件。",
+        "尽早启动 Remotion Studio，检查开头、中段、结尾和重要转场，持续调整布局与节奏。",
+        "核对字幕、声音、素材路径、字体和不同状态，并保留可编辑源代码。",
+        "只有在你明确要求导出后，才按指定格式渲染视频、静帧或帧序列，并报告产物位置。"
+      ],
+      "requirements": [
+        "需要 Node.js、Git、npm 或兼容包管理器，以及可运行的 Remotion 项目和浏览器。",
+        "新项目需要联网安装依赖；现有项目应先确认 Remotion 与相关包的版本。",
+        "需要可合法使用的文字、图片、音频、视频和字体素材，远程素材还依赖稳定网络。",
+        "预览需要 Remotion Studio，最终渲染还需要足够的 CPU、内存、磁盘空间和时间。",
+        "安装 Skill 不会新增传统视频编辑器，也不会替代视觉审查、版权核验或发布流程。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：你要制作一段 20 秒作品集开场，已有文字、Logo 与配色，希望先看可编辑预览。本示例未创建或渲染真实视频。",
+      "steps": [
+        "提供文案、Logo、配色、20 秒时长和 1080p 尺寸，说明暂不导出。",
+        "AI 创建或进入 Remotion 项目，建立视频 Composition 和素材结构。",
+        "用 React 组件安排标题、项目亮点与 Logo，并通过帧数控制出现和转场。",
+        "启动 Remotion Studio，检查关键时间点、文字溢出和动画节奏。",
+        "你在预览中提出修改；确认后如明确要求，再渲染 MP4。"
+      ],
+      "expectedFiles": [
+        "可编辑的 React/Remotion 项目文件",
+        "可在 Remotion Studio 中查看的 20 秒预览",
+        "经明确授权后才生成的 MP4、静帧或帧序列"
+      ],
+      "notes": "这是未经实测的演示性输入输出。当前没有安装依赖、启动 Studio 或渲染视频；画面质量、耗时和文件大小取决于项目版本、素材和本机性能。"
+    },
+    "categoryId": "design-content",
+    "subcategoryId": "visual-design",
+    "audiences": ["大学生", "内容创作者", "React 开发者"],
+    "collections": ["student-essential", "coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["用 React 和 Remotion 创建或编辑视频", "根据任务路由到创建、媒体、字幕、地图和渲染等参考", "应尽早打开 Remotion Studio 并持续预览", "默认不渲染，只有用户明确要求时才导出"],
+      "reasonableInferences": ["适合希望保留可编辑代码的作品集与课程视频", "最终质量需要检查关键时间点和完整播放"],
+      "untestedClaims": ["20 秒作品集示例未实际创建或渲染", "未验证当前环境的 Remotion 版本、浏览器和渲染性能"]
+    }
+  }
+]

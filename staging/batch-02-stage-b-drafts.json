@@ -1,0 +1,432 @@
+[
+  {
+    "id": "mattpocock/skills/grilling",
+    "name": "grilling",
+    "nameZh": "分轮决策追问",
+    "category": "效率自动化",
+    "summaryZh": "让 AI 分轮追问你的计划或想法，逐步找出遗漏的决定，并在行动前确认双方理解一致。",
+    "explanationZh": "给支持 Skill 的 AI 工具增加一套深度追问方法。AI 会把问题整理成有先后关系的决策树，每轮只询问当前已经可以回答的问题，同时给出推荐选择；你确认或修改后，它再继续下一层，而不是立刻替你执行方案。",
+    "audience": "需要在写方案、做产品、开始开发或作出重要选择前，把模糊想法讨论清楚的大学生、产品经理和开发者。",
+    "scenarios": [
+      "在课程项目开始前澄清目标、范围和取舍",
+      "压力测试产品需求、设计方案或技术计划",
+      "找出依赖其他决定才能回答的隐藏问题"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：我准备做一个毕业设计选题管理工具。请通过分轮追问，帮我想清楚目标用户、核心问题、数据来源、隐私边界和第一版范围；每个问题给出你的推荐答案，但在我确认前不要开始写代码。",
+    "outputExample": "可能得到多轮问题、每题的推荐选择和逐步确认的决策脉络；主要产物是共同理解，不会自动生成或执行最终项目。",
+    "boundaries": [
+      "它不是独立的策划软件，而是给兼容 AI 工具使用的追问规则",
+      "AI 应自行查找环境中能核实的事实，但目标和取舍仍由用户决定",
+      "原流程需要用户逐轮回答，不适合要求一次性立即输出完整方案",
+      "只有当前问题树没有未决分支且用户确认理解一致后，才应停止追问或进入行动",
+      "本条目的毕业设计示例未在 EasySkillShow 环境中实际运行"
+    ],
+    "tags": ["需求澄清", "决策", "深度追问"],
+    "keywords": ["grilling", "追问", "决策树", "压力测试", "需求澄清", "方案讨论"],
+    "sourceUrl": "https://www.skills.sh/mattpocock/skills/grilling",
+    "repositoryUrl": "https://github.com/mattpocock/skills",
+    "stats": {
+      "githubStars": 295340,
+      "githubRepo": "mattpocock/skills",
+      "installs": null,
+      "installsSource": "skills.sh（页面仅显示四舍五入值，未写入精确数）",
+      "lastCheckedAt": "2026-10-18T18:00:00+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/mattpocock/skills --skill grilling",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "讨论可能涉及未公开的项目或个人信息；只提供完成决策所需的材料，不要提交密码、密钥或不必要的隐私数据。AI 的推荐是决策辅助，不代替专业判断。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个安装后会单独打开的软件，而是一套交给兼容 AI 工具使用的讨论方法。你给出尚未想清楚的计划后，AI 会先画出有前置关系的决策树，只询问当前已经具备条件的问题，并附上推荐答案。你回答后，下一层问题才会出现。它的重点是找出隐藏假设、建立共同理解，而不是尽快产出一份看似完整的方案。",
+      "workflow": [
+        "说明要讨论的想法、计划或设计，以及希望暂时不要执行的范围。",
+        "AI 将问题拆成有依赖关系的决策树，区分现在能回答和必须等待的问题。",
+        "每轮列出当前可以决定的问题，并为每题给出推荐答案和理由。",
+        "你接受、修改或拒绝推荐，补充只有你能决定的目标与取舍。",
+        "AI 根据新答案展开下一层；能从文件或环境中查到的事实由 AI 自行核对。",
+        "当没有隐藏分支后，AI 总结理解并请你确认，再决定是否进入规划或执行。"
+      ],
+      "requirements": [
+        "需要通过能够加载 Skill 的 AI 工具使用；安装 Skill 不会新增独立桌面应用。",
+        "需要用户参与多轮回答，不能在用户离线时替用户做完所有主观决策。",
+        "最好提供相关需求、现有方案或项目文件，并提前限制 AI 可读取的范围。",
+        "涉及法律、医疗、财务等高风险决定时，仍需相应专业意见。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：你有一个毕业设计工具的初步想法，但没有确定核心用户、数据来源和第一版范围。本示例没有实际开展追问会话。",
+      "steps": [
+        "告诉 AI 当前想法，并明确只做追问和决策梳理，不开始开发。",
+        "AI 第一轮询问目标用户和最重要的问题，同时附上推荐选择。",
+        "你回答后，AI 再询问依赖这些答案的数据来源、隐私边界和第一版功能。",
+        "AI 自行核对项目资料中可以查明的事实，不把所有检索任务推给你。",
+        "所有分支讨论完后，由你确认总结，再交给后续 PRD 或开发流程。"
+      ],
+      "expectedFiles": [
+        "原 Skill 没有规定固定文件产物；主要结果是对话中确认的决策",
+        "如需 PRD、决策记录或任务清单，需要在追问结束后另行明确"
+      ],
+      "notes": "这是未经实测的演示性输入输出。追问质量取决于背景材料和用户是否真实作出取舍；推荐答案不等于已经验证的产品结论。"
+    },
+    "categoryId": "automation",
+    "subcategoryId": "workflow",
+    "audiences": ["大学生", "产品经理", "开发者"],
+    "collections": ["student-essential"],
+    "reviewEvidence": {
+      "sourceFacts": ["按有依赖关系的决策树分轮提问", "每个问题给出推荐答案", "可查事实由 AI 负责核对", "问题前沿为空且用户确认后才结束"],
+      "reasonableInferences": ["适合课程项目、PRD 或开发前的需求澄清", "主要产物是确认后的决策而非固定文件"],
+      "untestedClaims": ["毕业设计示例未实际运行", "未验证该 Skill 在当前 Codex 环境中的完整行为"]
+    }
+  },
+  {
+    "id": "mattpocock/skills/teach",
+    "name": "teach",
+    "nameZh": "长期学习教练",
+    "category": "学习科研",
+    "summaryZh": "围绕你的真实学习目标，让 AI 分多次生成短课、练习和复习资料，并记录已经掌握的内容。",
+    "explanationZh": "它会先把学习目标、现有水平和可用时间写成学习任务，再用可信资料制作短小、可互动的网页课程，通过练习与间隔复习持续调整后续内容。学习记录会保存在一个可继续使用的文件夹中。",
+    "audience": "希望围绕课程、技能或求职目标持续自学，并愿意完成练习和多次复习的大学生、自学者和初学开发者。",
+    "scenarios": [
+      "围绕实习要求制定多周学习计划",
+      "把可靠资料整理成短课与互动练习",
+      "跨多次会话记录掌握程度并安排复习"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：我会基础 Excel，希望 4 周后能用 SQL 完成数据分析实习的常见任务，每周可学习 5 小时。请先和我确定学习任务与资料，再生成第一节短课和练习。",
+    "outputExample": "可能得到学习目标文件、资料清单、可在浏览器打开的短课与参考页，以及每次学习后的进度记录；是否掌握仍取决于练习和反馈。",
+    "boundaries": [
+      "它不是在线课程平台，而是让 AI 在当前工作目录中维护学习资料的方法",
+      "原文强调使用可信的一手或高质量资料，AI 生成内容仍需要核对来源",
+      "课程会根据学习记录逐步生成，不保证一次就给出完整教材",
+      "完成文件或测验不等于已经真正掌握，也不提供学校学分或职业认证",
+      "本条目的 4 周 SQL 示例未在 EasySkillShow 环境中实际运行"
+    ],
+    "tags": ["自学", "互动课程", "间隔复习"],
+    "keywords": ["teach", "学习计划", "短课", "互动练习", "学习记录", "spaced repetition", "SQL 学习"],
+    "sourceUrl": "https://www.skills.sh/mattpocock/skills/teach",
+    "repositoryUrl": "https://github.com/mattpocock/skills",
+    "stats": {
+      "githubStars": 295340,
+      "githubRepo": "mattpocock/skills",
+      "installs": null,
+      "installsSource": "skills.sh（页面仅显示四舍五入值，未写入精确数）",
+      "lastCheckedAt": "2026-10-18T18:00:00+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/mattpocock/skills --skill teach",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "可能联网查找资料并在当前目录创建多个学习文件。应检查来源、避免把未经核实的内容当成事实，并在涉及个人学习记录时控制分享范围。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个独立网课应用，而是一套给兼容 AI 工具使用的长期教学工作流。AI 会先和你确定为什么学、最终要能完成什么、已有基础和时间限制，再建立一个可持续更新的学习文件夹。每节课尽量短小、可互动，并把新知识与真实任务联系起来；学习结束后记录表现，之后再安排回忆练习，而不是只让你重复阅读。",
+      "workflow": [
+        "说明真实目标、截止时间、现有水平、每周时间和偏好的学习方式。",
+        "AI 与你共同确认学习任务，并保存为 MISSION.md，避免课程偏离最终目标。",
+        "AI 收集并整理可信资料，在 RESOURCES.md 中记录来源和用途。",
+        "根据当前水平生成一节短小、可互动的 HTML 课程或参考页。",
+        "你完成练习并反馈困难，AI 将结果写入学习记录，区分掌握、薄弱和待复习内容。",
+        "后续课程结合真实任务、主动回忆和间隔复习继续推进，直到目标完成或重新调整。"
+      ],
+      "requirements": [
+        "需要通过能读写文件、生成 HTML 并视情况检索资料的 AI 工具使用。",
+        "当前目录应允许创建 MISSION.md、RESOURCES.md、lessons、reference、learning-records 等文件。",
+        "最好能用浏览器打开课程 HTML；互动内容是否可用取决于生成页面和本地环境。",
+        "需要用户持续练习并提供真实反馈，AI 不能仅凭一次对话判断已经掌握。",
+        "引用外部资料、社区或课程时，应由用户检查可信度、访问条件和隐私影响。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：你有 Excel 基础，想在 4 周内学会 SQL，以完成数据分析实习常见任务。每周可投入 5 小时。本示例未实际生成课程。",
+      "steps": [
+        "说明目标、截止时间、当前水平和每周可用时间。",
+        "AI 先起草学习任务与成功标准，经你确认后再选择资料。",
+        "AI 生成第一节短课和练习，而不是一次堆出整套教材。",
+        "你完成练习并指出卡住的位置，AI 记录表现和仍需复习的概念。",
+        "下一次学习先做简短回忆，再根据记录进入下一节内容。"
+      ],
+      "expectedFiles": [
+        "MISSION.md 学习目标",
+        "RESOURCES.md 资料清单",
+        "lessons/*.html 短课与练习",
+        "reference/*.html 参考资料",
+        "learning-records/*.md 学习记录"
+      ],
+      "notes": "这是演示性、未经实测的示例。文件名来自原 Skill 的工作区结构，但具体课程质量、进度与最终掌握程度尚未验证。"
+    },
+    "categoryId": "learning-research",
+    "subcategoryId": "knowledge-explanation",
+    "audiences": ["大学生", "自学者", "编程学习者"],
+    "collections": ["student-essential", "exam-review"],
+    "reviewEvidence": {
+      "sourceFacts": ["建立可跨会话维护的学习工作区", "使用 MISSION.md 和 RESOURCES.md", "课程与参考资料以 HTML 保存", "通过主动回忆和间隔复习调整后续学习"],
+      "reasonableInferences": ["适合围绕实习目标进行多周自学", "需要浏览器查看互动课程并持续反馈"],
+      "untestedClaims": ["4 周 SQL 示例未实际运行", "未验证生成的 HTML 互动与学习效果"]
+    }
+  },
+  {
+    "id": "mattpocock/skills/code-review",
+    "name": "code-review",
+    "nameZh": "双维度代码审查",
+    "category": "编程开发",
+    "summaryZh": "让 AI 分开检查代码是否符合项目规范、是否实现需求，适合提交 PR 或合并分支前复核。",
+    "explanationZh": "它会把当前代码与一个明确的 Git 基准点比较，再分别从“是否遵守项目标准”和“是否完成需求”两个角度找问题。结果以审查报告呈现，原流程不会直接修改代码，便于你先判断再决定怎么修。",
+    "audience": "准备提交代码、合并分支或复核他人改动，并且能提供 Git 基准点与项目需求的编程学习者和开发者。",
+    "scenarios": [
+      "提交 Pull Request 前检查当前分支",
+      "分别核对项目规范和功能需求",
+      "定位到具体文件与改动位置的高价值问题"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：请审查当前分支相对 main 的改动。项目规范在 AGENTS.md，需求在 docs/login-spec.md。只输出审查报告，不要修改代码。",
+    "outputExample": "可能得到“项目规范”和“需求实现”两份独立报告，列出带文件位置、严重程度和依据的问题；不会自动修复。",
+    "boundaries": [
+      "必须给出有效且稳定的 Git 基准点，空 diff 或错误基准会让审查失去意义",
+      "没有需求文档时，需求维度应明确写为无可用规格，而不是猜测预期功能",
+      "原流程使用并行子代理与汇总步骤，所用 AI 工具不支持时可能无法完全照原设计运行",
+      "它只报告问题，不会自动改代码、创建问题单或保证发现所有缺陷",
+      "本条目的登录功能示例未在真实代码库中实际运行"
+    ],
+    "tags": ["代码审查", "Git", "需求核对"],
+    "keywords": ["code review", "代码审查", "pull request", "diff", "项目规范", "规格检查", "PR"],
+    "sourceUrl": "https://www.skills.sh/mattpocock/skills/code-review",
+    "repositoryUrl": "https://github.com/mattpocock/skills",
+    "stats": {
+      "githubStars": 295340,
+      "githubRepo": "mattpocock/skills",
+      "installs": null,
+      "installsSource": "skills.sh（页面仅显示四舍五入值，未写入精确数）",
+      "lastCheckedAt": "2026-10-18T18:00:00+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/mattpocock/skills --skill code-review",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "审查会读取代码、提交历史和项目文档。处理私有仓库时应限制可访问范围，并把报告视为人工审查的补充；不要将源代码或机密发送到未经批准的服务。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个独立的代码扫描器，而是一套交给兼容 AI 编程工具的审查流程。它先确认一个不会在审查过程中变化的 Git 基准点，然后只检查从该点到当前 HEAD 的改动。审查被拆成两条线：一条核对仓库中的规范、说明和常见代码坏味道，另一条核对需求或规格是否被正确实现。最后合并、去重并按文件位置输出报告，不直接改代码。",
+      "workflow": [
+        "提供 Git 基准点、需求文档位置和只审查不修改的范围。",
+        "AI 验证基准点可用，并确认相对 HEAD 的差异不是空的。",
+        "读取仓库中的 AGENTS.md、README、贡献规范等适用于改动文件的规则。",
+        "分别检查项目标准和需求实现；如果没有规格，明确记录这一限制。",
+        "对发现进行复核，去除重复或缺少证据的问题，并定位到具体文件和改动位置。",
+        "输出两份独立报告或清晰分区的结果，由你决定哪些问题需要修复。"
+      ],
+      "requirements": [
+        "需要在 Git 仓库中通过可读取提交历史和 diff 的 AI 编程工具使用。",
+        "必须提供或确认固定基准点，例如审查开始时的 main 提交，而不是会继续移动的模糊名称。",
+        "规范审查需要仓库文档；需求审查最好提供 PRD、issue 或规格文件。",
+        "原流程依赖并行子代理和问题汇总能力，兼容程度取决于使用的 AI 工具。",
+        "报告仍需开发者核对和测试，不能代替静态分析、自动化测试与人工评审。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：登录功能准备提交 PR，你希望在不修改代码的前提下，检查当前分支是否符合项目规范和登录需求。本示例未实际执行 Git 审查。",
+      "steps": [
+        "指定 main 的固定提交为基准，并提供 AGENTS.md 与登录规格。",
+        "AI 验证 diff，读取只对改动文件生效的项目规则。",
+        "标准维度检查命名、结构和代码坏味道，需求维度检查登录行为是否完整。",
+        "AI 复核每项问题是否有证据，并合并重复发现。",
+        "你阅读两类报告，再决定修复、忽略或进一步验证。"
+      ],
+      "expectedFiles": [
+        "项目规范审查报告",
+        "需求实现审查报告",
+        "每项问题的文件位置、依据和严重程度；具体文件名由运行环境决定"
+      ],
+      "notes": "这是演示性、未经实测的示例。原 Skill 不负责自动修复；报告完整度取决于基准点、规范、规格和 AI 工具的子代理能力。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "code-review",
+    "audiences": ["编程学习者", "开发者"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["比较固定基准点到 HEAD 的 diff", "分为 Standards 与 Spec 两个审查维度", "没有规格时明确报告缺失", "输出报告而不修改代码"],
+      "reasonableInferences": ["适合 PR 或合并前复核", "需要仓库文档和稳定基准点才能获得可靠结果"],
+      "untestedClaims": ["登录示例未实际运行", "未验证当前 AI 工具的并行子代理流程"]
+    }
+  },
+  {
+    "id": "vercel-labs/agent-skills/vercel-react-best-practices",
+    "name": "vercel-react-best-practices",
+    "nameZh": "React 性能规范助手",
+    "category": "编程开发",
+    "summaryZh": "让 AI 按 Vercel 的 React 与 Next.js 性能规则检查或改写代码，重点发现请求串行、包体积和重复渲染问题。",
+    "explanationZh": "它把 70 条性能建议按影响程度分组，供 AI 在编写、审查或重构 React/Next.js 代码时参考。每条规则包含问题原因、错误示例、改进示例和适用背景，但最终是否变快仍需要在真实项目中测试。",
+    "audience": "正在学习或开发 React、Next.js 项目，希望减少常见性能问题的前端学习者和开发者。",
+    "scenarios": [
+      "审查页面是否存在不必要的串行请求",
+      "检查客户端包体积、重复渲染和数据获取方式",
+      "在编写或重构 React/Next.js 组件时参考性能规则"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：请按 Vercel React 性能规则审查 app/dashboard/page.tsx 及其直接使用的组件，先列出高影响问题和修改建议，不要直接改代码。",
+    "outputExample": "可能得到按优先级排列的问题清单、对应规则和建议改法；是否带来实际性能提升仍需通过测试和测量确认。",
+    "boundaries": [
+      "它是性能规则集合，不是运行时性能分析器，也不会自动生成真实测量数据",
+      "主要面向 React 和 Next.js，不能替代通用网页可访问性、视觉设计或后端架构审查",
+      "规则提供通用建议，具体项目可能因框架版本、缓存策略和业务约束而需要调整",
+      "AI 根据规则改写代码后仍需运行测试、类型检查和性能测量",
+      "本条目的 Dashboard 示例未在真实项目中实际运行"
+    ],
+    "tags": ["React", "Next.js", "性能优化"],
+    "keywords": ["react", "next.js", "vercel", "性能", "waterfall", "bundle size", "rerender", "代码审查"],
+    "sourceUrl": "https://www.skills.sh/vercel-labs/agent-skills/vercel-react-best-practices",
+    "repositoryUrl": "https://github.com/vercel-labs/agent-skills",
+    "stats": {
+      "githubStars": 32573,
+      "githubRepo": "vercel-labs/agent-skills",
+      "installs": null,
+      "installsSource": "skills.sh（页面仅显示四舍五入值，未写入精确数）",
+      "lastCheckedAt": "2026-10-18T18:00:00+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/vercel-labs/agent-skills --skill vercel-react-best-practices",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "可能建议较大范围的代码调整。应用建议前应保留现有改动，逐项检查与当前框架版本是否兼容，并运行测试、类型检查和真实性能测量。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个单独的性能检测软件，而是一套让兼容 AI 编程工具参考的 React/Next.js 优化规则。原文包含 70 条规则，按请求瀑布、客户端包体积、服务端性能、客户端数据获取、重复渲染、页面渲染、JavaScript 性能和进阶模式分组。AI 可以在写代码、审查或重构时引用这些规则，但规则命中只是线索，最终仍要靠项目测试和真实测量判断。",
+      "workflow": [
+        "说明要检查的 React/Next.js 文件、项目版本、性能症状和是否允许修改。",
+        "AI 先阅读相关组件和数据流，判断哪些规则与当前代码真正相关。",
+        "优先检查影响较高的请求串行和包体积问题，再看服务端、数据获取与重复渲染。",
+        "对每项问题给出规则依据、为什么可能有影响以及建议改法。",
+        "如果获准修改，按小步方式调整代码，避免一次性套用所有规则。",
+        "运行现有测试、类型检查和构建，并用项目的性能工具验证变化。"
+      ],
+      "requirements": [
+        "需要 React 或 Next.js 项目，以及能够读取和修改代码的 AI 编程工具。",
+        "应提供框架版本、相关组件和可运行的测试或构建命令。",
+        "真实性能判断最好有浏览器分析、服务端指标或前后对比数据。",
+        "部分规则与服务端组件、缓存或新版本 API 有关，需要确认项目版本支持。",
+        "安装 Skill 不会新增独立的测速界面或自动部署服务。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：Next.js Dashboard 打开较慢，你希望先找出代码层面的高影响问题，不立即修改。本示例未在真实项目中运行。",
+      "steps": [
+        "提供 page.tsx、直接使用的组件、框架版本和当前可观察到的慢点。",
+        "AI 判断是否存在可并行却被串行等待的请求，以及不必要的大型客户端依赖。",
+        "继续检查服务端计算、客户端数据获取和重复渲染问题。",
+        "按影响优先级列出问题、对应规则和建议改法。",
+        "你选定要处理的项后，再逐项修改并进行构建与性能测量。"
+      ],
+      "expectedFiles": [
+        "按优先级整理的性能问题清单",
+        "每项问题对应的规则与修改建议",
+        "如授权修改，可能包含代码差异和测试结果"
+      ],
+      "notes": "这是演示性、未经实测的示例。规则清单来自原 Skill，但没有对示例项目进行性能测量，不能承诺具体加速比例。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "code-review",
+    "audiences": ["前端学习者", "前端开发者"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["包含 70 条规则和 8 个类别", "覆盖请求瀑布、包体积、服务端、客户端数据、重复渲染等", "用于编写、审查和重构 React/Next.js 代码", "每条规则包含错误与正确示例"],
+      "reasonableInferences": ["适合按影响优先级进行代码审查", "规则应用后仍需真实测量验证"],
+      "untestedClaims": ["Dashboard 示例未实际运行", "未验证任何具体性能提升幅度"]
+    }
+  },
+  {
+    "id": "open.feishu.cn/lark-doc",
+    "name": "lark-doc",
+    "nameZh": "飞书云文档助手",
+    "category": "文档办公",
+    "summaryZh": "让 AI 在获得授权后读取、创建或精确修改飞书云文档，并在写入后重新检查结果。",
+    "explanationZh": "它通过飞书提供的命令行工具处理云文档和知识库页面，可读取正文、创建新文档、局部修改文字，也能处理图片、白板和思维笔记。涉及写入或删除时需要用户确认，并要求先读取当前内容、尽量小范围修改、写后复核。",
+    "audience": "已经使用飞书云文档，希望让 AI 协助整理、创建或更新文档，并能够完成账号授权的学生、团队成员和办公用户。",
+    "scenarios": [
+      "读取飞书文档并整理结构或摘要",
+      "根据资料创建新的飞书云文档",
+      "只更新现有文档中的指定章节并复核结果"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：请读取我提供的飞书文档链接，只更新“实习计划”章节，保留其他内容、图片和评论。先告诉我修改计划，得到确认后再写入，并在完成后重新读取检查。",
+    "outputExample": "可能得到修改计划、更新后的飞书云文档链接或标识，以及写入后复核结果；需要有效登录、文档权限和网络连接。",
+    "boundaries": [
+      "它处理飞书云文档与知识库页面，不是本地 Word 文件编辑器",
+      "云盘层面的移动、删除、分享设置，以及评论、电子表格和多维表格不属于该 Skill 的主要范围",
+      "写入和删除需要用户确认；整篇覆盖可能丢失评论或非正文资源，应优先做最小范围修改",
+      "需要飞书账号授权和相应文档权限，无法绕过组织或文件访问控制",
+      "本条目的实习计划示例未在真实飞书账号中实际运行"
+    ],
+    "tags": ["飞书", "云文档", "知识库"],
+    "keywords": ["lark doc", "飞书文档", "Feishu", "Lark", "Docx", "Wiki", "云文档编辑"],
+    "sourceUrl": "https://www.skills.sh/site/open.feishu.cn/lark-doc",
+    "repositoryUrl": "https://open.feishu.cn/",
+    "stats": {
+      "githubStars": null,
+      "githubRepo": "open.feishu.cn/well-known",
+      "installs": null,
+      "installsSource": "skills.sh（页面仅显示四舍五入值，未写入精确数）",
+      "lastCheckedAt": "2026-10-18T18:00:00+08:00"
+    },
+    "installCommand": "npx skills add https://open.feishu.cn/ --skill lark-doc",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "会访问并可能修改云端文档。应使用最小权限，以用户身份授权；写入前确认目标和范围，避免整篇覆盖，写入后重新读取验证。敏感文档不应分享给未经批准的账号或服务。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "provider-published",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个新的文档软件，而是一套让兼容 AI 工具通过飞书官方能力处理云文档的方法。完成登录和授权后，AI 可以读取 Docx 文档或 Wiki 页面、创建新文档、对现有内容做局部更新，并处理图片、白板和思维笔记。原流程要求写入前先读取现状、展示计划并取得确认，优先修改最小范围，完成后再读取一次验证结果。",
+      "workflow": [
+        "提供飞书文档或知识库链接，并说明只读、创建还是修改。",
+        "AI 检查 lark-cli、共享依赖、登录身份和文档权限是否可用。",
+        "修改现有文档前先读取当前内容；新建文档则先整理目标、读者、结构和素材。",
+        "AI 提出具体写入计划，标明会改变哪些章节以及是否涉及图片等资源。",
+        "得到用户确认后执行最小范围的创建或修改，避免无必要的整篇覆盖。",
+        "写入后重新读取目标位置，核对文字、结构和资源是否符合预期，并返回文档链接或标识。"
+      ],
+      "requirements": [
+        "需要安装并可运行 lark-cli，同时具备 lark-shared 共享说明。",
+        "需要联网、飞书账号登录，以及对目标文档的读取或编辑权限；推荐以用户身份操作。",
+        "组织管理员可能需要批准应用权限，实际可用范围取决于租户和账号配置。",
+        "处理现有文档时必须提供可访问的文档或 Wiki 链接。",
+        "安装 Skill 不会在桌面上增加独立文档应用，也不负责本地 .docx 文件。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：飞书文档中已有一份项目记录，你只想更新“实习计划”章节，同时保留其他内容和资源。本示例未连接真实飞书账号。",
+      "steps": [
+        "提供文档链接和希望替换的章节内容，明确其他部分不得修改。",
+        "AI 检查登录与权限，并读取当前文档和目标章节。",
+        "AI 展示修改计划和预期影响，等待你确认。",
+        "确认后只更新目标章节，不使用整篇覆盖。",
+        "AI 重新读取该章节，检查文字、图片和周边内容，再返回结果。"
+      ],
+      "expectedFiles": [
+        "通常不会生成本地最终文件；主要产物是创建或更新后的飞书云文档",
+        "文档链接或标识、修改摘要和写后复核结果",
+        "复杂新建流程可能在工作区生成临时草稿或结构文件"
+      ],
+      "notes": "这是演示性、未经实测的示例。实际结果取决于 lark-cli、账号授权、组织权限和目标文档状态；不得把示例视为真实写入截图或成功记录。"
+    },
+    "categoryId": "document-office",
+    "subcategoryId": "structured-writing",
+    "audiences": ["大学生", "团队成员", "办公用户"],
+    "collections": ["student-essential"],
+    "reviewEvidence": {
+      "sourceFacts": ["支持飞书 Docx 与 Wiki 的读取、创建和编辑", "需要 lark-cli 与 lark-shared", "写入前应读取现状并获得确认", "写入后需要重新读取验证"],
+      "reasonableInferences": ["适合按章节小范围更新云文档", "组织权限和登录状态会直接影响可用性"],
+      "untestedClaims": ["实习计划示例未连接真实账号", "未验证当前 Windows 与飞书租户中的完整授权和写入流程"]
+    }
+  }
+]

@@ -1,0 +1,179 @@
+[
+  {
+    "id": "tt-a1i/archify/archify",
+    "name": "archify",
+    "nameZh": "交互流程图生成",
+    "category": "可视化",
+    "summaryZh": "帮助 AI 把流程、架构或代码关系制作成可交互查看的 HTML 图示。",
+    "explanationZh": "它可以从自然语言、Mermaid 或代码仓库证据出发，生成架构图、工作流、时序图、数据流、状态图、ER 图、类图、树、时间线和执行耗时图，并通过自动检查后交付独立 HTML。",
+    "audience": "需要讲清系统结构、业务流程、数据库关系或项目时间线的开发者、学生和产品经理。",
+    "scenarios": ["制作业务工作流或审批流程图", "展示系统架构、接口调用或代码关系", "整理数据库结构、状态变化或事件时间线"],
+    "inputExample": "请把这个用户注册流程整理成结构图。",
+    "outputExample": "一个可在浏览器中交互查看的 HTML 注册流程图，以及用于后续修改的结构化数据（演示性预期，尚未实测）。",
+    "boundaries": [
+      "它适合关系、步骤、状态和时间过程，不用于普通数值图表或数据看板",
+      "AI 可以接收自然语言，但业务事实、代码关系和时间数据仍需可靠输入或仓库证据",
+      "自动检查通过不等于已经人工审美检查；复杂图仍可能需要调整布局",
+      "图示生成需要安装包中的命令行工具、Node.js 和可运行浏览器检查的环境"
+    ],
+    "tags": ["流程图", "设计", "可视化"],
+    "keywords": ["diagram", "chart", "流程", "架构", "可视化", "交互", "html"],
+    "sourceUrl": "https://skills.sh/tt-a1i/archify/archify",
+    "repositoryUrl": "https://github.com/tt-a1i/archify",
+    "stats": {"githubStars": 84965, "githubRepo": "tt-a1i/archify", "installs": null, "installsSource": "skills.sh", "lastCheckedAt": "2026-10-18T04:42:54Z"},
+    "installCommand": "npx skills add https://github.com/tt-a1i/archify --skill archify",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "基于真实项目生成图示时需要读取仓库文件；交付前应核对图中事实、来源和遗漏范围。",
+    "featured": true,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "unchecked",
+    "sourceCheckedOn": "",
+    "detailZh": {
+      "overview": "这个 Skill 不是传统拖拽画图软件，而是让兼容 AI 工具根据你的描述或项目证据生成交互式图示。它支持十类图，包括架构、工作流、时序、数据流、生命周期、ER、类、树、时间线和瀑布耗时图。AI 会把内容整理为符合模式的结构化数据，生成独立 HTML，并运行格式、来源和浏览器检查；需要时还可导出图片、SVG 或 WebM。它不适合柱状图、折线图等数值统计图。",
+      "workflow": [
+        "提供要说明的流程、系统、代码仓库、Mermaid 图或已有候选数据。",
+        "AI 根据问题选择合适的图类型，并读取对应规则和示例。",
+        "根据已知事实编写结构化候选数据；真实代码项目需要保留来源证据。",
+        "运行 finalize 生成 HTML，并依次通过验证、交付检查和浏览器检查。",
+        "如检查失败，按诊断修复后重新生成；必要时再做人工视觉检查。"
+      ],
+      "requirements": [
+        "需要 Node.js，以及已安装的 Archify 包和其中的命令行工具。",
+        "普通主题可以用自然语言描述；代码图需要提供可读取的仓库和明确范围。",
+        "生成过程会在工作目录创建 `.archify` 文件夹保存 JSON、HTML 和检查记录。",
+        "浏览器检查和可选导出需要相应的本地运行环境。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "你已经写清楚用户注册时填写资料、验证邮箱、创建账号和失败重试的过程，希望做成便于同学讨论的流程图。",
+      "steps": [
+        "提供注册流程中的步骤、判断条件、失败路径和参与角色。",
+        "AI 选择 workflow 类型，并将事实整理为符合规则的候选数据。",
+        "生成可交互 HTML，检查连接、标签、布局和浏览器显示。",
+        "交付 HTML 和结构化数据，方便后续修正流程内容。"
+      ],
+      "expectedFiles": ["可交互的 HTML 图示。", "用于修改和复现的 candidate.json。", "自动检查产生的摘要记录；图片或视频导出只在另有要求时生成。"],
+      "notes": "这是沿用原有用户注册流程情境整理的演示性示例，尚未实际运行。图中步骤必须来自你提供的流程，不能把 AI 补全内容当成业务事实。"
+    }
+  },
+  {
+    "id": "gg-skills/explain/explain",
+    "name": "explain",
+    "nameZh": "复杂资料讲解",
+    "category": "可视化",
+    "summaryZh": "帮助 AI 把已有方案、资料或代码流程整理成简短回答和完整 HTML 讲解页。",
+    "explanationZh": "它把已有的计划、研究、规范、决策或代码流程翻译成两个层次：聊天中的简短结论，以及带图表和下一步建议的独立 HTML 页面。",
+    "audience": "需要向同学、团队成员或新开发者解释复杂资料的人。",
+    "scenarios": ["解释已有技术方案或代码流程", "把密集资料整理成图文讲解页", "在规划或决策前制作便于理解的说明材料"],
+    "inputExample": "把我写好的接口方案整理成给新人看的讲解页。",
+    "outputExample": "聊天中的 2～5 句简要说明，以及一份包含流程图、关键内容和下一步建议的 HTML 讲解页（演示性预期，尚未实测）。",
+    "boundaries": [
+      "它只解释已有证据，不负责独立研究、补齐未知事实或替你制定新计划",
+      "没有明确资料或资料互相矛盾时，应停止并转交研究或澄清流程",
+      "非简单主题需要图示支持，HTML 和图中每项内容都应能追溯到来源",
+      "原始模板通过在线 Mermaid 脚本渲染图表，离线查看时需要额外验证"
+    ],
+    "tags": ["讲解", "写作", "网页"],
+    "keywords": ["explain", "html", "解释", "讲解", "总结", "可视化", "科普"],
+    "sourceUrl": "https://skills.sh/gg-skills/explain/explain",
+    "repositoryUrl": "https://github.com/gg-skills/explain",
+    "stats": {"githubStars": 0, "githubRepo": "gg-skills/explain", "installs": null, "installsSource": "skills.sh", "lastCheckedAt": "2026-10-18T04:42:54Z"},
+    "installCommand": "npx skills add https://github.com/gg-skills/explain --skill explain",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "讲解页中的事实、文件路径和图示必须来自已核实资料；不要用生成内容填补证据空白。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "unchecked",
+    "sourceCheckedOn": "",
+    "detailZh": {
+      "overview": "这个 Skill 是一层“解释和呈现”工作流，不是搜索或规划工具。它从已有代码、方案、研究、规范或决策材料出发，先在聊天中用 2～5 句话给出直接答案，再把完整讲解写成独立 HTML。页面会根据主题加入必要的流程图、时序图、表格或结构图，并说明证据、未知问题和下一步。没有来源资料、资料冲突或需要查找新事实时，它应停止并交给其他研究流程。",
+      "workflow": [
+        "确认已有来源材料，以及这次到底要解释哪个问题。",
+        "选择能消除理解障碍的图示、表格或结构表达。",
+        "生成包含完整说明、证据、边界和下一步的独立 HTML 页面。",
+        "检查聊天摘要与 HTML、文字与图示、结论与来源是否一致。",
+        "在聊天中给出简短答案、HTML 绝对路径和下一步行动。"
+      ],
+      "requirements": [
+        "必须先有可读取的方案、代码、研究、规范或决策材料。",
+        "需要能够在项目目录写入 `.tmp/explain/.../explain.html`。",
+        "复杂主题需要可以在 HTML 中渲染的 Mermaid、SVG、表格或其他图示。",
+        "若需要最新外部事实，应先使用研究流程，不能由本 Skill 自行猜测。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "你已经写好接口方案，但新同学难以从原始规范中快速理解参与模块、调用顺序和失败处理。",
+      "steps": [
+        "提供接口方案文件，并明确要回答的问题和目标读者。",
+        "AI 找出已有证据中的参与模块、请求流程、异常路径和未知点。",
+        "在聊天中先给出简短结论，再制作带时序图或流程图的 HTML 页面。",
+        "核对页面中的每个事实和文件指向，并在结尾列出下一步。"
+      ],
+      "expectedFiles": ["一份位于 `.tmp/explain/.../explain.html` 的独立讲解页。", "同时在聊天中提供 2～5 句简要说明和下一步行动。"],
+      "notes": "这是沿用原有接口方案情境整理的演示性示例，尚未实际生成页面。页面内容必须以用户提供的方案为准。"
+    }
+  },
+  {
+    "id": "auldsyababua/instructor-workflow/skill-doc-generator",
+    "name": "skill-doc-generator",
+    "nameZh": "Skill 文档生成",
+    "category": "Skill 开发",
+    "summaryZh": "帮助 Skill 作者分析 SKILL.md、检查文档一致性，并生成标准化 README。",
+    "explanationZh": "它通过附带的脚本读取 Skill 的名称、描述、章节、代码示例和资源文件，检查元数据、术语和结构问题，再为单个或多个 Skill 生成 README 与索引。",
+    "audience": "需要创建、维护或批量整理 Skill 文档的作者和开发者。",
+    "scenarios": ["分析现有 SKILL.md 的结构和资源", "生成或更新标准化 README", "批量检查多个 Skill 的文档一致性"],
+    "inputExample": "请为这个 Skill 整理一份结构清楚的 README。",
+    "outputExample": "一份 README 草稿，以及按错误、警告和建议分级的文档检查结果（演示性预期，尚未实测）。",
+    "boundaries": [
+      "它检查的是文档结构和一致性，不代表 Skill 已在真实环境中运行成功",
+      "自动生成的功能描述和示例仍需对照原始说明人工审核",
+      "脚本需要 Python 和相应解析依赖，批量处理前应先检查来源与运行权限",
+      "当前来源仓库热度较低且来源页曾提示安全审计警告，不能仅凭文档结果判断安全"
+    ],
+    "tags": ["说明文档", "开发"],
+    "keywords": ["skill.md", "skill", "readme", "文档", "生成", "开发"],
+    "sourceUrl": "https://skills.sh/auldsyababua/instructor-workflow/skill-doc-generator",
+    "repositoryUrl": "https://github.com/auldsyababua/instructor-workflow",
+    "stats": {"githubStars": 6, "githubRepo": "auldsyababua/instructor-workflow", "installs": null, "installsSource": "skills.sh", "lastCheckedAt": "2026-10-18T04:42:55Z"},
+    "installCommand": "npx skills add https://github.com/auldsyababua/instructor-workflow --skill skill-doc-generator",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "来源页有安全审计警告；运行附带脚本前应检查代码、依赖和文件访问范围。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "unchecked",
+    "sourceCheckedOn": "",
+    "detailZh": {
+      "overview": "这个 Skill 不是普通用户的文档写作软件，而是一套面向 Skill 作者的文档整理工具。它附带四个 Python 脚本，可以分析单个 SKILL.md 的元数据、章节、代码块和资源，检查描述、结构、术语和引用一致性，生成标准 README，也能递归处理整个 Skill 目录并创建索引。检查结果分为错误、警告和建议，但它只验证文档质量，不会证明 Skill 的代码、安全性或实际效果。",
+      "workflow": [
+        "指定包含 SKILL.md 的单个 Skill 目录或多个 Skill 的上级目录。",
+        "运行分析脚本，提取元数据、章节、代码块、资源引用和统计信息。",
+        "运行一致性检查，查看错误、警告和改进建议。",
+        "生成 README；批量模式还可以递归处理并创建目录索引。",
+        "人工核对自动生成的功能说明、示例、链接和验证结果后再发布。"
+      ],
+      "requirements": [
+        "需要 Python，以及该 Skill 附带的分析、校验和生成脚本。",
+        "目标目录必须包含可读取的 SKILL.md；批量模式需要可遍历的目录结构。",
+        "运行环境需要具备脚本所使用的解析依赖，缺失时必须先评估再安装。",
+        "执行第三方脚本前应审查其代码和读写范围；EasySkillShow 不会替用户自动执行。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "你完成了一个 Skill 的说明文件，希望为仓库补一份结构统一的 README，并在发布前找出明显的文档问题。",
+      "steps": [
+        "指定该 Skill 目录，先分析 SKILL.md 的元数据、章节和资源。",
+        "运行一致性检查，处理缺失字段、描述不清或资源未引用等问题。",
+        "根据模板生成 README 草稿，包含概览、触发场景、资源和使用示例。",
+        "人工对照 SKILL.md 核实文字，避免把生成内容当作实际功能验证。"
+      ],
+      "expectedFiles": ["一份 README.md 草稿。", "终端中的分析结果和分级检查信息；批量模式还可能生成索引文件。"],
+      "notes": "这是沿用原有 README 生成情境整理的演示性示例，尚未在该来源版本上实际运行。文档通过检查不等于 Skill 已通过功能或安全测试。"
+    }
+  }
+]

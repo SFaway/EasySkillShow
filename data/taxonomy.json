@@ -1,0 +1,91 @@
+{
+  "version": "1.0",
+  "subcategoryDisplayThreshold": 3,
+  "categories": [
+    {
+      "id": "learning-research",
+      "name": "学习科研",
+      "icon": "book",
+      "subcategories": [
+        { "id": "study-review", "name": "复习与测验" },
+        { "id": "paper-reading", "name": "论文阅读" },
+        { "id": "literature-review", "name": "文献综述" },
+        { "id": "knowledge-explanation", "name": "知识讲解" }
+      ]
+    },
+    {
+      "id": "document-office",
+      "name": "文档办公",
+      "icon": "file",
+      "subcategories": [
+        { "id": "presentations", "name": "PPT" },
+        { "id": "word-docs", "name": "Word" },
+        { "id": "pdf", "name": "PDF" },
+        { "id": "structured-writing", "name": "结构化写作" },
+        { "id": "resume-writing", "name": "简历" },
+        { "id": "spreadsheets", "name": "表格" },
+        { "id": "document-conversion", "name": "文档转换" }
+      ]
+    },
+    {
+      "id": "programming",
+      "name": "编程开发",
+      "icon": "bolt",
+      "subcategories": [
+        { "id": "debugging", "name": "调试排错" },
+        { "id": "testing", "name": "测试" },
+        { "id": "code-review", "name": "代码审查" },
+        { "id": "project-development", "name": "项目开发" }
+      ]
+    },
+    {
+      "id": "design-content",
+      "name": "设计与内容",
+      "icon": "flow",
+      "subcategories": [
+        { "id": "web-ui", "name": "网页 UI" },
+        { "id": "design-review", "name": "设计检查" },
+        { "id": "diagrams", "name": "流程图" },
+        { "id": "marketing-copy", "name": "营销文案" },
+        { "id": "visual-design", "name": "视觉设计" }
+      ]
+    },
+    {
+      "id": "data-analysis",
+      "name": "数据分析",
+      "icon": "chart",
+      "subcategories": [
+        { "id": "data-cleaning", "name": "数据清洗" },
+        { "id": "statistics", "name": "统计分析" },
+        { "id": "data-visualization", "name": "数据可视化" }
+      ]
+    },
+    {
+      "id": "automation",
+      "name": "效率自动化",
+      "icon": "spark",
+      "subcategories": [
+        { "id": "workflow", "name": "工作流" },
+        { "id": "batch-processing", "name": "批量处理" },
+        { "id": "task-automation", "name": "任务自动化" }
+      ]
+    },
+    {
+      "id": "ai-tools",
+      "name": "AI 工具",
+      "icon": "puzzle",
+      "subcategories": [
+        { "id": "skill-discovery", "name": "Skill 搜索" },
+        { "id": "skill-development", "name": "Skill 开发" },
+        { "id": "agent-tools", "name": "Agent 工具" }
+      ]
+    }
+  ],
+  "collections": [
+    { "id": "student-essential", "name": "大学生常用", "description": "学习、作业、汇报和求职中容易上手的 Skill" },
+    { "id": "exam-review", "name": "期末复习", "description": "整理课件、复习资料和知识点" },
+    { "id": "papers-reports", "name": "论文与实验报告", "description": "阅读论文、整理文献并完成报告" },
+    { "id": "internship-career", "name": "实习求职", "description": "准备简历和求职展示材料" },
+    { "id": "coding-starter", "name": "编程入门", "description": "查找开发工具、理解界面并排查报错" }
+  ]
+}

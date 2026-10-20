@@ -1,0 +1,353 @@
+[
+  {
+    "id": "larksuite/cli/lark-base",
+    "name": "lark-base",
+    "nameZh": "飞书多维表格助手",
+    "category": "数据分析",
+    "summaryZh": "让 AI 在授权后创建、读取和整理飞书多维表格，可管理字段、记录、视图、表单、仪表盘和自动流程。",
+    "explanationZh": "它通过飞书官方命令行工具处理 Base 数据。你可以让 AI 新建项目跟踪表、批量更新记录、筛选统计结果，或配置表单与仪表盘；操作前会先解析真实链接和数据结构，避免把 Base、应用模式或普通文档混在一起。",
+    "audience": "已经使用飞书多维表格，希望让 AI 协助管理课程项目、调研数据或团队任务，并能完成账号授权的学生、团队成员和数据管理者。",
+    "scenarios": [
+      "创建课程项目或社团活动进度表",
+      "筛选、批量更新和统计已有记录",
+      "配置视图、表单、仪表盘或自动流程"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：请为课程小组创建一个“项目进度”多维表格，字段包括任务、负责人、状态、截止日期和备注。先展示字段设计和示例记录，确认后再创建；不要修改高级权限、分享范围或自动流程。",
+    "outputExample": "可能得到一个飞书多维表格、字段和示例记录，以及创建结果摘要；实际操作需要飞书登录、云端权限和网络连接。",
+    "boundaries": [
+      "它处理飞书多维表格 Base，不是本地 Excel 编辑器；Excel、CSV 或 `.base` 文件的导入导出需要飞书云盘能力",
+      "普通 Base、BaseApp、表、字段、记录和视图是不同对象，操作前必须解析真实链接或标识，不能只凭名称猜目标",
+      "写入、删除、权限和分享设置会改变真实云端数据；尤其删除字段或表单问题可能同时删除历史记录中的整列数据",
+      "多数更新通过异步链路生效，成功响应后不一定立即在读取结果中出现；只有任务需要时再统一复核",
+      "高级权限、工作流和应用模式需要额外参考说明，不能把暂不支持的复制或移动功能用新建空对象冒充",
+      "本条目的课程项目示例未连接真实飞书账号，也未创建任何云端表格"
+    ],
+    "tags": ["飞书", "多维表格", "数据管理"],
+    "keywords": ["lark base", "飞书多维表格", "bitable", "记录", "字段", "表单", "仪表盘", "项目管理"],
+    "sourceUrl": "https://www.skills.sh/larksuite/cli/lark-base",
+    "repositoryUrl": "https://github.com/larksuite/cli",
+    "stats": {
+      "githubStars": 17720,
+      "githubRepo": "larksuite/cli",
+      "installs": null,
+      "installsSource": "skills.sh（未取得可复核的精确数值）",
+      "lastCheckedAt": "2026-10-18T21:30:00+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/larksuite/cli --skill lark-base",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "会访问并可能修改飞书中的真实数据。应优先使用用户身份和最小权限，写入前核对 Base、表、字段及影响范围；删除字段、表单问题、权限或分享设置前必须单独确认并考虑备份。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个独立电子表格软件，而是一套让兼容 AI 工具通过飞书官方能力管理多维表格的方法。完成登录和授权后，AI 可以定位 Base、读取表和字段、查询或更新记录，也能处理视图、表单、仪表盘、工作流、应用模式和高级权限。原流程要求先判断真实对象类型，再只读取和修改当前任务所需的数据。",
+      "workflow": [
+        "提供多维表格链接、名称或新建目标，并说明只读、创建还是修改。",
+        "AI 检查 lark-cli、登录身份和权限，解析 Base、表、视图或 BaseApp 的真实标识。",
+        "读取完成任务所需的最小结构；写入前确认字段类型、记录范围和是否涉及分享或权限。",
+        "创建新 Base 时先展示名称、首表、字段和示例记录；修改时只提交目标字段或记录。",
+        "按需要配置视图、表单、仪表盘或工作流，复杂对象先读取对应官方参考。",
+        "根据写入响应报告结果；任务明确要求验收或返回不足时，再统一读取检查最终状态。"
+      ],
+      "requirements": [
+        "需要安装并可运行 lark-cli，具备网络连接和飞书账号授权。",
+        "通常应以用户身份操作；应用身份只能访问其拥有或获准访问的资源，不能用切换身份绕过权限。",
+        "修改已有数据时需要可访问的 Base 链接、token 或足以唯一定位的标题和所有者信息。",
+        "大量记录读取可能生成 NDJSON 文件并使用 jq 或 Python 做本地分析；大表还需注意分页和字段投影。",
+        "安装 Skill 不会新增独立桌面应用，也不会自动取得组织数据和高级权限。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：课程小组需要一个统一的项目进度表，目前还没有确定字段和记录结构。本示例未连接真实飞书账号。",
+      "steps": [
+        "说明要追踪的任务、负责人、状态、截止日期和备注，以及不允许修改的权限范围。",
+        "AI 展示 Base 名称、首表、字段类型和两条示例记录，等待确认。",
+        "确认后创建 Base、表和字段，再写入示例记录。",
+        "AI 根据创建响应返回 Base 标识或链接和字段摘要。",
+        "如你要求验收，再读取目标表检查字段和记录；不创建工作流或改变分享设置。"
+      ],
+      "expectedFiles": [
+        "飞书云端的“项目进度”多维表格",
+        "任务、负责人、状态、截止日期和备注字段",
+        "创建结果、示例记录和必要的验收摘要"
+      ],
+      "notes": "这是未经实测的演示性输入输出。实际结果取决于 lark-cli、登录身份、组织权限和 Base 当前状态；不得把示例视为真实创建记录。"
+    },
+    "categoryId": "data-analysis",
+    "subcategoryId": "data-management",
+    "audiences": ["大学生", "团队成员", "数据管理者"],
+    "collections": ["student-essential"],
+    "reviewEvidence": {
+      "sourceFacts": ["支持 Base、表、字段、记录、视图、表单、仪表盘、工作流和高级权限", "优先使用用户身份并先解析目标实体", "记录支持筛选、批量写入和本地分析", "删除表单问题默认可能删除底层字段及数据"],
+      "reasonableInferences": ["适合课程项目和团队任务的结构化管理", "复杂写入前先展示结构有助于避免误改"],
+      "untestedClaims": ["课程项目示例未连接真实账号", "未创建、写入或复核任何飞书 Base"]
+    }
+  },
+  {
+    "id": "mattpocock/skills/to-questionnaire",
+    "name": "to-questionnaire",
+    "nameZh": "异步访谈问卷生成",
+    "category": "效率自动化",
+    "summaryZh": "当关键信息掌握在别人手里时，让 AI 根据接收者和你的决策目标生成一份可直接填写的 Markdown 问卷。",
+    "explanationZh": "它不会追问你本来就不知道的专业答案，而是先确认问卷发给谁、你需要从对方那里获得哪些事实或决定，再围绕这些信息缺口设计问题。问题按重要程度排列，并为回答者提供背景、填写方式和答案位置。",
+    "audience": "需要向导师、客户、开发者、社团负责人或实习带教收集信息，以便继续做决定的大学生、产品经理和项目成员。",
+    "scenarios": [
+      "向实习带教确认入职后的目标和协作方式",
+      "向项目负责人收集需求、限制和成功标准",
+      "在会议前准备可异步填写的发现问卷"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：我下周开始产品实习，需要向带教确认第一周目标、可访问的数据、沟通方式和交付标准。请先问我问卷发给谁、我必须带回哪些决定，再生成一份语气礼貌、10 分钟内能填完的 Markdown 问卷。",
+    "outputExample": "可能得到 `to-questionnaire-internship-onboarding.md`，包含用途、背景、填写说明和按优先级排列的问题；不会自动发送，也不会替对方回答。",
+    "boundaries": [
+      "它生成的是问卷文件，不是独立调查平台，不会自动发送、催收、统计或验证回答真实性",
+      "原流程只追问用户能够回答的发送背景：接收者是谁、需要带回什么；专业答案留给真正知情的接收者",
+      "每个问题应只问一个意思，重要问题放在前面；信息不足时不能用泛泛问题凑数量",
+      "问卷可能涉及个人信息或组织内部资料，应限制收集范围，并说明答案会如何使用和保存",
+      "本条目的实习入职示例未实际生成或发送给任何人"
+    ],
+    "tags": ["问卷", "异步访谈", "需求收集"],
+    "keywords": ["questionnaire", "问卷", "访谈提纲", "需求调研", "信息收集", "导师沟通", "实习"] ,
+    "sourceUrl": "https://www.skills.sh/mattpocock/skills/to-questionnaire",
+    "repositoryUrl": "https://github.com/mattpocock/skills",
+    "stats": {
+      "githubStars": 295600,
+      "githubRepo": "mattpocock/skills",
+      "installs": null,
+      "installsSource": "skills.sh（未取得可复核的精确数值）",
+      "lastCheckedAt": "2026-10-18T21:30:00+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/mattpocock/skills --skill to-questionnaire",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "问卷可能收集个人信息或组织内部情况。只询问完成当前决定所必需的内容，提前说明用途、保存和分享范围；不要要求密码、访问令牌或与目标无关的敏感信息。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个在线问卷系统，而是一套让兼容 AI 工具把信息缺口变成 Markdown 问卷的方法。当你需要某位知情者的答案才能继续做决定时，AI 先了解接收者的角色、与你的关系和他掌握的知识，再确认你必须从这次沟通中带回哪些事实或决定，最后生成适合异步填写或会议共填的问卷。",
+      "workflow": [
+        "说明当前被什么决定卡住，以及准备把问卷交给谁。",
+        "AI 用一次交流确认接收者的角色、专业背景、与你的关系和他掌握的信息。",
+        "AI 再确认你需要带回的具体事实或决定，形成完整的目标清单。",
+        "按信息缺口设计单一、明确的问题，最重要的问题排在最前面，数量较多时按主题分组。",
+        "补充问卷用途、必要背景、截止时间、预计填写时间、答案位置和“可以回答不知道”的说明。",
+        "保存为 `to-questionnaire-<主题>.md`，逐项核对所有目标是否都有问题覆盖，并返回文件路径。"
+      ],
+      "requirements": [
+        "需要知道问卷接收者是谁、他为什么掌握你缺少的信息，以及你要用答案做什么决定。",
+        "需要允许 AI 在当前目录创建 Markdown 文件。",
+        "若涉及隐私、商业秘密或研究参与者信息，应先确定收集依据、保存期限和访问范围。",
+        "发送、收集和分析回答需要用户自行完成或另行使用合适工具。",
+        "安装 Skill 不会新增在线表单、联系人或消息发送功能。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：你即将开始产品实习，但只有带教知道第一周的具体任务、数据权限和交付方式。本示例没有生成或发送真实问卷。",
+      "steps": [
+        "说明接收者是实习带教，以及你希望在入职前减少不确定性。",
+        "AI 确认你需要带回第一周目标、数据访问、沟通方式和交付标准。",
+        "AI 按重要程度编写问题，每题只问一个意思，并控制为约 10 分钟。",
+        "文件中说明问卷用途、填写期限和答案将用于准备入职计划。",
+        "AI 检查四类目标均被覆盖，然后返回 Markdown 文件路径。"
+      ],
+      "expectedFiles": [
+        "`to-questionnaire-internship-onboarding.md`",
+        "用途、背景和填写说明",
+        "按主题和优先级排列的问题及回答位置"
+      ],
+      "notes": "这是未经实测的演示性输入输出。问卷质量取决于目标是否具体，回答内容仍需由接收者提供并由用户判断可信度。"
+    },
+    "categoryId": "automation",
+    "subcategoryId": "workflow",
+    "audiences": ["大学生", "产品经理", "项目成员"],
+    "collections": ["student-essential", "internship-career"],
+    "reviewEvidence": {
+      "sourceFacts": ["先确认接收者及其掌握的信息", "再确认用户必须带回的事实或决定", "问题按重要程度排列且每题只问一个意思", "输出 to-questionnaire-<slug>.md"],
+      "reasonableInferences": ["适合实习、课程项目和产品调研前的信息收集", "应提前说明数据用途并限制敏感信息范围"],
+      "untestedClaims": ["实习问卷示例未实际生成", "未发送问卷或验证任何回答"]
+    }
+  },
+  {
+    "id": "mattpocock/skills/setup-pre-commit",
+    "name": "setup-pre-commit",
+    "nameZh": "代码提交前自动检查",
+    "category": "编程开发",
+    "summaryZh": "为 Node.js 项目设置提交前检查，在代码进入 Git 历史前自动格式化暂存文件，并运行已有的类型检查和测试。",
+    "explanationZh": "AI 会先根据锁文件识别 npm、pnpm、Yarn 或 Bun，再安装 Husky、lint-staged 和 Prettier，创建提交钩子与配置。如果项目没有类型检查或测试脚本，它会跳过相应步骤并说明，而不是凭空补命令。",
+    "audience": "希望在提交代码前自动发现格式、类型和测试问题，并已使用 Node.js、Git 和包管理器的编程学习者与开发者。",
+    "scenarios": [
+      "给课程前端项目加入统一格式检查",
+      "在 Git 提交前运行已有类型检查和测试",
+      "为团队仓库配置 Husky 与 lint-staged"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：请检查当前 Node.js 仓库使用的包管理器和现有脚本，为它配置 Husky、lint-staged 和 Prettier。保留已有格式配置；没有 typecheck 或 test 时不要编造。先说明会修改哪些文件和安装哪些依赖，确认后再执行并验证。",
+    "outputExample": "可能得到 Husky 提交钩子、lint-staged 与 Prettier 配置、依赖变更和验证结果；原流程最后会创建一条配置提交。",
+    "boundaries": [
+      "它主要面向使用 package.json 的 Node.js 仓库，不是所有语言和版本控制系统的通用检查器",
+      "会安装开发依赖、修改 package.json 和配置文件，并按原流程创建 Git 提交；不希望提交时需要提前说明",
+      "lint-staged 会用 Prettier 改写已暂存文件，完整 typecheck 和 test 可能明显延长每次提交时间",
+      "已有 Prettier 配置应保留；没有 typecheck 或 test 脚本时只省略对应命令，不应猜测替代脚本",
+      "包管理器、Husky 版本、项目测试和当前未提交改动都可能影响结果，必须在真实仓库中验证",
+      "本条目的 Node.js 项目示例未实际安装依赖或创建提交"
+    ],
+    "tags": ["Git", "Husky", "代码质量"],
+    "keywords": ["pre-commit", "Husky", "lint-staged", "Prettier", "Git hook", "类型检查", "测试", "Node.js"],
+    "sourceUrl": "https://www.skills.sh/mattpocock/skills/setup-pre-commit",
+    "repositoryUrl": "https://github.com/mattpocock/skills",
+    "stats": {
+      "githubStars": 295600,
+      "githubRepo": "mattpocock/skills",
+      "installs": null,
+      "installsSource": "skills.sh（未取得可复核的精确数值）",
+      "lastCheckedAt": "2026-10-18T21:30:00+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/mattpocock/skills --skill setup-pre-commit",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "会安装依赖、格式化暂存文件并创建提交。开始前应检查当前分支和未提交改动，确认包管理器与脚本；保留现有配置并在提交前审查差异，避免把无关修改一起提交。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个独立代码检查软件，而是一套让兼容 AI 编程工具为 Node.js 仓库配置提交前保护的方法。AI 会识别项目使用的包管理器，安装 Husky、lint-staged 和 Prettier，创建 Git pre-commit 钩子，并把格式化、现有类型检查和测试串联起来。这样每次提交前都先执行检查，但项目是否适合完整测试以及耗时仍需实际验证。",
+      "workflow": [
+        "读取锁文件、package.json、现有格式配置和 Git 状态，确认包管理器及已有脚本。",
+        "列出将安装的开发依赖和会修改的文件，说明提交耗时与格式化影响。",
+        "得到确认后，用当前项目的包管理器安装 Husky、lint-staged 和 Prettier。",
+        "初始化 Husky，创建 pre-commit 钩子，先运行 lint-staged，再运行存在的 typecheck 和 test。",
+        "创建 `.lintstagedrc`；只有项目没有任何 Prettier 配置时才添加默认 `.prettierrc`。",
+        "确认钩子文件、prepare 脚本和配置存在，运行 lint-staged 验证。",
+        "审查改动并按原流程创建配置提交，报告被省略的脚本和验证结果。"
+      ],
+      "requirements": [
+        "需要 Node.js 项目、package.json、Git 仓库和 npm、pnpm、Yarn 或 Bun 之一。",
+        "安装依赖需要网络和对项目文件的写权限；现有锁文件决定使用哪个包管理器。",
+        "typecheck 与 test 只有 package.json 已提供相应脚本时才加入钩子。",
+        "需要检查当前分支、暂存区和未提交改动，避免最终提交混入无关文件。",
+        "安装 Skill 不会替代 CI、代码评审或完整测试策略。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：课程前端项目使用 pnpm，团队希望统一格式并在提交前运行已有检查。本示例未修改真实仓库。",
+      "steps": [
+        "AI 读取 pnpm 锁文件、package.json、现有 Prettier 配置和 Git 状态。",
+        "展示依赖与文件变更计划，并说明完整测试可能影响提交速度。",
+        "确认后安装依赖，创建 Husky 钩子和 lint-staged 配置，保留原有格式规则。",
+        "只加入项目已有的 typecheck 和 test 脚本，运行 lint-staged 验证。",
+        "检查差异后创建配置提交，并汇报测试结果和未覆盖的情况。"
+      ],
+      "expectedFiles": [
+        "`.husky/pre-commit`",
+        "`.lintstagedrc` 与必要时新增的 `.prettierrc`",
+        "package.json 和锁文件中的开发依赖变更",
+        "验证摘要及按原流程创建的 Git 提交"
+      ],
+      "notes": "这是未经实测的演示性输入输出。没有安装依赖、运行测试或创建提交；实际行为取决于包管理器、Husky 版本、项目脚本和当前 Git 状态。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "testing",
+    "audiences": ["编程学习者", "前端开发者", "团队维护者"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["根据锁文件识别 npm、pnpm、Yarn 或 Bun", "安装 Husky、lint-staged 和 Prettier", "提交前先格式化暂存文件，再运行已有类型检查和测试", "验证后创建配置提交"],
+      "reasonableInferences": ["适合 Node.js 课程项目和团队仓库", "完整测试可能使每次提交变慢，应由项目评估"],
+      "untestedClaims": ["示例未修改真实仓库", "未安装依赖、运行钩子或创建提交"]
+    }
+  },
+  {
+    "id": "larksuite/cli/lark-calendar",
+    "name": "lark-calendar",
+    "nameZh": "飞书日程与会议协调",
+    "category": "效率自动化",
+    "summaryZh": "让 AI 在授权后查看飞书日程、查询多人忙闲、推荐会议时间，并在你确认后创建或调整日程和会议室。",
+    "explanationZh": "它会先判断你是在新建日程还是修改已有日程，再处理时间、参会人和会议室。时间不明确时，AI 可以结合工作时间和忙闲情况给出多个方案；遇到时间或会议室选择时必须先让你确认，不能直接替你预约。",
+    "audience": "已经使用飞书日历，需要协调小组会议、课程项目或团队日程，并能够完成账号授权的学生、团队成员和办公用户。",
+    "scenarios": [
+      "查看今天或未来一段时间的日程",
+      "查找多人共同空闲时间并推荐会议方案",
+      "创建、改期或为日程安排会议室和参会人"
+    ],
+    "inputExample": "演示性示例，尚未实际运行验证：请在下周一到周三之间，为课程小组找一个 45 分钟的共同空闲时段。先列出 3 个方案并说明冲突情况，等我选择后再创建飞书日程；不要预定会议室，也不要给未确认的人发送邀请。",
+    "outputExample": "可能先得到多个时间方案和忙闲说明；你确认后，才会得到创建后的飞书日程信息和参会人摘要。",
+    "boundaries": [
+      "它管理飞书日程和会议室，不是独立日历软件；过去的视频会议记录和纪要属于 lark-meeting，待办属于 lark-task",
+      "查看本人日程通常使用用户身份，bot 只能处理自己拥有或参与的资源，不能用身份切换绕过权限",
+      "时间或会议室存在多个方案时必须展示选项并等待确认；创建、改期、邀请和删除会影响真实用户",
+      "重复日程的单次、全部或此次及后续范围必须明确，不能默认修改整组或只改一次",
+      "时间必须使用正确时区；禁止依赖运行环境默认时区，以免出现数小时偏差",
+      "推荐结果可能包含忙闲冲突，必须如实说明；“空闲”不一定等于适合开会",
+      "本条目的课程小组示例未连接真实飞书日历，也未创建任何邀请"
+    ],
+    "tags": ["飞书", "日程", "会议协调"],
+    "keywords": ["lark calendar", "飞书日历", "日程", "会议", "忙闲", "共同空闲", "会议室", "预约"] ,
+    "sourceUrl": "https://www.skills.sh/larksuite/cli/lark-calendar",
+    "repositoryUrl": "https://github.com/larksuite/cli",
+    "stats": {
+      "githubStars": 17720,
+      "githubRepo": "larksuite/cli",
+      "installs": null,
+      "installsSource": "skills.sh（未取得可复核的精确数值）",
+      "lastCheckedAt": "2026-10-18T21:30:00+08:00"
+    },
+    "installCommand": "npx skills add https://github.com/larksuite/cli --skill lark-calendar",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "创建、改期、邀请、会议室和删除操作会影响其他人的日程。应先核对日期、时区、持续时间、参会人和重复范围，展示最终方案并取得确认；只授予完成任务所需的日历权限。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-18",
+    "detailZh": {
+      "overview": "这不是一个新的日历应用，而是一套让兼容 AI 工具通过飞书官方能力协调日程的方法。完成登录和授权后，AI 可以查看或搜索日程、查询单人或多人忙闲、推荐合适时间、创建或修改日程，并处理参会人和会议室。原流程把“查到时间”和“替用户预约”分开：一旦需要在方案中选择，必须先展示选项并等待确认。",
+      "workflow": [
+        "说明是查看日程、新建会议还是修改已有日程，并提供日期范围、时长、参会人和会议室要求。",
+        "AI 检查 lark-cli、用户身份、日历权限和目标时区；编辑时先定位唯一的日程或实例。",
+        "时间明确时直接核对忙闲；时间模糊时结合工作时间、忙碌和休息区间生成多个推荐方案。",
+        "如需会议室，先确定具体时间块，再查询可用会议室；不能用模糊时间直接搜索。",
+        "向你展示时间、冲突、参会人和会议室方案，等待选择和最终确认。",
+        "确认后创建或更新日程，重复日程还要明确单次、全部或此次及后续范围。",
+        "根据命令返回报告结果；只有返回不足或你要求复核时才额外查询。"
+      ],
+      "requirements": [
+        "需要安装并可运行 lark-cli，具备网络连接、飞书登录和相应日历权限。",
+        "需要明确或可解析的参会人身份；搜索结果无法唯一确定时必须由用户选择。",
+        "日期和时间换算必须显式使用目标时区，创建命令使用带时区偏移的 ISO 8601 时间。",
+        "查询他人忙闲、邀请参会人或预定会议室取决于组织权限与资源配置。",
+        "安装 Skill 不会新增独立日历、自动获得他人日程详情或绕过会议室审批。"
+      ]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：课程小组需要在下周一到周三之间安排 45 分钟会议，希望先看时间方案再创建日程。本示例未连接真实日历。",
+      "steps": [
+        "提供日期范围、45 分钟时长和已确认的参会人，明确不预定会议室。",
+        "AI 查询参与者忙闲并生成多个推荐时间，注明是否存在冲突。",
+        "以清晰列表展示 3 个方案和理由，等待你选择。",
+        "你确认最终时间和参会人后，AI 才创建日程并发送相应邀请。",
+        "根据创建响应返回日程信息；没有确认前不执行任何写入。"
+      ],
+      "expectedFiles": [
+        "多个候选时间段及忙闲或冲突说明",
+        "经用户确认后创建的飞书日程",
+        "日程时间、时区、时长和参会人摘要"
+      ],
+      "notes": "这是未经实测的演示性输入输出。实际结果取决于账号授权、参与者权限、日历状态和时区设置；没有创建真实日程或发送邀请。"
+    },
+    "categoryId": "automation",
+    "subcategoryId": "task-automation",
+    "audiences": ["大学生", "团队成员", "办公用户"],
+    "collections": ["student-essential"],
+    "reviewEvidence": {
+      "sourceFacts": ["支持日程查看、搜索、创建、更新、删除和 RSVP", "支持忙闲查询、时间推荐、参会人与会议室", "时间或会议室方案需要先展示并等待用户确认", "时间换算必须显式指定时区"],
+      "reasonableInferences": ["适合课程小组和团队的会议协调", "写入前展示最终时间与参会人可减少误约风险"],
+      "untestedClaims": ["课程小组示例未连接真实日历", "未查询忙闲、创建日程或发送邀请"]
+    }
+  }
+]

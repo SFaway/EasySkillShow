@@ -1,0 +1,96 @@
+[
+  {
+    "id": "shadcn-ui/ui/shadcn",
+    "name": "shadcn",
+    "nameZh": "shadcn/ui 组件开发助手",
+    "category": "编程开发",
+    "summaryZh": "帮助 AI 先识别项目中的 shadcn 配置，再检索、添加、组合或更新组件，并按当前基础库、主题和导入路径检查生成代码。",
+    "explanationZh": "它是 shadcn/ui 官方的项目感知开发指南。AI 会先通过 CLI 读取组件、路径别名、Tailwind 版本、基础组件库、图标库和包管理器，再查找组件文档、预览 registry 内容并加入源代码；更新已安装组件时先查看 dry-run 和逐文件差异，避免覆盖本地修改。",
+    "audience": "使用 React、Next.js、Vite 或其他受支持项目构建 shadcn/ui 界面、组件库和设计系统的前端学习者、开发者与设计工程师。",
+    "scenarios": ["在现有项目中搜索并添加合适的 shadcn 组件或区块", "根据 Radix、Base UI、Tailwind 和项目别名修复组件用法", "在保留本地修改的前提下更新组件或应用 preset"],
+    "inputExample": "演示性示例，尚未实际运行验证：请先读取当前项目的 shadcn info，并查看 Button、Dialog 和 Form 的当前文档。为设置页选择已存在的组件；如需新增，先预览将写入的文件和依赖。不要覆盖现有组件，也不要直接应用 preset。",
+    "outputExample": "可能得到项目上下文摘要、组件选择、CLI 预览命令、待写入文件和依赖、代码修改与验证清单；未经授权不会覆盖组件或应用 preset。",
+    "boundaries": ["它是给兼容 AI 编程工具使用的 shadcn/ui 开发指南，不是独立可视化编辑器，也不会自动托管或发布界面", "shadcn 组件通过 CLI 作为源代码加入项目，团队需要自行维护、测试和审查这些文件", "运行 CLI 前必须按项目 packageManager 选择 npx、pnpm dlx 或 bunx，并先读取当前 info；不能假设路径别名、Tailwind 版本、图标库或基础组件库", "`@latest` 是移动版本，组件 API、模板和 CLI 参数可能变化；每次工作都应重新获取当前 docs 与项目上下文", "添加、初始化、应用 preset 或安装第三方 registry 条目可能写文件和依赖；执行前应查看 dry-run、diff、目标目录与锁文件变化", "更新已有组件时不得直接覆盖本地改动；`--overwrite` 需要用户明确批准，并应保留可恢复版本", "Radix 与 Base UI 的组合 API 不同，例如 trigger、Select、Slider 和 Accordion，不能机械复制示例", "第三方 registry 可能带有错误导入、额外依赖或不符合项目约定的代码，添加后必须逐文件审查", "生成界面仍需检查类型、测试、浏览器渲染、响应式、键盘操作、焦点和可访问名称", "原 Skill 包含 shell 命令指令且 skills.sh 页面显示 Socket Warn；本条目只完成静态来源核验，没有运行 CLI"],
+    "tags": ["shadcn/ui", "React 组件", "设计系统"],
+    "keywords": ["shadcn", "shadcn/ui", "components.json", "registry", "Radix UI", "Base UI", "Tailwind CSS", "preset", "design system"],
+    "sourceUrl": "https://www.skills.sh/shadcn-ui/ui/shadcn",
+    "repositoryUrl": "https://github.com/shadcn-ui/ui",
+    "stats": {"githubStars":125900,"githubRepo":"shadcn-ui/ui","installs":113500,"installsSource":"skills.sh 页面快照（2026-10-19，显示为四舍五入值）","lastCheckedAt":"2026-10-19T00:00:00+08:00"},
+    "installCommand": "npx skills add https://github.com/shadcn-ui/ui --skill shadcn",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "CLI 会安装依赖并写入项目源文件。先读取项目配置和当前文档，添加或更新前查看 dry-run、diff 与锁文件；未经明确批准不要覆盖组件或应用 preset。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-19",
+    "detailZh": {
+      "overview": "这套官方指南让 AI 在真实项目约束下使用 shadcn/ui，而不是凭记忆拼组件。它先读取项目的已安装组件、路径别名、RSC、Tailwind、样式、基础库、图标、框架、包管理器与 preset，再搜索 registry、获取当前文档、预览文件并组合现有组件。表单、分组、overlay、图标、语义颜色和聊天界面均有明确规则；更新组件时要求保留本地修改。",
+      "workflow": ["读取 packageManager、components.json 与 `shadcn info --json`，确认组件、路径、框架、Tailwind、base 和 iconLibrary。", "检查已安装组件与目标 UI，优先复用现有组件；未指定 registry 时先向用户确认来源。", "用 search、docs 和 view 获取当前组件、示例和 registry 内容，不凭模型记忆猜 API。", "新增前预览文件、依赖和导入路径；使用项目自己的 package runner 执行最小范围 add。", "逐个阅读新增文件，修正第三方 registry 的硬编码别名、图标库、分组、表单和组合问题。", "更新已有组件时先运行 dry-run 与逐文件 diff，手工合并本地修改；覆盖需明确批准。", "运行类型检查、测试和构建，并在浏览器验证响应式、深浅色、键盘、焦点、加载、空白和错误状态。"],
+      "requirements": ["需要已有或待初始化的 React 项目，以及兼容的 Node.js 包管理器。", "需要读取项目文件和运行 shadcn CLI 的权限；添加组件通常会写源文件、配置、依赖和锁文件。", "应有版本控制或其他可恢复副本，以审查和回滚组件更新。", "需要网络获取当前 registry 与组件文档；私有 registry 还需单独的凭据与访问评审。", "需要项目自身的类型检查、测试、构建和浏览器验证环境。"]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：一个已有 shadcn/ui 的设置页要补充表单与确认对话框，团队担心 CLI 覆盖定制组件。本示例未读取真实仓库。",
+      "steps": ["读取 info 和 components.json，记录 base、别名、Tailwind、图标库和已安装组件。", "查询 Button、Dialog、Field 与相关组件的当前文档。", "优先复用已安装组件，对缺失项先查看 registry 内容与 dry-run。", "确认目标文件和依赖后再添加，逐文件检查导入、组合与可访问性。", "运行类型检查、测试和浏览器验证，并展示最终差异。"],
+      "expectedFiles": ["项目上下文与组件选择说明", "CLI dry-run 和依赖变更摘要", "最小范围的组件或页面代码差异", "类型、测试、构建与界面验证结果"],
+      "notes": "这是未经实测的演示性输入输出。没有运行 shadcn CLI、安装依赖或修改项目文件。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "project-development",
+    "audiences": ["前端学习者", "前端开发者", "设计工程师"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["组件通过 CLI 作为源代码加入用户项目", "要求使用项目 packageManager 对应的 runner", "先读取 info 并用 search、docs 和 view 获取项目与组件上下文", "更新现有组件时先用 dry-run 和 diff", "不得在未获明确批准时使用 overwrite", "包含针对 Radix/Base UI、表单、组合、图标、样式与聊天界面的规则"],
+      "reasonableInferences": ["适合作为现有设计类条目的实现层补充", "任何 CLI 写入都应结合版本控制、锁文件和浏览器验证审查"],
+      "untestedClaims": ["设置页示例未读取真实项目", "未运行 CLI、安装组件或验证生成界面", "未验证第三方 registry 的安全性与兼容性"]
+    }
+  },
+  {
+    "id": "vercel-labs/agent-skills/vercel-react-native-skills",
+    "name": "vercel-react-native-skills",
+    "nameZh": "React Native 与 Expo 性能指南",
+    "category": "编程开发",
+    "summaryZh": "让 AI 按优先级编写或审查 React Native 与 Expo 代码，重点检查长列表、动画、导航、图片、渲染和原生依赖。",
+    "explanationZh": "它是 Vercel 官方 Agent Skills 仓库中的移动开发规则集。AI 会优先检查列表虚拟化、列表项渲染和回调稳定性，再处理 Reanimated、原生导航、expo-image、状态订阅、条件渲染、monorepo 原生依赖与字体配置；建议是否有效仍需结合版本、平台和真机数据验证。",
+    "audience": "使用 React Native 或 Expo 构建移动应用，需要编写组件、排查滚动卡顿、优化动画或管理原生依赖的移动开发学习者和工程师。",
+    "scenarios": ["审查大列表滚动卡顿和重复渲染", "优化 Reanimated 动画、手势与原生导航", "检查图片、Safe Area、字体和 monorepo 原生依赖配置"],
+    "inputExample": "演示性示例，尚未实际运行验证：请只审查这个 Expo 商品列表页面。先确认 Expo、React Native、FlashList、Reanimated 和 expo-image 版本，再按影响级别列出列表、图片、回调、动画和导航问题；不要直接安装依赖或重写页面。",
+    "outputExample": "可能得到按严重程度排列的规则命中、代码位置、建议改法和真机测量计划；在未获授权时不会修改代码或安装移动依赖。",
+    "boundaries": ["它是 React Native 与 Expo 的最佳实践规则集，不是运行时 profiler，也不会自动产生 FPS、内存或启动耗时数据", "来源中的 FlashList、Reanimated、expo-image、Galeria 和原生导航建议依赖具体库与版本，不能在未检查项目依赖时机械套用", "规则不能替代 Expo 与 React Native 当前版本文档；新架构、React Compiler、Fabric、Hermes 和平台 API 可能随版本变化", "iOS 与 Android 在导航、Safe Area、键盘、菜单、模态框、图片和原生模块行为上不同，必须分别测试", "把 FlatList 改为 FlashList、替换图片库或导航器可能改变布局、估算尺寸、缓存、事件和依赖配置，应逐项迁移", "动画优化应优先测量瓶颈；只动画 transform 和 opacity 是通用方向，但不能证明业务场景已经流畅", "monorepo 原生依赖、config plugin 和字体变更可能需要重新生成原生工程或构建开发客户端", "AI 修改后仍需运行类型检查、单元与集成测试、Expo/原生构建，并在代表性真机上测量", "技能目录展示名、文件夹名与仓库当前 README 的 react-native-guidelines 名称存在演进差异，使用前应重新确认当前安装名称", "本条目的商品列表示例未读取项目、运行应用或测量性能"],
+    "tags": ["React Native", "Expo", "移动性能"],
+    "keywords": ["React Native", "Expo", "FlashList", "Reanimated", "expo-image", "mobile performance", "native navigation", "Safe Area", "monorepo"],
+    "sourceUrl": "https://www.skills.sh/vercel-labs/agent-skills/vercel-react-native-skills",
+    "repositoryUrl": "https://github.com/vercel-labs/agent-skills",
+    "stats": {"githubStars":32600,"githubRepo":"vercel-labs/agent-skills","installs":245300,"installsSource":"skills.sh 页面快照（2026-10-19，显示为四舍五入值）","lastCheckedAt":"2026-10-19T00:00:00+08:00"},
+    "installCommand": "npx skills add https://github.com/vercel-labs/agent-skills --skill vercel-react-native-skills",
+    "reviewStatus": "pending",
+    "demoStatus": "illustrative",
+    "safetyNote": "先确认 React Native、Expo 和相关库版本，再提出或应用规则。依赖、导航、原生模块和 config plugin 变更需单独批准；完成后在 iOS、Android 代表性真机上构建、测试和测量。",
+    "featured": false,
+    "screenshots": [],
+    "platforms": [],
+    "licenseStatus": "confirmed-repository",
+    "sourceCheckedOn": "2026-10-19",
+    "detailZh": {
+      "overview": "这套移动端规则按影响级别组织：先解决列表虚拟化、列表项计算、回调和图片等关键问题，再看 GPU 友好动画、Reanimated 派生值、手势、原生导航、Safe Area、模态框、状态订阅、文本渲染、monorepo 原生依赖和字体配置。它与目录中 React/Next.js Web 性能指南互补，但不能把 Web 规则直接当成移动平台结论。",
+      "workflow": ["读取 package.json、app 配置、Expo 与 React Native 版本、原生工程状态和目标 iOS/Android 设备。", "记录可复现的慢点和基线，包括长列表数据量、滚动、启动、内存或动画掉帧；没有数据时明确标注。", "按优先级先检查列表虚拟化、item memo、回调、内联对象、图片和昂贵计算。", "再检查动画属性、Reanimated 派生值、手势与原生导航，确认依赖和平台 API 可用。", "检查 expo-image、Safe Area、ScrollView inset、模态框、onLayout、状态订阅和条件渲染。", "如涉及 monorepo、字体或 config plugin，先说明是否会改依赖、配置或原生工程，获准后小步修改。", "运行类型检查、测试与 iOS/Android 构建，在代表性真机复测并比较基线；无改善时回滚或重新定位瓶颈。"],
+      "requirements": ["需要 React Native 或 Expo 项目、准确的依赖版本和目标平台信息。", "需要能运行项目的 iOS/Android 模拟器或代表性真机；性能结论最好来自真机。", "部分建议需要 FlashList、Reanimated、expo-image、手势库或原生导航，安装和配置必须单独评估。", "涉及原生模块或 config plugin 时，可能需要 Xcode、Android Studio、CocoaPods 或新的开发客户端构建。", "需要现有测试、类型检查、构建命令和可比较的性能基线。"]
+    },
+    "exampleDetails": {
+      "context": "演示性示例：Expo 商品列表滚动卡顿，团队想先只读审查，避免贸然替换依赖。本示例未运行应用。",
+      "steps": ["确认 Expo、React Native、列表、动画、图片和导航依赖版本。", "记录列表规模、复现设备和已有指标，缺失数据时列入测量计划。", "按优先级检查虚拟化、列表项、回调、内联对象、图片和昂贵计算。", "继续检查动画、手势、导航、Safe Area 和状态订阅。", "输出最小改动建议、依赖影响与 iOS/Android 真机复测计划，不直接改代码。"],
+      "expectedFiles": ["按影响级别排序的移动性能审查", "每项规则命中、代码位置与改进建议", "依赖、原生构建和平台差异清单", "真机基线与复测计划"],
+      "notes": "这是未经实测的演示性输入输出。没有运行 Expo、构建原生应用或测量 FPS、内存和启动时间。"
+    },
+    "categoryId": "programming",
+    "subcategoryId": "code-review",
+    "audiences": ["移动开发学习者", "React Native 开发者", "Expo 开发者"],
+    "collections": ["coding-starter"],
+    "reviewEvidence": {
+      "sourceFacts": ["面向 React Native 与 Expo", "规则覆盖八个优先级类别", "列表性能被列为最高优先级", "涵盖 FlashList、Reanimated、原生导航、expo-image、状态、渲染、monorepo 与配置", "每个详细规则包含原因、错误示例、正确示例和补充背景", "Skill frontmatter 与仓库 README 声明 MIT"],
+      "reasonableInferences": ["适合作为现有 React/Next.js Web 性能指南的移动端补充", "规则效果需要结合依赖版本、平台差异和真机数据验证"],
+      "untestedClaims": ["商品列表示例未读取或运行真实项目", "未安装任何依赖或执行原生构建", "未测量 FPS、内存、启动或滚动性能"]
+    }
+  }
+]
