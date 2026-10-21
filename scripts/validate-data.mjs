@@ -79,6 +79,8 @@ export function validate(items,taxonomy=DEFAULT_TAXONOMY){
   if(!(item.installCommand===null||typeof item.installCommand==='string'))errors.push(`[${i}] installCommand must be string or null`);
   if(typeof item.installCommand==='string'&&!item.installCommand.startsWith('npx skills add '))errors.push(`[${i}] unsupported install command; check manually`);
   if(item.installNote!==undefined&&typeof item.installNote!=='string')errors.push(`[${i}] installNote must be string when provided`);
+  if(item.installCommandStatus!==undefined&&!['source-checked','unverified','unavailable'].includes(item.installCommandStatus))errors.push(`[${i}] invalid installCommandStatus`);
+  if(item.codexTestStatus!==undefined&&!['verified','not-tested'].includes(item.codexTestStatus))errors.push(`[${i}] invalid codexTestStatus`);
  }
  return errors;
 }

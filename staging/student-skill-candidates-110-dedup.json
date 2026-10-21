@@ -1,0 +1,1853 @@
+{
+  "generatedAt": "2026-10-20T08:45:39.623Z",
+  "method": {
+    "id": "由 GitHub owner/repo 与 SKILL.md frontmatter name（缺失时使用目录名）组成，进行规范化比较",
+    "repositoryUrl": "同时检查正式目录和 110 条候选内部的仓库重合；同仓库不同 SKILL.md 不会自动删除",
+    "functionDescription": "名称相似度占 55%，功能描述相似度占 45%；同时和正式目录、其他候选比较，综合分 >=0.95 才判为高度功能重复。不同工具或运行环境即使类别描述相同也保留。"
+  },
+  "summary": {
+    "inputCandidates": 110,
+    "approved": 54,
+    "notApproved": 56,
+    "duplicates": 0,
+    "repositoryOverlaps": 68,
+    "missingSkillMd": 0,
+    "missingReadme": 0,
+    "missingLicense": 5,
+    "codexActuallyTested": 0
+  },
+  "items": [
+    {
+      "number": 1,
+      "id": "TerminalSkills/skills/data-analysis",
+      "name": "通用数据分析",
+      "sourceUrl": "https://github.com/TerminalSkills/skills/blob/main/skills/data-analysis/SKILL.md",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 14,
+        "id": "SankaiAI/interview-pre-agent-skill/interview-prep",
+        "score": 0.462
+      }
+    },
+    {
+      "number": 2,
+      "id": "seb1n/awesome-ai-agent-skills/data-visualization",
+      "name": "数据可视化",
+      "sourceUrl": "https://github.com/seb1n/awesome-ai-agent-skills/blob/main/data-and-analytics/data-visualization/SKILL.md",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        3
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 3,
+      "id": "seb1n/awesome-ai-agent-skills/sql-query-generation",
+      "name": "SQL 查询生成",
+      "sourceUrl": "https://github.com/seb1n/awesome-ai-agent-skills/blob/main/data-and-analytics/sql-query-generation/SKILL.md",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        2
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 4,
+      "id": "product-on-purpose/pm-skills/measure-survey-analysis",
+      "name": "问卷结果分析",
+      "sourceUrl": "https://github.com/product-on-purpose/pm-skills/blob/main/skills/measure-survey-analysis/SKILL.md",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        5,
+        6
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 5,
+      "id": "product-on-purpose/pm-skills/discover-interview-synthesis",
+      "name": "用户访谈综合",
+      "sourceUrl": "https://github.com/product-on-purpose/pm-skills/blob/main/skills/discover-interview-synthesis/SKILL.md",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        4,
+        6
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 6,
+      "id": "product-on-purpose/pm-skills/discover-journey-map",
+      "name": "用户旅程地图",
+      "sourceUrl": "https://github.com/product-on-purpose/pm-skills/blob/main/skills/discover-journey-map/SKILL.md",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        4,
+        5
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 7,
+      "id": "ruichenrui/citation-verification/citation-verification",
+      "name": "学术引用核验",
+      "sourceUrl": "https://github.com/ruichenrui/citation-verification/blob/main/SKILL.md",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 8,
+      "id": "K-Dense-AI/scientific-agent-skills/scientific-writing",
+      "name": "科学论文写作与质量检查",
+      "sourceUrl": "https://github.com/K-Dense-AI/scientific-agent-skills/blob/main/skills/scientific-writing/SKILL.md",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        38,
+        51,
+        52,
+        54,
+        55,
+        56,
+        57,
+        66,
+        69,
+        84,
+        86,
+        96,
+        105
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 9,
+      "id": "crash-you/literature-search/literature-search",
+      "name": "学术文献检索",
+      "sourceUrl": "https://github.com/crash-you/literature-search",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 10,
+      "id": "microsoft/cat-agent-skills/exam-prep-learning-plan-builder",
+      "name": "个性化考试复习计划",
+      "sourceUrl": "https://github.com/microsoft/cat-agent-skills/blob/main/submissions/exam-prep-learning-plan-builder/SKILL.md",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [
+        "microsoft/cat-agent-skills/study-flashcards"
+      ],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 11,
+      "id": "zhouwei713/english-learning-coach-skill/english-learning-coach",
+      "name": "英语学习教练",
+      "sourceUrl": "https://github.com/zhouwei713/english-learning-coach-skill/blob/main/SKILL.md",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 12,
+      "id": "Jeff-Kazzee/career-coach/career-coach",
+      "name": "求职与职业发展教练",
+      "sourceUrl": "https://github.com/Jeff-Kazzee/career-coach",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 13,
+      "id": "lan1177/interview-prep/interview-prep",
+      "name": "产品/商业岗位面试准备",
+      "sourceUrl": "https://github.com/lan1177/interview-prep",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 14,
+      "id": "SankaiAI/interview-pre-agent-skill/interview-prep",
+      "name": "数据分析师模拟面试",
+      "sourceUrl": "https://github.com/SankaiAI/interview-pre-agent-skill",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 1,
+        "id": "TerminalSkills/skills/data-analysis",
+        "score": 0.462
+      }
+    },
+    {
+      "number": 15,
+      "id": "sid-git-repo/sid-claude-skills/exam-ready",
+      "name": "考试考点提炼",
+      "sourceUrl": "https://github.com/sid-git-repo/sid-claude-skills/blob/main/skills/exam-ready/SKILL.md",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 16,
+      "id": "Galaxy-Dawn/claude-scholar/research-ideation",
+      "name": "Claude Scholar: Research Ideation",
+      "sourceUrl": "https://github.com/Galaxy-Dawn/claude-scholar/tree/HEAD/skills/research-ideation",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 37,
+        "id": "isshikiayane/research-workflow-skills/research-question-audit",
+        "score": 0.404
+      }
+    },
+    {
+      "number": 17,
+      "id": "richard-kim-79/archora-skills/hypothesis",
+      "name": "Archora: Hypothesis",
+      "sourceUrl": "https://github.com/richard-kim-79/archora-skills/tree/HEAD/skills/hypothesis",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        83,
+        102
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 18,
+      "id": "Orchestra-Research/AI-Research-SKILLs/brainstorming-research-ideas",
+      "name": "Brainstorming Research Ideas",
+      "sourceUrl": "https://github.com/Orchestra-Research/AI-Research-SKILLs/tree/HEAD/21-research-ideation/brainstorming-research-ideas",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        19,
+        97,
+        99
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 30,
+        "id": "sanjay3290/ai-skills/deep-research",
+        "score": 0.415
+      }
+    },
+    {
+      "number": 19,
+      "id": "Orchestra-Research/AI-Research-SKILLs/creative-thinking-for-research",
+      "name": "Creative Thinking for Research",
+      "sourceUrl": "https://github.com/Orchestra-Research/AI-Research-SKILLs/tree/HEAD/21-research-ideation/creative-thinking-for-research",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        18,
+        97,
+        99
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 20,
+      "id": "chtc66/academic-skills/research-gap-finder",
+      "name": "Research Gap Finder",
+      "sourceUrl": "https://github.com/chtc66/academic-skills/tree/HEAD/research-gap-finder",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        80
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 30,
+        "id": "sanjay3290/ai-skills/deep-research",
+        "score": 0.39
+      }
+    },
+    {
+      "number": 21,
+      "id": "ozzyzhou99/critical-integrative-review-skill/write-critical-literature-review",
+      "name": "Critical Integrative Review",
+      "sourceUrl": "https://github.com/ozzyzhou99/critical-integrative-review-skill/tree/HEAD/write-critical-literature-review",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 22,
+      "id": "chgagne/claude-skills-research/surveying-literature",
+      "name": "Surveying Literature",
+      "sourceUrl": "https://github.com/chgagne/claude-skills-research/tree/HEAD/surveying-literature",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 23,
+      "id": "mikubaka88/CCFA-Skills/ccf-literature-monitor",
+      "name": "CCF Literature Monitor",
+      "sourceUrl": "https://github.com/mikubaka88/CCFA-Skills/tree/HEAD/ccf-literature-monitor",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        70,
+        110
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 24,
+      "id": "huangkiki/dailypaper-skills/paper-reader",
+      "name": "Daily Paper Reader",
+      "sourceUrl": "https://github.com/huangkiki/dailypaper-skills/tree/HEAD/skills/paper-reader",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        25
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 25,
+        "id": "huangkiki/dailypaper-skills/daily-papers",
+        "score": 0.525
+      }
+    },
+    {
+      "number": 25,
+      "id": "huangkiki/dailypaper-skills/daily-papers",
+      "name": "Daily Papers",
+      "sourceUrl": "https://github.com/huangkiki/dailypaper-skills/tree/HEAD/skills/daily-papers",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        24
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 24,
+        "id": "huangkiki/dailypaper-skills/paper-reader",
+        "score": 0.525
+      }
+    },
+    {
+      "number": 26,
+      "id": "Yuan1z0825/nature-skills/nature-citation",
+      "name": "Nature Citation",
+      "sourceUrl": "https://github.com/Yuan1z0825/nature-skills/tree/HEAD/skills/nature-citation",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        27,
+        101
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 34,
+        "id": "LeonChaoX/qinyan-academic-skills/qinyan-citation",
+        "score": 0.408
+      }
+    },
+    {
+      "number": 27,
+      "id": "Yuan1z0825/nature-skills/nature-paper-card",
+      "name": "Nature Paper Card",
+      "sourceUrl": "https://github.com/Yuan1z0825/nature-skills/tree/HEAD/skills/nature-paper-card",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        26,
+        101
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 103,
+        "id": "boom5426/nature-paper-skills/figure-planner",
+        "score": 0.357
+      }
+    },
+    {
+      "number": 28,
+      "id": "pleaseprompto/notebooklm-skill/notebooklm",
+      "name": "NotebookLM Skill",
+      "sourceUrl": "https://github.com/pleaseprompto/notebooklm-skill",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 29,
+      "id": "borghei/Claude-Skills/patent",
+      "name": "Patent Research",
+      "sourceUrl": "https://github.com/borghei/Claude-Skills/tree/HEAD/research/patent",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 30,
+      "id": "sanjay3290/ai-skills/deep-research",
+      "name": "Gemini Deep Research",
+      "sourceUrl": "https://github.com/sanjay3290/ai-skills/tree/HEAD/skills/deep-research",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 18,
+        "id": "Orchestra-Research/AI-Research-SKILLs/brainstorming-research-ideas",
+        "score": 0.415
+      }
+    },
+    {
+      "number": 31,
+      "id": "cookjohn/gs-skills/gs-search",
+      "name": "Google Scholar Skills",
+      "sourceUrl": "https://github.com/cookjohn/gs-skills/tree/HEAD/skills/gs-search",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 32,
+      "id": "litllm/litllm/litllm",
+      "name": "LitLLM",
+      "sourceUrl": "https://github.com/litllm/litllm/tree/HEAD/skill",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 33,
+      "id": "nebutra/mineru-skill/mineru",
+      "name": "MinerU Skill",
+      "sourceUrl": "https://github.com/nebutra/mineru-skill/tree/HEAD/skills/mineru",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 34,
+      "id": "LeonChaoX/qinyan-academic-skills/qinyan-citation",
+      "name": "Qinyan Citation",
+      "sourceUrl": "https://github.com/LeonChaoX/qinyan-academic-skills/tree/HEAD/skills/沁言学术skills/qinyan-citation",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 26,
+        "id": "Yuan1z0825/nature-skills/nature-citation",
+        "score": 0.408
+      }
+    },
+    {
+      "number": 35,
+      "id": "njzjz/wenxian/wenxian",
+      "name": "Wenxian",
+      "sourceUrl": "https://github.com/njzjz/wenxian/tree/HEAD/skill",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 36,
+      "id": "pedrohcgs/claude-code-my-workflow/preregister",
+      "name": "Preregister",
+      "sourceUrl": "https://github.com/pedrohcgs/claude-code-my-workflow/tree/HEAD/.claude/skills/preregister",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        40,
+        77
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 37,
+      "id": "isshikiayane/research-workflow-skills/research-question-audit",
+      "name": "Research Question Audit",
+      "sourceUrl": "https://github.com/isshikiayane/research-workflow-skills/tree/HEAD/research-question-audit",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        49,
+        71
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 16,
+        "id": "Galaxy-Dawn/claude-scholar/research-ideation",
+        "score": 0.404
+      }
+    },
+    {
+      "number": 38,
+      "id": "K-Dense-AI/scientific-agent-skills/experimental-design",
+      "name": "Experimental Design",
+      "sourceUrl": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/experimental-design",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        8,
+        51,
+        52,
+        54,
+        55,
+        56,
+        57,
+        66,
+        69,
+        84,
+        86,
+        96,
+        105
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 41,
+        "id": "scdenney/open-science-skills/conjoint-design",
+        "score": 0.655
+      }
+    },
+    {
+      "number": 39,
+      "id": "Aperivue/medsci-skills/design-study",
+      "name": "Medical Study Design Review",
+      "sourceUrl": "https://github.com/Aperivue/medsci-skills/tree/HEAD/skills/design-study",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        85,
+        87
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 87,
+        "id": "Aperivue/medsci-skills/analyze-stats",
+        "score": 0.354
+      }
+    },
+    {
+      "number": 40,
+      "id": "pedrohcgs/claude-code-my-workflow/power-analysis",
+      "name": "Power Analysis",
+      "sourceUrl": "https://github.com/pedrohcgs/claude-code-my-workflow/tree/HEAD/.claude/skills/power-analysis",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        36,
+        77
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 41,
+      "id": "scdenney/open-science-skills/conjoint-design",
+      "name": "Conjoint Experiment Designer",
+      "sourceUrl": "https://github.com/scdenney/open-science-skills/tree/HEAD/plugin/skills/conjoint-design",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 38,
+        "id": "K-Dense-AI/scientific-agent-skills/experimental-design",
+        "score": 0.655
+      }
+    },
+    {
+      "number": 42,
+      "id": "MattArtzAnthro/AI-Anthropology-Toolkit/fieldwork-methods",
+      "name": "Fieldwork Methods",
+      "sourceUrl": "https://github.com/MattArtzAnthro/AI-Anthropology-Toolkit/tree/HEAD/skills/fieldwork-methods",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        43,
+        95
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 43,
+      "id": "MattArtzAnthro/AI-Anthropology-Toolkit/irb-protocol",
+      "name": "IRB Protocol",
+      "sourceUrl": "https://github.com/MattArtzAnthro/AI-Anthropology-Toolkit/tree/HEAD/skills/irb-protocol",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        42,
+        95
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 44,
+      "id": "fkguo/nullius/derivation-verify",
+      "name": "Derivation Verify",
+      "sourceUrl": "https://github.com/fkguo/nullius/tree/HEAD/skills/derivation-verify",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 45,
+        "id": "wanshuiyin/Auto-claude-code-research-in-sleep/formula-derivation",
+        "score": 0.431
+      }
+    },
+    {
+      "number": 45,
+      "id": "wanshuiyin/Auto-claude-code-research-in-sleep/formula-derivation",
+      "name": "Formula Derivation",
+      "sourceUrl": "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep/tree/HEAD/skills/formula-derivation",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        48,
+        61
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 44,
+        "id": "fkguo/nullius/derivation-verify",
+        "score": 0.431
+      }
+    },
+    {
+      "number": 46,
+      "id": "cameronfreer/lean4-skills/lean4",
+      "name": "Lean 4 Theorem Proving",
+      "sourceUrl": "https://github.com/cameronfreer/lean4-skills/tree/HEAD/plugins/lean4/skills/lean4",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 47,
+      "id": "flonat/flonat-research/numerical-check",
+      "name": "Numerical Check",
+      "sourceUrl": "https://github.com/flonat/flonat-research/tree/HEAD/skills/numerical-check",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 48,
+      "id": "wanshuiyin/Auto-claude-code-research-in-sleep/proof-writer",
+      "name": "Proof Writer",
+      "sourceUrl": "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep/tree/HEAD/skills/proof-writer",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        45,
+        61
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 49,
+      "id": "isshikiayane/research-workflow-skills/geospatial-data-qc",
+      "name": "Geospatial Data QC",
+      "sourceUrl": "https://github.com/isshikiayane/research-workflow-skills/tree/HEAD/geospatial-data-qc",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        37,
+        71
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 50,
+      "id": "fcakyon/phd-skills/dataset-curation",
+      "name": "PhD Skills: Dataset Curation",
+      "sourceUrl": "https://github.com/fcakyon/phd-skills/tree/HEAD/plugin/skills/dataset-curation",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        53,
+        74,
+        75
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 51,
+      "id": "K-Dense-AI/scientific-agent-skills/gget",
+      "name": "gget",
+      "sourceUrl": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/gget",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        8,
+        38,
+        52,
+        54,
+        55,
+        56,
+        57,
+        66,
+        69,
+        84,
+        86,
+        96,
+        105
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 52,
+      "id": "K-Dense-AI/scientific-agent-skills/rdkit",
+      "name": "RDKit Cheminformatics",
+      "sourceUrl": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/rdkit",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        8,
+        38,
+        51,
+        54,
+        55,
+        56,
+        57,
+        66,
+        69,
+        84,
+        86,
+        96,
+        105
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 53,
+      "id": "fcakyon/phd-skills/launch",
+      "name": "PhD Skills: Launch",
+      "sourceUrl": "https://github.com/fcakyon/phd-skills/tree/HEAD/plugin/skills/launch",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        50,
+        74,
+        75
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 74,
+        "id": "fcakyon/phd-skills/debug",
+        "score": 0.395
+      }
+    },
+    {
+      "number": 54,
+      "id": "K-Dense-AI/scientific-agent-skills/pufferlib",
+      "name": "PufferLib",
+      "sourceUrl": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/pufferlib",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        8,
+        38,
+        51,
+        52,
+        55,
+        56,
+        57,
+        66,
+        69,
+        84,
+        86,
+        96,
+        105
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 56,
+        "id": "K-Dense-AI/scientific-agent-skills/stable-baselines3",
+        "score": 0.491
+      }
+    },
+    {
+      "number": 55,
+      "id": "K-Dense-AI/scientific-agent-skills/pytorch-lightning",
+      "name": "K-Dense: PyTorch Lightning",
+      "sourceUrl": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/pytorch-lightning",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        8,
+        38,
+        51,
+        52,
+        54,
+        56,
+        57,
+        66,
+        69,
+        84,
+        86,
+        96,
+        105
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 56,
+      "id": "K-Dense-AI/scientific-agent-skills/stable-baselines3",
+      "name": "K-Dense: Stable Baselines3",
+      "sourceUrl": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/stable-baselines3",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        8,
+        38,
+        51,
+        52,
+        54,
+        55,
+        57,
+        66,
+        69,
+        84,
+        86,
+        96,
+        105
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 54,
+        "id": "K-Dense-AI/scientific-agent-skills/pufferlib",
+        "score": 0.491
+      }
+    },
+    {
+      "number": 57,
+      "id": "K-Dense-AI/scientific-agent-skills/torch-geometric",
+      "name": "PyTorch Geometric",
+      "sourceUrl": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/torch-geometric",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        8,
+        38,
+        51,
+        52,
+        54,
+        55,
+        56,
+        66,
+        69,
+        84,
+        86,
+        96,
+        105
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 58,
+      "id": "huggingface/skills/trl-training",
+      "name": "TRL Training",
+      "sourceUrl": "https://github.com/huggingface/skills/tree/HEAD/skills/trl-training",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        59,
+        60
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 59,
+        "id": "huggingface/skills/huggingface-llm-trainer",
+        "score": 0.429
+      }
+    },
+    {
+      "number": 59,
+      "id": "huggingface/skills/huggingface-llm-trainer",
+      "name": "Hugging Face LLM Trainer",
+      "sourceUrl": "https://github.com/huggingface/skills/tree/HEAD/skills/huggingface-llm-trainer",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        58,
+        60
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 60,
+        "id": "huggingface/skills/huggingface-vision-trainer",
+        "score": 0.702
+      }
+    },
+    {
+      "number": 60,
+      "id": "huggingface/skills/huggingface-vision-trainer",
+      "name": "Hugging Face Vision Trainer",
+      "sourceUrl": "https://github.com/huggingface/skills/tree/HEAD/skills/huggingface-vision-trainer",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        58,
+        59
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 59,
+        "id": "huggingface/skills/huggingface-llm-trainer",
+        "score": 0.702
+      }
+    },
+    {
+      "number": 61,
+      "id": "wanshuiyin/Auto-claude-code-research-in-sleep/mermaid-diagram",
+      "name": "Mermaid Diagram Generator",
+      "sourceUrl": "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep/tree/HEAD/skills/mermaid-diagram",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        45,
+        48
+      ],
+      "bestFunctionalCatalogMatch": {
+        "id": "github/awesome-copilot/excalidraw-diagram-generator",
+        "score": 0.364
+      },
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 62,
+      "id": "nanoAgentTeam/research-claw/figure-drawing",
+      "name": "Academic Figure Drawing (TikZ)",
+      "sourceUrl": "https://github.com/nanoAgentTeam/research-claw/tree/HEAD/config/.skills/figure-drawing",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 63,
+      "id": "Deepshare-Official/CCF-Figure/scientific-figure-generator",
+      "name": "CCF-Figure",
+      "sourceUrl": "https://github.com/Deepshare-Official/CCF-Figure",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 64,
+      "id": "Agents365-ai/drawio-skill/drawio-skill",
+      "name": "Draw.io Diagrams",
+      "sourceUrl": "https://github.com/Agents365-ai/drawio-skill/tree/HEAD/skills/drawio-skill",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 65,
+      "id": "wentorai/research-plugins/scientific-illustration-guide",
+      "name": "Scientific Illustration Guide",
+      "sourceUrl": "https://github.com/wentorai/research-plugins/tree/HEAD/skills/tools/diagram/scientific-illustration-guide",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 66,
+        "id": "K-Dense-AI/scientific-agent-skills/scientific-schematics",
+        "score": 0.582
+      }
+    },
+    {
+      "number": 66,
+      "id": "K-Dense-AI/scientific-agent-skills/scientific-schematics",
+      "name": "Scientific Schematics",
+      "sourceUrl": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/scientific-schematics",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        8,
+        38,
+        51,
+        52,
+        54,
+        55,
+        56,
+        57,
+        69,
+        84,
+        86,
+        96,
+        105
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 65,
+        "id": "wentorai/research-plugins/scientific-illustration-guide",
+        "score": 0.582
+      }
+    },
+    {
+      "number": 67,
+      "id": "yiyanli123/biorender-mechanism-figures-skill/biorender-mechanism-figures",
+      "name": "Biomedical Mechanism Figures",
+      "sourceUrl": "https://github.com/yiyanli123/biorender-mechanism-figures-skill/tree/HEAD/biorender-mechanism-figures",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 68,
+      "id": "dwzhu-pku/PaperBanana/paperbanana",
+      "name": "PaperBanana",
+      "sourceUrl": "https://github.com/dwzhu-pku/PaperBanana/tree/HEAD/skill",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 103,
+        "id": "boom5426/nature-paper-skills/figure-planner",
+        "score": 0.47
+      }
+    },
+    {
+      "number": 69,
+      "id": "K-Dense-AI/scientific-agent-skills/bulk-rnaseq",
+      "name": "Bulk RNA-seq Pipeline",
+      "sourceUrl": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/bulk-rnaseq",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        8,
+        38,
+        51,
+        52,
+        54,
+        55,
+        56,
+        57,
+        66,
+        84,
+        86,
+        96,
+        105
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 70,
+      "id": "mikubaka88/CCFA-Skills/ccf-experiment-designer",
+      "name": "CCF Experiment Designer",
+      "sourceUrl": "https://github.com/mikubaka88/CCFA-Skills/tree/HEAD/ccf-experiment-designer",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        23,
+        110
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 38,
+        "id": "K-Dense-AI/scientific-agent-skills/experimental-design",
+        "score": 0.578
+      }
+    },
+    {
+      "number": 71,
+      "id": "isshikiayane/research-workflow-skills/data-leakage-audit",
+      "name": "Data Leakage Audit",
+      "sourceUrl": "https://github.com/isshikiayane/research-workflow-skills/tree/HEAD/data-leakage-audit",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        37,
+        49
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 72,
+      "id": "test1card/femis-skill/femis",
+      "name": "FEM/CAE Governance",
+      "sourceUrl": "https://github.com/test1card/femis-skill",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 73,
+      "id": "HeshamFS/materials-simulation-skills/ontology-explorer",
+      "name": "Materials Ontology Explorer",
+      "sourceUrl": "https://github.com/HeshamFS/materials-simulation-skills/tree/HEAD/skills/ontology/ontology-explorer",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 74,
+      "id": "fcakyon/phd-skills/debug",
+      "name": "PhD Skills: Debug",
+      "sourceUrl": "https://github.com/fcakyon/phd-skills/tree/HEAD/plugin/skills/debug",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        50,
+        53,
+        75
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 53,
+        "id": "fcakyon/phd-skills/launch",
+        "score": 0.395
+      }
+    },
+    {
+      "number": 75,
+      "id": "fcakyon/phd-skills/research-publishing",
+      "name": "PhD Skills: Research Publishing",
+      "sourceUrl": "https://github.com/fcakyon/phd-skills/tree/HEAD/plugin/skills/research-publishing",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        50,
+        53,
+        74
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 76,
+      "id": "ShaishavMaisuria/research-paper-lifecycle-skills/prepare-artifacts",
+      "name": "Prepare Artifacts",
+      "sourceUrl": "https://github.com/ShaishavMaisuria/research-paper-lifecycle-skills/tree/HEAD/skills/prepare-artifacts",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        78
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 77,
+      "id": "pedrohcgs/claude-code-my-workflow/replication-package",
+      "name": "Replication Package",
+      "sourceUrl": "https://github.com/pedrohcgs/claude-code-my-workflow/tree/HEAD/.claude/skills/replication-package",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        36,
+        40
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 78,
+      "id": "ShaishavMaisuria/research-paper-lifecycle-skills/verify-results",
+      "name": "Verify Results",
+      "sourceUrl": "https://github.com/ShaishavMaisuria/research-paper-lifecycle-skills/tree/HEAD/skills/verify-results",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        76
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 79,
+      "id": "eternalwavee/benchmark-research-skill/benchmark-research-skill",
+      "name": "Benchmark Research Skill",
+      "sourceUrl": "https://github.com/eternalwavee/benchmark-research-skill",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 80,
+      "id": "chtc66/academic-skills/experiment-log-summarizer",
+      "name": "Experiment Log Summarizer",
+      "sourceUrl": "https://github.com/chtc66/academic-skills/tree/HEAD/experiment-log-summarizer",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        20
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 81,
+      "id": "brycewang-stanford/AER-Skills/aer-identification",
+      "name": "AER Identification",
+      "sourceUrl": "https://github.com/brycewang-stanford/AER-Skills/tree/HEAD/skills/aer-identification",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 82,
+      "id": "xinglongMedical/nma-research-skill/nma-research",
+      "name": "Network Meta-Analysis Pipeline",
+      "sourceUrl": "https://github.com/xinglongMedical/nma-research-skill",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 85,
+        "id": "Aperivue/medsci-skills/meta-analysis",
+        "score": 0.523
+      }
+    },
+    {
+      "number": 83,
+      "id": "richard-kim-79/archora-skills/stats",
+      "name": "Archora: Stats",
+      "sourceUrl": "https://github.com/richard-kim-79/archora-skills/tree/HEAD/skills/stats",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        17,
+        102
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 84,
+      "id": "K-Dense-AI/scientific-agent-skills/statistical-analysis",
+      "name": "Guided Statistical Analysis",
+      "sourceUrl": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/statistical-analysis",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        8,
+        38,
+        51,
+        52,
+        54,
+        55,
+        56,
+        57,
+        66,
+        69,
+        86,
+        96,
+        105
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 87,
+        "id": "Aperivue/medsci-skills/analyze-stats",
+        "score": 0.498
+      }
+    },
+    {
+      "number": 85,
+      "id": "Aperivue/medsci-skills/meta-analysis",
+      "name": "Meta-Analysis & Systematic Review",
+      "sourceUrl": "https://github.com/Aperivue/medsci-skills/tree/HEAD/skills/meta-analysis",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        39,
+        87
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 82,
+        "id": "xinglongMedical/nma-research-skill/nma-research",
+        "score": 0.523
+      }
+    },
+    {
+      "number": 86,
+      "id": "K-Dense-AI/scientific-agent-skills/pymc",
+      "name": "PyMC Bayesian Modeling",
+      "sourceUrl": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/pymc",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        8,
+        38,
+        51,
+        52,
+        54,
+        55,
+        56,
+        57,
+        66,
+        69,
+        84,
+        96,
+        105
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 87,
+      "id": "Aperivue/medsci-skills/analyze-stats",
+      "name": "Medical Statistical Analysis",
+      "sourceUrl": "https://github.com/Aperivue/medsci-skills/tree/HEAD/skills/analyze-stats",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        39,
+        85
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 84,
+        "id": "K-Dense-AI/scientific-agent-skills/statistical-analysis",
+        "score": 0.498
+      }
+    },
+    {
+      "number": 88,
+      "id": "DAAF-Contribution-Community/daaf/svy",
+      "name": "Complex Survey Analysis (Python)",
+      "sourceUrl": "https://github.com/DAAF-Contribution-Community/daaf/tree/HEAD/.claude/skills/svy",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        89,
+        90
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 89,
+        "id": "DAAF-Contribution-Community/daaf/survey-r",
+        "score": 0.918
+      }
+    },
+    {
+      "number": 89,
+      "id": "DAAF-Contribution-Community/daaf/survey-r",
+      "name": "Complex Survey Analysis (R)",
+      "sourceUrl": "https://github.com/DAAF-Contribution-Community/daaf/tree/HEAD/.claude/skills/survey-r",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        88,
+        90
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 88,
+        "id": "DAAF-Contribution-Community/daaf/svy",
+        "score": 0.918
+      }
+    },
+    {
+      "number": 90,
+      "id": "DAAF-Contribution-Community/daaf/fixest",
+      "name": "Fixest",
+      "sourceUrl": "https://github.com/DAAF-Contribution-Community/daaf/tree/HEAD/.claude/skills/fixest",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        88,
+        89
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 91,
+      "id": "AlterLab-IEU/AlterLab-Academic-Skills/alterlab-qualitative-methods",
+      "name": "AlterLab Qualitative Methods",
+      "sourceUrl": "https://github.com/AlterLab-IEU/AlterLab-Academic-Skills/tree/HEAD/skills/research-tools/alterlab-qualitative-methods",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 95,
+        "id": "MattArtzAnthro/AI-Anthropology-Toolkit/qualitative-analysis",
+        "score": 0.363
+      }
+    },
+    {
+      "number": 92,
+      "id": "smirik/psy-qm-skills/memo-write",
+      "name": "Analytic Memo Writing",
+      "sourceUrl": "https://github.com/smirik/psy-qm-skills/tree/HEAD/skills/memo-write",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 93,
+      "id": "keemanxp/thematic-analysis-skill/thematic-analysis",
+      "name": "Thematic Analysis",
+      "sourceUrl": "https://github.com/keemanxp/thematic-analysis-skill/tree/HEAD/thematic-analysis",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 87,
+        "id": "Aperivue/medsci-skills/analyze-stats",
+        "score": 0.367
+      }
+    },
+    {
+      "number": 94,
+      "id": "linxule/interpretive-orchestration/methodological-rules",
+      "name": "Methodological Rules & Saturation",
+      "sourceUrl": "https://github.com/linxule/interpretive-orchestration/tree/HEAD/plugin/skills/methodological-rules",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 95,
+      "id": "MattArtzAnthro/AI-Anthropology-Toolkit/qualitative-analysis",
+      "name": "Qualitative Analysis",
+      "sourceUrl": "https://github.com/MattArtzAnthro/AI-Anthropology-Toolkit/tree/HEAD/skills/qualitative-analysis",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        42,
+        43
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 91,
+        "id": "AlterLab-IEU/AlterLab-Academic-Skills/alterlab-qualitative-methods",
+        "score": 0.363
+      }
+    },
+    {
+      "number": 96,
+      "id": "K-Dense-AI/scientific-agent-skills/shap",
+      "name": "SHAP",
+      "sourceUrl": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/shap",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        8,
+        38,
+        51,
+        52,
+        54,
+        55,
+        56,
+        57,
+        66,
+        69,
+        84,
+        86,
+        105
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 97,
+      "id": "Orchestra-Research/AI-Research-SKILLs/pyvene-interventions",
+      "name": "pyvene",
+      "sourceUrl": "https://github.com/Orchestra-Research/AI-Research-SKILLs/tree/HEAD/04-mechanistic-interpretability/pyvene",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        18,
+        19,
+        99
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 98,
+      "id": "NousResearch/hermes-agent/saelens",
+      "name": "SAELens",
+      "sourceUrl": "https://github.com/NousResearch/hermes-agent/tree/HEAD/optional-skills/mlops/saelens",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 99,
+      "id": "Orchestra-Research/AI-Research-SKILLs/nnsight-remote-interpretability",
+      "name": "nnsight",
+      "sourceUrl": "https://github.com/Orchestra-Research/AI-Research-SKILLs/tree/HEAD/04-mechanistic-interpretability/nnsight",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        18,
+        19,
+        97
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 100,
+      "id": "Revonia-gh/evidence-first-research-skills/map-research-sites",
+      "name": "Map Research Sites",
+      "sourceUrl": "https://github.com/Revonia-gh/evidence-first-research-skills/tree/HEAD/.agents/skills/map-research-sites",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 101,
+      "id": "Yuan1z0825/nature-skills/nature-figure",
+      "name": "Nature Figure",
+      "sourceUrl": "https://github.com/Yuan1z0825/nature-skills/tree/HEAD/skills/nature-figure",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        26,
+        27
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 102,
+      "id": "richard-kim-79/archora-skills/figure",
+      "name": "Archora: Figure",
+      "sourceUrl": "https://github.com/richard-kim-79/archora-skills/tree/HEAD/skills/figure",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        17,
+        83
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 103,
+      "id": "boom5426/nature-paper-skills/figure-planner",
+      "name": "Nature Paper Skills: Figure Planner",
+      "sourceUrl": "https://github.com/boom5426/nature-paper-skills/tree/HEAD/skills/core/figure-planner",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        106
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 68,
+        "id": "dwzhu-pku/PaperBanana/paperbanana",
+        "score": 0.47
+      }
+    },
+    {
+      "number": 104,
+      "id": "caylent/tufte-data-viz/tufte-data-viz",
+      "name": "Tufte Data Viz",
+      "sourceUrl": "https://github.com/caylent/tufte-data-viz",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 105,
+      "id": "K-Dense-AI/scientific-agent-skills/pptx-posters",
+      "name": "Conference Poster Builder",
+      "sourceUrl": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/pptx-posters",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        8,
+        38,
+        51,
+        52,
+        54,
+        55,
+        56,
+        57,
+        66,
+        69,
+        84,
+        86,
+        96
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 106,
+      "id": "boom5426/nature-paper-skills/submission-audit",
+      "name": "Nature Paper Skills: Submission Audit",
+      "sourceUrl": "https://github.com/boom5426/nature-paper-skills/tree/HEAD/skills/core/submission-audit",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        103
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": {
+        "number": 103,
+        "id": "boom5426/nature-paper-skills/figure-planner",
+        "score": 0.408
+      }
+    },
+    {
+      "number": 107,
+      "id": "openraiser/paperfit/overflow-repair",
+      "name": "PaperFit: Overflow Repair",
+      "sourceUrl": "https://github.com/openraiser/paperfit/tree/HEAD/skills/overflow-repair",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 108,
+      "id": "yaotingsun/academic-publishing-skills/post-publication-corrector",
+      "name": "Post-Publication Corrector",
+      "sourceUrl": "https://github.com/yaotingsun/academic-publishing-skills/tree/HEAD/plugins/post-publication-corrector/skills/post-publication-corrector",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        109
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 109,
+      "id": "yaotingsun/academic-publishing-skills/research-disseminator",
+      "name": "Research Disseminator",
+      "sourceUrl": "https://github.com/yaotingsun/academic-publishing-skills/tree/HEAD/plugins/research-disseminator/skills/research-disseminator",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        108
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    },
+    {
+      "number": 110,
+      "id": "mikubaka88/CCFA-Skills/ccf-paper-writer",
+      "name": "CCF Paper Writer",
+      "sourceUrl": "https://github.com/mikubaka88/CCFA-Skills/tree/HEAD/ccf-paper-writer",
+      "status": "unique",
+      "reasons": [],
+      "repositoryOverlapCatalogIds": [],
+      "repositoryOverlapCandidateNumbers": [
+        23,
+        70
+      ],
+      "bestFunctionalCatalogMatch": null,
+      "bestFunctionalCandidateMatch": null
+    }
+  ]
+}

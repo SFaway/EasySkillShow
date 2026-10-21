@@ -1,15 +1,18 @@
 {
   "name": "easy-skill-show-mvp",
-  "version": "0.2.0",
+  "version": "0.7.0",
   "private": true,
   "type": "module",
   "description": "PCL-inspired local-first Skill discovery MVP",
   "scripts": {
     "start": "node server.mjs",
     "dev": "node --watch server.mjs",
+    "check": "node --check server.mjs && node --check public/app.js && node scripts/validate-data.mjs",
     "check:data": "node scripts/validate-data.mjs",
     "import:skill": "node scripts/import-skill.mjs",
     "promote:students": "node scripts/promote-student-candidates.mjs",
+    "audit:candidates110": "node scripts/audit-110-candidates.mjs",
+    "promote:candidates110": "node scripts/promote-approved-110.mjs",
     "test": "node scripts/smoke-test.mjs"
   },
   "engines": {

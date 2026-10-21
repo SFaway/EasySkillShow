@@ -1,0 +1,259 @@
+EasySkillShow｜大学生 Skill 候选名单 生成日期：2026-10-20 共 110
+条候选（不是 110 条都应该直接收录）。
+
+使用说明： 1. 先与 EasySkillShow 当前 data/skills.json 的 65
+条正式记录去重。 2. 下方许可证信息来自公开 Skill
+索引/项目声明，尚需打开仓库复核。 3. “未核实”项目先留在待审核区；检查
+SKILL.md、LICENSE、依赖、联网/脚本行为和 Codex 兼容性。 4. 需要 API
+Key、浏览器 MCP、云 GPU 或外部服务的项目，应在网站中标明依赖。 5.
+研究类清单来自
+https://github.com/neverbiasu/awesome-research-skills/index.json
+的公开索引，属于候选发现结果，不是逐项安全认证。
+
+==================== A. 通用大学生场景（15） ==================== 01 |
+通用数据分析 | Apache-2.0 |
+https://github.com/TerminalSkills/skills/blob/main/skills/data-analysis/SKILL.md
+02 | 数据可视化 | MIT |
+https://github.com/seb1n/awesome-ai-agent-skills/blob/main/data-and-analytics/data-visualization/SKILL.md
+03 | SQL 查询生成 | MIT |
+https://github.com/seb1n/awesome-ai-agent-skills/blob/main/data-and-analytics/sql-query-generation/SKILL.md
+04 | 问卷结果分析 | Apache-2.0 |
+https://github.com/product-on-purpose/pm-skills/blob/main/skills/measure-survey-analysis/SKILL.md
+05 | 用户访谈综合 | Apache-2.0 |
+https://github.com/product-on-purpose/pm-skills/blob/main/skills/discover-interview-synthesis/SKILL.md
+06 | 用户旅程地图 | Apache-2.0 |
+https://github.com/product-on-purpose/pm-skills/blob/main/skills/discover-journey-map/SKILL.md
+07 | 学术引用核验 | MIT |
+https://github.com/ruichenrui/citation-verification/blob/main/SKILL.md
+08 | 科学论文写作与质量检查 | MIT（Skill 文件声明） |
+https://github.com/K-Dense-AI/scientific-agent-skills/blob/main/skills/scientific-writing/SKILL.md
+09 | 学术文献检索 | MIT（仓库 README 声明） |
+https://github.com/crash-you/literature-search 10 | 个性化考试复习计划 |
+MIT |
+https://github.com/microsoft/cat-agent-skills/blob/main/submissions/exam-prep-learning-plan-builder/SKILL.md
+11 | 英语学习教练 | MIT |
+https://github.com/zhouwei713/english-learning-coach-skill/blob/main/SKILL.md
+12 | 求职与职业发展教练 | MIT（仓库声明） |
+https://github.com/Jeff-Kazzee/career-coach 13 | 产品/商业岗位面试准备 |
+LICENSE 尚未核实 | https://github.com/lan1177/interview-prep 14 |
+数据分析师模拟面试 | MIT（仓库声明） |
+https://github.com/SankaiAI/interview-pre-agent-skill 15 | 考试考点提炼
+| 许可证/版权声明需核实 |
+https://github.com/sid-git-repo/sid-claude-skills/blob/main/skills/exam-ready/SKILL.md
+
+==================== B. 科研、论文、实验、数据与学术表达（95）
+来源索引：https://github.com/neverbiasu/awesome-research-skills
+格式：名称 | 类别 | 索引列出的许可证 | 候选目录链接 ====================
+
+16 | Claude Scholar: Research Ideation | 研究构思 | MIT；需外部能力 |
+https://github.com/Galaxy-Dawn/claude-scholar/tree/HEAD/skills/research-ideation
+17 | Archora: Hypothesis | 研究假设 | MIT |
+https://github.com/richard-kim-79/archora-skills/tree/HEAD/skills/hypothesis
+18 | Brainstorming Research Ideas | 研究选题 | MIT |
+https://github.com/Orchestra-Research/AI-Research-SKILLs/tree/HEAD/21-research-ideation/brainstorming-research-ideas
+19 | Creative Thinking for Research | 创新思路 | MIT |
+https://github.com/Orchestra-Research/AI-Research-SKILLs/tree/HEAD/21-research-ideation/creative-thinking-for-research
+20 | Research Gap Finder | 研究空白发现 | MIT |
+https://github.com/chtc66/academic-skills/tree/HEAD/research-gap-finder
+21 | Critical Integrative Review | 文献综述 | MIT |
+https://github.com/ozzyzhou99/critical-integrative-review-skill/tree/HEAD/write-critical-literature-review
+22 | Surveying Literature | 文献检索/引文追踪 | MIT |
+https://github.com/chgagne/claude-skills-research/tree/HEAD/surveying-literature
+23 | CCF Literature Monitor | 论文动态跟踪 | MIT |
+https://github.com/mikubaka88/CCFA-Skills/tree/HEAD/ccf-literature-monitor
+24 | Daily Paper Reader | 论文精读 | Apache-2.0 |
+https://github.com/huangkiki/dailypaper-skills/tree/HEAD/skills/paper-reader
+25 | Daily Papers | 每日论文推荐 | Apache-2.0 |
+https://github.com/huangkiki/dailypaper-skills/tree/HEAD/skills/daily-papers
+26 | Nature Citation | 文献引用 | Apache-2.0 |
+https://github.com/Yuan1z0825/nature-skills/tree/HEAD/skills/nature-citation
+27 | Nature Paper Card | 论文结构化阅读卡 | Apache-2.0 |
+https://github.com/Yuan1z0825/nature-skills/tree/HEAD/skills/nature-paper-card
+28 | NotebookLM Skill | NotebookLM 资料问答 | MIT |
+https://github.com/pleaseprompto/notebooklm-skill 29 | Patent Research |
+专利检索 | MIT |
+https://github.com/borghei/Claude-Skills/tree/HEAD/research/patent 30 |
+Gemini Deep Research | 深度研究报告 | Apache-2.0；需 API 凭证 |
+https://github.com/sanjay3290/ai-skills/tree/HEAD/skills/deep-research
+31 | Google Scholar Skills | 学术搜索 | MIT；需浏览器 MCP |
+https://github.com/cookjohn/gs-skills/tree/HEAD/skills/gs-search 32 |
+LitLLM | 相关工作/论文候选 | Apache-2.0；需凭证和网络 |
+https://github.com/litllm/litllm/tree/HEAD/skill 33 | MinerU Skill |
+学术 PDF 解析 | MIT；需 API 凭证 |
+https://github.com/nebutra/mineru-skill/tree/HEAD/skills/mineru 34 |
+Qinyan Citation | 学术引用格式化 | MIT；需 API 凭证 |
+https://github.com/LeonChaoX/qinyan-academic-skills/tree/HEAD/skills/沁言学术skills/qinyan-citation
+35 | Wenxian | DOI/论文元数据转 BibTeX | LGPL-3.0；需网络 |
+https://github.com/njzjz/wenxian/tree/HEAD/skill 36 | Preregister |
+研究预注册 | MIT |
+https://github.com/pedrohcgs/claude-code-my-workflow/tree/HEAD/.claude/skills/preregister
+37 | Research Question Audit | 研究问题一致性检查 | MIT |
+https://github.com/isshikiayane/research-workflow-skills/tree/HEAD/research-question-audit
+38 | Experimental Design | 实验设计 | MIT |
+https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/experimental-design
+39 | Medical Study Design Review | 医学研究设计 | MIT；专业定向 |
+https://github.com/Aperivue/medsci-skills/tree/HEAD/skills/design-study
+40 | Power Analysis | 样本量/统计功效分析 | MIT |
+https://github.com/pedrohcgs/claude-code-my-workflow/tree/HEAD/.claude/skills/power-analysis
+41 | Conjoint Experiment Designer | 联合分析实验设计 | 未核实 |
+https://github.com/scdenney/open-science-skills/tree/HEAD/plugin/skills/conjoint-design
+42 | Fieldwork Methods | 访谈/田野调查设计 | 未核实 |
+https://github.com/MattArtzAnthro/AI-Anthropology-Toolkit/tree/HEAD/skills/fieldwork-methods
+43 | IRB Protocol | 研究伦理与审批方案 | 未核实 |
+https://github.com/MattArtzAnthro/AI-Anthropology-Toolkit/tree/HEAD/skills/irb-protocol
+44 | Derivation Verify | 数学推导复核 | MIT |
+https://github.com/fkguo/nullius/tree/HEAD/skills/derivation-verify 45 |
+Formula Derivation | 公式推导整理 | MIT |
+https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep/tree/HEAD/skills/formula-derivation
+46 | Lean 4 Theorem Proving | Lean 数学证明 | MIT；需 Lean 4/mathlib |
+https://github.com/cameronfreer/lean4-skills/tree/HEAD/plugins/lean4/skills/lean4
+47 | Numerical Check | 数值反例搜索 | MIT；不能替代数学证明 |
+https://github.com/flonat/flonat-research/tree/HEAD/skills/numerical-check
+48 | Proof Writer | 数学证明草稿 | MIT |
+https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep/tree/HEAD/skills/proof-writer
+49 | Geospatial Data QC | 地理空间数据质量检查 | MIT；专业定向 |
+https://github.com/isshikiayane/research-workflow-skills/tree/HEAD/geospatial-data-qc
+50 | PhD Skills: Dataset Curation | 数据集偏差/公平性 | MIT |
+https://github.com/fcakyon/phd-skills/tree/HEAD/plugin/skills/dataset-curation
+51 | gget | 基因/生物信息数据库 | BSD-2-Clause；专业定向 |
+https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/gget
+52 | RDKit Cheminformatics | 化学信息学 | BSD-3-Clause；专业定向 |
+https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/rdkit
+53 | PhD Skills: Launch | ML 训练前检查 | MIT；需凭证/外部能力 |
+https://github.com/fcakyon/phd-skills/tree/HEAD/plugin/skills/launch 54
+| PufferLib | 强化学习 | MIT；需凭证 |
+https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/pufferlib
+55 | K-Dense: PyTorch Lightning | 深度学习训练 | Apache-2.0 |
+https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/pytorch-lightning
+56 | K-Dense: Stable Baselines3 | 强化学习 | MIT |
+https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/stable-baselines3
+57 | PyTorch Geometric | 图神经网络 | MIT |
+https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/torch-geometric
+58 | TRL Training | 大模型微调 | Apache-2.0 |
+https://github.com/huggingface/skills/tree/HEAD/skills/trl-training 59 |
+Hugging Face LLM Trainer | 大模型训练 | Apache-2.0；需凭证/网络/外部服务
+|
+https://github.com/huggingface/skills/tree/HEAD/skills/huggingface-llm-trainer
+60 | Hugging Face Vision Trainer | 视觉模型训练 | Apache-2.0；需凭证/云
+GPU |
+https://github.com/huggingface/skills/tree/HEAD/skills/huggingface-vision-trainer
+61 | Mermaid Diagram Generator | Mermaid 流程图/时序图 | MIT；需外部能力
+|
+https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep/tree/HEAD/skills/mermaid-diagram
+62 | Academic Figure Drawing (TikZ) | LaTeX 学术插图 | MIT |
+https://github.com/nanoAgentTeam/research-claw/tree/HEAD/config/.skills/figure-drawing
+63 | CCF-Figure | 论文架构图/实验图 | MIT |
+https://github.com/Deepshare-Official/CCF-Figure 64 | Draw.io Diagrams |
+可编辑 Draw.io 图 | MIT |
+https://github.com/Agents365-ai/drawio-skill/tree/HEAD/skills/drawio-skill
+65 | Scientific Illustration Guide | 科研示意图/图形摘要 | MIT |
+https://github.com/wentorai/research-plugins/tree/HEAD/skills/tools/diagram/scientific-illustration-guide
+66 | Scientific Schematics | 科研示意图 | MIT；需凭证 |
+https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/scientific-schematics
+67 | Biomedical Mechanism Figures | 生物医学机制图 | 未核实；专业定向 |
+https://github.com/yiyanli123/biorender-mechanism-figures-skill/tree/HEAD/biorender-mechanism-figures
+68 | PaperBanana | 论文图表生成 | MIT-0；需凭证 |
+https://github.com/dwzhu-pku/PaperBanana/tree/HEAD/skill 69 | Bulk
+RNA-seq Pipeline | RNA-seq 分析 | MIT；生物信息专业定向 |
+https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/bulk-rnaseq
+70 | CCF Experiment Designer | 论文实验方案/消融设计 | MIT |
+https://github.com/mikubaka88/CCFA-Skills/tree/HEAD/ccf-experiment-designer
+71 | Data Leakage Audit | 机器学习数据泄漏审计 | MIT |
+https://github.com/isshikiayane/research-workflow-skills/tree/HEAD/data-leakage-audit
+72 | FEM/CAE Governance | 有限元/工程仿真 | Apache-2.0；专业定向 |
+https://github.com/test1card/femis-skill 73 | Materials Ontology
+Explorer | 材料科学术语/本体 | Apache-2.0；专业定向 |
+https://github.com/HeshamFS/materials-simulation-skills/tree/HEAD/skills/ontology/ontology-explorer
+74 | PhD Skills: Debug | ML 实验故障排查 | MIT |
+https://github.com/fcakyon/phd-skills/tree/HEAD/plugin/skills/debug 75 |
+PhD Skills: Research Publishing | 研究代码发布/复现检查 | MIT |
+https://github.com/fcakyon/phd-skills/tree/HEAD/plugin/skills/research-publishing
+76 | Prepare Artifacts | 论文 artifact evaluation 材料 | Apache-2.0 |
+https://github.com/ShaishavMaisuria/research-paper-lifecycle-skills/tree/HEAD/skills/prepare-artifacts
+77 | Replication Package | 研究复现包清单 | MIT |
+https://github.com/pedrohcgs/claude-code-my-workflow/tree/HEAD/.claude/skills/replication-package
+78 | Verify Results | 核对论文表格与本地代码结果 | Apache-2.0 |
+https://github.com/ShaishavMaisuria/research-paper-lifecycle-skills/tree/HEAD/skills/verify-results
+79 | Benchmark Research Skill | 汇总基准数据集/指标/基线 | MIT |
+https://github.com/eternalwavee/benchmark-research-skill 80 | Experiment
+Log Summarizer | 实验日志转中文总结 | MIT |
+https://github.com/chtc66/academic-skills/tree/HEAD/experiment-log-summarizer
+81 | AER Identification | 计量经济学因果识别 | MIT；需外部能力 |
+https://github.com/brycewang-stanford/AER-Skills/tree/HEAD/skills/aer-identification
+82 | Network Meta-Analysis Pipeline | 网络 Meta 分析 |
+MIT；需凭证/外部服务 |
+https://github.com/xinglongMedical/nma-research-skill 83 | Archora:
+Stats | 统计错误/方法学谬误检查 | MIT |
+https://github.com/richard-kim-79/archora-skills/tree/HEAD/skills/stats
+84 | Guided Statistical Analysis | 统计检验/效应量/APA 格式 | MIT |
+https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/statistical-analysis
+85 | Meta-Analysis & Systematic Review | Meta 分析/系统综述 |
+MIT；医学研究定向 |
+https://github.com/Aperivue/medsci-skills/tree/HEAD/skills/meta-analysis
+86 | PyMC Bayesian Modeling | 贝叶斯建模 | Apache-2.0 |
+https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/pymc
+87 | Medical Statistical Analysis | 医学统计 | MIT；需凭证/专业定向 |
+https://github.com/Aperivue/medsci-skills/tree/HEAD/skills/analyze-stats
+88 | Complex Survey Analysis (Python) | 复杂抽样问卷分析 | LGPL-3.0 |
+https://github.com/DAAF-Contribution-Community/daaf/tree/HEAD/.claude/skills/svy
+89 | Complex Survey Analysis (R) | 复杂抽样问卷分析 | LGPL-3.0 |
+https://github.com/DAAF-Contribution-Community/daaf/tree/HEAD/.claude/skills/survey-r
+90 | Fixest | R 固定效应/工具变量/双重差分 | LGPL-3.0 |
+https://github.com/DAAF-Contribution-Community/daaf/tree/HEAD/.claude/skills/fixest
+91 | AlterLab Qualitative Methods | 质性研究设计与分析 | MIT |
+https://github.com/AlterLab-IEU/AlterLab-Academic-Skills/tree/HEAD/skills/research-tools/alterlab-qualitative-methods
+92 | Analytic Memo Writing | 研究分析备忘录 | MIT |
+https://github.com/smirik/psy-qm-skills/tree/HEAD/skills/memo-write 93 |
+Thematic Analysis | 访谈/焦点小组/开放题主题编码 | MIT；需外部能力 |
+https://github.com/keemanxp/thematic-analysis-skill/tree/HEAD/thematic-analysis
+94 | Methodological Rules & Saturation | 质性研究理论饱和追踪 | 未核实 |
+https://github.com/linxule/interpretive-orchestration/tree/HEAD/plugin/skills/methodological-rules
+95 | Qualitative Analysis | 质性编码/代码本/一致性分析 | 未核实 |
+https://github.com/MattArtzAnthro/AI-Anthropology-Toolkit/tree/HEAD/skills/qualitative-analysis
+96 | SHAP | 机器学习可解释性 | MIT |
+https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/shap
+97 | pyvene | PyTorch 模型干预分析 | MIT |
+https://github.com/Orchestra-Research/AI-Research-SKILLs/tree/HEAD/04-mechanistic-interpretability/pyvene
+98 | SAELens | 稀疏自编码器/大模型可解释性 | MIT |
+https://github.com/NousResearch/hermes-agent/tree/HEAD/optional-skills/mlops/saelens
+99 | nnsight | 模型内部状态分析 | MIT；需凭证 |
+https://github.com/Orchestra-Research/AI-Research-SKILLs/tree/HEAD/04-mechanistic-interpretability/nnsight
+100 | Map Research Sites | 经纬度数据制图/位置隐私 | MIT |
+https://github.com/Revonia-gh/evidence-first-research-skills/tree/HEAD/.agents/skills/map-research-sites
+101 | Nature Figure | 科研投稿图表 | Apache-2.0 |
+https://github.com/Yuan1z0825/nature-skills/tree/HEAD/skills/nature-figure
+102 | Archora: Figure | Matplotlib/Seaborn 科研图表 | MIT |
+https://github.com/richard-kim-79/archora-skills/tree/HEAD/skills/figure
+103 | Nature Paper Skills: Figure Planner | 论文图表规划 | MIT |
+https://github.com/boom5426/nature-paper-skills/tree/HEAD/skills/core/figure-planner
+104 | Tufte Data Viz | 学术数据可视化原则 | MIT |
+https://github.com/caylent/tufte-data-viz 105 | Conference Poster
+Builder | 可编辑学术会议海报 | MIT |
+https://github.com/K-Dense-AI/scientific-agent-skills/tree/HEAD/skills/pptx-posters
+106 | Nature Paper Skills: Submission Audit | 投稿前论文检查 | MIT |
+https://github.com/boom5426/nature-paper-skills/tree/HEAD/skills/core/submission-audit
+107 | PaperFit: Overflow Repair | LaTeX 公式/URL/版式溢出修复 | MIT |
+https://github.com/openraiser/paperfit/tree/HEAD/skills/overflow-repair
+108 | Post-Publication Corrector | 论文更正材料草拟 | Apache-2.0 |
+https://github.com/yaotingsun/academic-publishing-skills/tree/HEAD/plugins/post-publication-corrector/skills/post-publication-corrector
+109 | Research Disseminator | 论文转科普摘要/图形摘要/社交文案 |
+Apache-2.0 |
+https://github.com/yaotingsun/academic-publishing-skills/tree/HEAD/plugins/research-disseminator/skills/research-disseminator
+110 | CCF Paper Writer | CCF 论文写作与改稿 | MIT |
+https://github.com/mikubaka88/CCFA-Skills/tree/HEAD/ccf-paper-writer
+
+==================== C. 大型索引入口 ==================== 111 | Awesome
+Research Skills：142 个研究类候选索引 |
+https://github.com/neverbiasu/awesome-research-skills 112 | Research
+Agent Skills：280+ 学术科研 Skill 集合 |
+https://github.com/KalarisLabs/research-agent-skills 113 | Awesome
+Academic Skills：223 个学术工作流索引，标注许可/网络/钩子需求 |
+https://github.com/O0000-code/awesome-academic-skills
+
+给 Codex 的建议： - 先读取 data/skills.json，按 ID、仓库
+URL、名称、功能描述去重。 - 逐条定位真实 SKILL.md，并查看
+README、LICENSE、最近提交和安装方式。 - 检查脚本命令、外部下载、API
+Key、浏览器/MCP、联网、文件读写权限。 -
+将许可未核实或存在冲突的候选留在待审核区，不要标为精选。 -
+区分“作者声明支持 Codex”“格式上可能兼容”和“已实际测试通过”。 - 只输出
+staging JSON 和审核报告，不覆盖或删除正式目录中的现有记录。

@@ -7,7 +7,7 @@
 ## 已实现的只读 API
 
 ### `GET /api/v1/health`
-返回 `{ "ok": true, "version": "0.2.0", "dataMode": "local-curated" }`。
+返回 `{ "ok": true, "version": "0.7.0", "dataMode": "local-curated" }`。
 
 ### `GET /api/v1/categories`
 返回“全部分类”与固定 7 个一级分类；每个一级分类包含当前数量和二级任务计数。
@@ -27,7 +27,7 @@
 | `subcategory` | `presentations` | 按二级任务过滤 |
 | `collection` | `student-essential` | 按跨分类精选集合过滤 |
 | `sort` | `recommended`、`name`、`category` | 排序 |
-| `featured` | `true` | 仅返回精选条目 |
+| `featured` | `true` | 仅返回来源已核对的精选条目；待审核记录即使保留 `featured=true` 也不会进入该结果 |
 | `limit` | `50` | 1～100 |
 | `page` | `1` | 页码从 1 开始 |
 
@@ -68,21 +68,23 @@ fetch('/api/v1/skills/' + encodeURIComponent('anthropics/skills/pptx'))
 | `name`, `nameZh` | string | 英文原名和中文展示名 |
 | `category`, `categoryId`, `subcategoryId` | string | 展示分类、固定一级分类 ID、二级任务 ID |
 | `tags`, `keywords` | string[] | 跨分类标签和搜索别名，不用于生成左侧一级分类 |
-| `audiences`, `platforms`, `collections` | string[] | 适用人群、已确认平台和精选集合 |
+| `audiences`, `platforms`, `collections` | string[] | 适用人群、来源或审核资料中记录的平台、精选集合；`platforms` 不等于本项目实测通过 |
 | `summaryZh`, `explanationZh` | string | 通俗一句话及详细介绍 |
 | `audience`, `scenarios` | string / string[] | 适合人群和应用场景 |
 | `inputExample`, `outputExample` | string | 具体用法示意，不等于实测 |
 | `boundaries` | string[] | 做不到什么、依赖和风险 |
 | `sourceUrl`, `repositoryUrl` | string | 真实可追溯来源 |
-| `installCommand` | string / null | 已核实命令只展示、复制，不执行；未核实时为 `null` |
-| `installNote` | string（可选） | 没有已核实命令时的解释文字，不得作为命令展示或复制 |
+| `installCommand` | string / null | 收录的命令文本，只展示、复制，不执行；存在命令不代表来源已核对、安装成功或功能可用 |
+| `installCommandStatus` | `source-checked` / `unverified` / `unavailable` | 命令来源状态；旧记录未显式标注时保守返回 `unverified` |
+| `installNote` | string（可选） | 安装命令的补充说明，不得作为命令执行 |
+| `codexTestStatus` | `verified` / `not-tested` | 是否在本项目中完成 Codex 实测；默认 `not-tested` |
 | `reviewStatus` | `pending` / `source-checked` | 未审核 / 来源已核实 |
 | `demoStatus` | `none` / `illustrative` / `verified` | 是否有示例/实测演示 |
 | `screenshots` | string[] | 经过授权的实测图片，当前均为空 |
-| `platforms` | string[] | 已单独验证兼容的平台；当前为空 |
+| `platforms` | string[] | 来源或候选审核资料中记录的平台；当前部分记录非空，但不代表本项目已实际验证兼容 |
 | `licenseStatus` | string | 版权与许可审核状态 |
 | `safetyNote` | string | 安全注意事项 |
-| `featured` | boolean | 是否首页推荐 |
+| `featured` | boolean | 精选候选标记；只有同时满足 `reviewStatus=source-checked` 时才获得默认推荐优先级 |
 | `sourceCheckedOn` | string | 来源页面核对时间 |
 | `stats` | object | 本地缓存的仓库 Stars、安装量及采集时间；不是浏览器实时查询 |
 
@@ -99,6 +101,8 @@ fetch('/api/v1/skills/' + encodeURIComponent('anthropics/skills/pptx'))
 ```
 
 `githubStars` 是整个 GitHub 仓库的数据，不代表单个 Skill。无法通过可靠来源取得精确安装量时，`installs` 必须保留为 `null`，页面不展示安装量，也不会用 Stars 代替。
+
+`reviewStatus: source-checked` 只表示条目的来源页面已经核对，不表示安全审计、安装或功能实测通过。命令来源状态和 Codex 实测状态必须分别查看 `installCommandStatus` 与 `codexTestStatus`。
 
 ## 未来但未实现的 API
 

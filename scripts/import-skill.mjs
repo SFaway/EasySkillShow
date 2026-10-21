@@ -10,7 +10,7 @@ const IS_MAIN=process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.m
 
 export const PROTECTED_UPDATE_FIELDS=new Set([
   'reviewStatus','demoStatus','sourceCheckedOn','licenseStatus','featured','screenshots',
-  'platforms','sourceUrl','repositoryUrl','installCommand','installNote','stats','license',
+  'platforms','sourceUrl','repositoryUrl','installCommand','installNote','installCommandStatus','codexTestStatus','stats','license',
   'compatibility','runtimeRequirements','securityRisks','name','category','categoryId','subcategoryId',
   'audiences','collections'
 ]);

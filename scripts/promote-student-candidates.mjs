@@ -39,7 +39,7 @@ const categoryNames = {
   'ai-tools': 'AI 工具'
 };
 
-const collectionMembers = {
+export const collectionMembers = {
   'student-essential': [
     'vercel-labs/skills/find-skills', 'anthropics/skills/pptx', 'anthropics/skills/pdf',
     'anthropics/skills/docx', 'microsoft/cat-agent-skills/study-flashcards',
@@ -63,7 +63,7 @@ const audienceLabels = {
   'ai-tools': ['AI 工具用户', '开发者']
 };
 
-function collectionsFor(id) {
+export function collectionsFor(id) {
   return Object.entries(collectionMembers).filter(([, ids]) => ids.includes(id)).map(([key]) => key);
 }
 
@@ -112,11 +112,13 @@ export function candidateToRecord(candidate) {
     repositoryUrl: candidate.repositoryUrl,
     stats: candidate.stats,
     installCommand: install.command || null,
-    installNote: install.command ? '安装命令来自已核对的来源页面，执行前仍需检查仓库内容。' : '暂无已核实的 Codex 安装命令，请从来源页面获取作者提供的文件与说明。',
+    installNote: install.command ? '候选资料包含此命令，但命令来源尚未单独核对；复制不代表安装成功或功能可用。' : '暂无已核实的 Codex 安装命令，请从来源页面获取作者提供的文件与说明。',
+    installCommandStatus: install.command ? 'unverified' : 'unavailable',
+    codexTestStatus: 'not-tested',
     reviewStatus: 'pending',
     demoStatus: 'illustrative',
     safetyNote: (candidate.securityRisks || []).join('；'),
-    featured: Number(candidate.recommendationRank) <= 4,
+    featured: false,
     screenshots: [],
     platforms: compatibility.confirmedPlatforms || [],
     licenseStatus: license.status || 'unchecked',
@@ -151,14 +153,17 @@ export function promoteCatalog(current, staged) {
   });
   const existing = new Set(next.map(item => item.id));
   for (const candidate of staged) if (!existing.has(candidate.id)) next.push(candidateMap.get(candidate.id));
-  return { next, existing, preservedTaxonomyIds };
+  const collectionChangedIds = next
+    .filter(item => JSON.stringify(current.find(old => old.id === item.id)?.collections || []) !== JSON.stringify(item.collections || []))
+    .map(item => item.id);
+  return { next, existing, preservedTaxonomyIds, collectionChangedIds };
 }
 
 if (isMain) {
   const isWrite = process.argv.includes('--write');
   const current = JSON.parse(await readFile(TARGET, 'utf8'));
   const staged = JSON.parse(await readFile(SOURCE, 'utf8')).candidates;
-  const { next, existing, preservedTaxonomyIds } = promoteCatalog(current, staged);
+  const { next, existing, preservedTaxonomyIds, collectionChangedIds } = promoteCatalog(current, staged);
   const errors = validate(next);
   if (errors.length) {
     console.error('Validation failed:\n' + errors.join('\n'));
@@ -166,7 +171,9 @@ if (isMain) {
   }
 
   console.log(`Prepared ${next.length} records: ${next.length - current.length} new, ${staged.filter(item => existing.has(item.id)).length} updated.`);
-  console.log(`Preserved existing taxonomy for ${preservedTaxonomyIds.length} records without an explicit assignment; no fallback category was applied.`);
+  const collectionCounts = Object.entries(collectionMembers).map(([id, members]) => `${id}=${members.length}`).join(', ');
+  console.log(`Preserved existing category assignments for ${preservedTaxonomyIds.length} records without an explicit mapping; no fallback category was applied.`);
+  console.log(`Recalculated collection membership from the curated whitelist (${collectionCounts}). Changed records: ${collectionChangedIds.length}${collectionChangedIds.length ? ` [${collectionChangedIds.join(', ')}]` : ''}.`);
   if (!isWrite) {
     console.log('Dry-run only. Add --write to save.');
     process.exit(0);

@@ -3,6 +3,7 @@ import http from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { withEvidenceStatuses } from './public/status-helpers.mjs';
 
 const ROOT = resolve(fileURLToPath(new URL('.', import.meta.url)));
 const PUBLIC = resolve(ROOT, 'public');
@@ -33,8 +34,11 @@ function queryAliases(text) {
   for (const g of GROUPS) if(g.some(word=>query.includes(word))) g.forEach(x=>aliases.add(x));
   return [...aliases].filter(x=>x.length>0);
 }
-function score(record, query) {
-  if (!query) return record.featured ? 5 : 1;
+export function score(record, query) {
+  if (!query) {
+    if (record.reviewStatus !== 'source-checked') return 1;
+    return record.featured ? 30 : 20;
+  }
   const aliases = queryAliases(query);
   const name = norm([record.name, record.nameZh].join(' '));
   const tags = norm([...(record.tags||[]),...(record.keywords||[]),...(record.audiences||[]),...(record.platforms||[])].join(' '));
@@ -54,19 +58,19 @@ function score(record, query) {
 async function readCatalog() {
   const parsed = JSON.parse(await readFile(DATA,'utf8'));
   if (!Array.isArray(parsed)) throw new Error('data/skills.json must be an array');
-  return parsed;
+  return parsed.map(withEvidenceStatuses);
 }
 async function readTaxonomy() {
   const parsed = JSON.parse(await readFile(TAXONOMY, 'utf8'));
   if (!Array.isArray(parsed.categories) || !Array.isArray(parsed.collections)) throw new Error('data/taxonomy.json is invalid');
   return parsed;
 }
-function candidateToCatalogItem(candidate) {
+export function candidateToCatalogItem(candidate) {
   const detail = candidate.detailZh || {};
   const install = candidate.install || {};
   const compatibility = candidate.compatibility || {};
   const license = candidate.license || {};
-  return {
+  return withEvidenceStatuses({
     id: candidate.id,
     name: candidate.name,
     nameZh: candidate.nameZh,
@@ -86,12 +90,14 @@ function candidateToCatalogItem(candidate) {
     stats: candidate.stats,
     installCommand: install.command || null,
     installNote: install.command
-      ? '安装命令来自已核对的来源页面，执行前仍需检查仓库内容。'
+      ? '候选资料包含此命令，但命令来源尚未单独核对；复制不代表安装成功或功能可用。'
       : install.notes || '当前没有已核实的 Codex 安装命令，请查看来源说明。',
+    installCommandStatus: install.command ? 'unverified' : 'unavailable',
+    codexTestStatus: 'not-tested',
     reviewStatus: 'pending',
     demoStatus: 'illustrative',
     safetyNote: (candidate.securityRisks || []).join(''),
-    featured: Number(candidate.recommendationRank) <= 4,
+    featured: false,
     screenshots: [],
     platforms: compatibility.confirmedPlatforms || [],
     licenseStatus: license.status || 'unchecked',
@@ -117,7 +123,7 @@ function candidateToCatalogItem(candidate) {
       securityRisks: candidate.securityRisks || [],
       installBarrier: install.barrier || 'unknown'
     }
-  };
+  });
 }
 async function readStudentCandidates() {
   const parsed = JSON.parse(await readFile(STUDENT_CANDIDATES, 'utf8'));
@@ -127,7 +133,7 @@ async function readStudentCandidates() {
 async function readCatalogFor(url) {
   return url.searchParams.get('mode') === 'student-candidates' ? readStudentCandidates() : readCatalog();
 }
-function listSkills(data, url) {
+export function listSkills(data, url) {
   const q = (url.searchParams.get('q') || '').trim().slice(0,200);
   const category = url.searchParams.get('category') || '全部分类';
   const subcategory = url.searchParams.get('subcategory') || '';
@@ -141,12 +147,15 @@ function listSkills(data, url) {
       && (category==='全部分类'||item.category===category||item.categoryId===category)
       && (!subcategory||item.subcategoryId===subcategory)
       && (!collection||(item.collections||[]).includes(collection))
-      && (!onlyFeatured || item.featured));
+      && (!onlyFeatured || (item.featured && item.reviewStatus==='source-checked')));
   result.sort((a,b)=>sortBy==='name'
     ? a.nameZh.localeCompare(b.nameZh,'zh-CN')
     : sortBy==='category'
       ? a.category.localeCompare(b.category,'zh-CN')||a.nameZh.localeCompare(b.nameZh,'zh-CN')
-      : b._score-a._score || (a.recommendationRank??999)-(b.recommendationRank??999) || Number(b.featured)-Number(a.featured) || a.nameZh.localeCompare(b.nameZh,'zh-CN'));
+      : b._score-a._score
+        || Number(b.reviewStatus==='source-checked')-Number(a.reviewStatus==='source-checked')
+        || (a.reviewStatus==='source-checked'&&b.reviewStatus==='source-checked' ? Number(b.featured)-Number(a.featured) || (a.recommendationRank??999)-(b.recommendationRank??999) : 0)
+        || a.nameZh.localeCompare(b.nameZh,'zh-CN'));
   const total = result.length;
   result = result.slice((page-1)*limit,page*limit).map(({_score,...rest})=>rest);
   return { data:result, meta:{q,category,subcategory,collection,sort:sortBy,page,limit,total,hasMore:page*limit<total,dataMode:'local-curated'} };
@@ -156,7 +165,7 @@ function handler(req,res) {
     if (!['GET','HEAD'].includes(req.method)) return json(res,405,{error:'method_not_allowed',message:'Read-only MVP API'});
     const url = new URL(req.url,`http://127.0.0.1:${PORT}`);
     const pathname = url.pathname;
-    if (pathname==='/api/v1/health') return json(res,200,{ok:true,version:'0.2.0',dataMode:'local-curated'});
+    if (pathname==='/api/v1/health') return json(res,200,{ok:true,version:'0.7.0',dataMode:'local-curated'});
     if (pathname==='/api/v1/categories') {
       const data=await readCatalogFor(url);
       if (url.searchParams.get('mode')==='student-candidates') {
@@ -207,4 +216,5 @@ function handler(req,res) {
   })().catch(err=>{console.error(err); if(!res.headersSent) json(res,500,{error:'server_error',message:'Unable to load local catalog'});});
 }
 const server=http.createServer(handler);
-server.listen(PORT,'127.0.0.1',()=>console.log(`EasySkillShow running: http://localhost:${PORT}`));
+const isMain=process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url);
+if(isMain)server.listen(PORT,'127.0.0.1',()=>console.log(`EasySkillShow running: http://localhost:${PORT}`));
